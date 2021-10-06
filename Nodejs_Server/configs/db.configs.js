@@ -1,3 +1,4 @@
+// TODO: change the pw and db name
 module.exports = {
     HOST: "localhost",
     USER: "root",

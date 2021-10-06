@@ -17,5 +17,5 @@ module.exports = app => {
     app.delete("/user/:userId", users.delete);
   
     // Create a new User
-    app.delete("/user", users.deleteAll);
-  };
+    //app.delete("/user", users.deleteAll);
+};
