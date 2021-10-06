@@ -1,6 +1,6 @@
 const express = require("express");
-
 const app = express();
+var { nanoid } = require('nanoid')
 
 // parse requests of content-type: application/json
 app.use(express.json());
@@ -11,6 +11,18 @@ app.use(express.urlencoded({ extended: true }));
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
+});
+
+let users = "{'userId' : nanoid(),  'username' : 'ryan','primaryLevel' : 2, 'points' : 1000}"
+
+
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to Food wars." });
+});
+
+
+app.get('/user', (req, res) => {
+  res.send(users);
 });
 
 
