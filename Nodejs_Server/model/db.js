@@ -1,18 +1,17 @@
-const mysql = require("mysql");
-const dbConfig = require("../configs/db.configs.js");
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import {config} from '../configs/db.configs.js';
+import 'firebase/firestore';
+import { createRequire } from "module";
+import admin from 'firebase-admin';
 
-// Create a connection to the database
-const connection = mysql.createConnection({
-  host: dbConfig.HOST,
-  user: dbConfig.USER,
-  password: dbConfig.PASSWORD,
-  database: dbConfig.DB
+const require = createRequire(import.meta.url);
+const serviceAccount = require('../configs/serviceAccountKey.json');
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
 });
 
-// open the MySQL connection
-connection.connect(error => {
-  if (error) throw error;
-  console.log("Successfully connected to the database.");
-});
+const firestore = admin.firestore();
 
-module.exports = connection;
+export {firestore};
