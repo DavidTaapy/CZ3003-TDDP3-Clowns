@@ -1,15 +1,16 @@
 'use strict';
 import express, { json, urlencoded } from "express";
 import { router } from './routes/user.routes.js';
+
+
+
 const app = express();
-var { nanoid } = require('nanoid')
 
 // parse requests of content-type: application/json
 app.use(json());
 
 // parse requests of content-type: application/x-www-form-urlencoded
 app.use(urlencoded({ extended: true }));
-
 
 // simple route
 app.get("/", (req, res) => {

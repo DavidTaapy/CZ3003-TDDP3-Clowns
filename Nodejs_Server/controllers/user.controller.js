@@ -1,12 +1,11 @@
 import {firestore} from "../model/db.js";
-
-// User = require("../model/user.model.js");
+import { User }  from "../model/user.model.js";
 // Create and Save a new Customer
 
 const createUser = async(req, res, next) => {
-    console.log('heyy');
     try {
         const data = req.body;
+        // TODO: User class is not used here, so we assume the request already has all the required attributes before putting into db?
         await firestore.collection('users').add(data);
         res.send("user added!");
     } catch (error) {
