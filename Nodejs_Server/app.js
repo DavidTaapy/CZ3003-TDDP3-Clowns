@@ -1,12 +1,15 @@
-const express = require("express");
+'use strict';
+import express, { json, urlencoded } from "express";
+import { router } from './routes/user.routes.js';
 const app = express();
 var { nanoid } = require('nanoid')
 
 // parse requests of content-type: application/json
-app.use(express.json());
+app.use(json());
 
 // parse requests of content-type: application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true }));
+app.use(urlencoded({ extended: true }));
+
 
 // simple route
 app.get("/", (req, res) => {
@@ -26,7 +29,7 @@ app.get('/user', (req, res) => {
 });
 
 
-require("./routes/user.routes.js")(app);
+app.use('/', router);
 
 // set port, listen for requests
 app.listen(3000, () => {
