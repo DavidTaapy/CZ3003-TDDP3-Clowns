@@ -1,6 +1,8 @@
 'use strict';
 import express, { json, urlencoded } from "express";
-import { router } from './routes/user.routes.js';
+import { userRouter } from './routes/user.routes.js';
+import { leaderboardRouter } from './routes/leaderboard.routes.js';
+
 
 
 
@@ -12,25 +14,21 @@ app.use(json());
 // parse requests of content-type: application/x-www-form-urlencoded
 app.use(urlencoded({ extended: true }));
 
+
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
 
-let users = "{'userId' : 122,  'username' : 'ryan tan','primaryLevel' : 2, 'points' : 1000}"
+//let users = "{'userId' : 122,  'username' : 'ryan tan','primaryLevel' : 2, 'points' : 1000}"
 
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Food wars." });
 });
 
-
-app.get('/user', (req, res) => {
-  res.send(users);
-});
-
-
-app.use('/', router);
+app.use('/', userRouter);
+app.use('/', leaderboardRouter);
 
 // set port, listen for requests
 app.listen(3000, () => {

@@ -1,38 +1,58 @@
 import {firestore} from "../model/db.js";
 import { User }  from "../model/user.model.js";
-// Create and Save a new Customer
 
-const createUser = async(req, res, next) => {
+// Create and save a new user
+const createUser = async(req, res) => {
     try {
         const data = req.body;
         // TODO: User class is not used here, so we assume the request already has all the required attributes before putting into db?
-        await firestore.collection('users').add(data);
+        const userdb = firestore.collection('users');
+        await userdb.doc(String(data.id)).set(data);
         res.send("user added!");
     } catch (error) {
         res.status(400).send(error.message);
+        res.send("error adding user!");
     }
-    console.log("Hi create");
 };
 
-// Retrieve all Customers from the database.
-/* Leave blank first
-exports.findAll = (req, res) => {
-  
+// Retrieve and return a user
+const getUser = async(req, res) => {
+    try {
+        const data = req.query.id;
+        const userdb = firestore.collection('users');
+        const currUser = await userdb.doc(String(id)).get();
+        res.send(currUser.data());
+    } catch (error) {
+        res.status(400).send(error.message);
+        res.send("user doesnt exist!");
+    }
 };
 
-// Find a single Customer with a customerId
-export function findOne(req, res) {
-    console.log("Hi findone");
-}
+// Delete a user with the specified userId in the request
+const deleteUser = async(req, res) => {
+    try {
+        const id = req.query.id;
+        const userdb = firestore.collection('users');
+        await userdb.doc(String(id)).delete();
+        res.send("user is deleted!");
+    } catch (error) {
+        return res.status(400).send("invalid user");
+        //res.send("invalid user");
+    }
+};
 
-// Update a Customer identified by the customerId in the request
-export function update(req, res) {
-    console.log("Hi update");
-}
+// Update a user identified by the userId in the request
+const updateUser = async(req, res) => {
+    try {
+        const data = req.body;
+        const userdb = firestore.collection('users');
+        const updatedUser = await userdb.doc(String(data.id)).set(data)
+        res.send("user is updated!");
+    } catch (error) {
+        res.status(400).send(error.message);
+        res.send("invalid update");
+    }
 
-// Delete a Customer with the specified customerId in the request
-const delete = (req, res) => {
-    console.log("Hi delete");
-};*/
+};
 
-export {createUser};
+export {createUser, getUser, deleteUser, updateUser};
