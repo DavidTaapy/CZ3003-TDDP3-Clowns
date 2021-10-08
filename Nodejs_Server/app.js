@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
 
-let users = "{'userId' : nanoid(),  'username' : 'ryan','primaryLevel' : 2, 'points' : 1000}"
+let users = "{'userId' : 122,  'username' : 'ryan tan','primaryLevel' : 2, 'points' : 1000}"
 
 
 app.get("/", (req, res) => {
