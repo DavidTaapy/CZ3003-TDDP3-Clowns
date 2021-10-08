@@ -18,10 +18,14 @@ const createUser = async(req, res) => {
 // Retrieve and return a user
 const getUser = async(req, res) => {
     try {
-        const data = req.query.id;
+        const id = req.query.id;
         const userdb = firestore.collection('users');
         const currUser = await userdb.doc(String(id)).get();
-        res.send(currUser.data());
+        if (!currUser.exists) {
+            res.send("No such user!");
+        } else {
+            res.send(JSON.stringify(currUser.data()));
+        }
     } catch (error) {
         res.status(400).send(error.message);
         res.send("user doesnt exist!");
@@ -33,10 +37,16 @@ const deleteUser = async(req, res) => {
     try {
         const id = req.query.id;
         const userdb = firestore.collection('users');
-        await userdb.doc(String(id)).delete();
-        res.send("user is deleted!");
+        const currUser = await userdb.doc(String(id)).get();
+        if (!currUser.exists) {
+            res.send("No such user!");
+        } else {
+            await userdb.doc(String(id)).delete();
+            res.send("User is deleted!");
+        }
+        
     } catch (error) {
-        return res.status(400).send("invalid user");
+        return res.status(400).send("Invalid user Id");
         //res.send("invalid user");
     }
 };

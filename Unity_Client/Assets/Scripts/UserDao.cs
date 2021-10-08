@@ -1,36 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Networking;
+using Newtonsoft.Json;
 
 public class UserDao : MonoBehaviour
 {
     // localhost:3000/user
-    //public string url;
 
-    public IEnumerator Get(string url)
+    public IEnumerator Get(string url, int userId)
     {
-        using(UnityWebRequest www = UnityWebRequest.Get(url)){
-            yield return www.SendWebRequest();
+        string urlWithParams = string.Format("{0}?id={1}", url, userId);
+        using(UnityWebRequest webRequest = UnityWebRequest.Get(urlWithParams)){
+            
+            yield return webRequest.SendWebRequest();
 
-            if (www.result == UnityWebRequest.Result.ConnectionError)
+            if (webRequest.result == UnityWebRequest.Result.ConnectionError)
             {
-                Debug.Log(www.error);
+                Debug.Log(webRequest.error);
             }
             else
             {
-                if (www.isDone)
+                if (webRequest.isDone)
                 {
                     // handle the result
-                    var result = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data);
-                    //Debug.Log(result);
+                    string result = System.Text.Encoding.UTF8.GetString(webRequest.downloadHandler.data);
+                    try {
+                        User user = JsonConvert.DeserializeObject <User> (result);
 
-                    Debug.Log(result);
-                    var user = JsonUtility.FromJson<User>(result);
-
-                    Debug.Log("Username is " + user.username);
-                    Debug.Log("primary level of user is  " + user.primaryLevel);
-                    Debug.Log("User's points is currently at " + user.points);
+                        Debug.Log("Username is " + user.userName);
+                        Debug.Log("primary level of user is  " + user.primaryLevel);
+                        Debug.Log("User's elo points is currently at " + user.eloRating);
+                    } catch (Exception e){
+                        Debug.Log("User id does not exisit! Please check.\n" + e); 
+                    }
                 }
                 else
                 {
@@ -45,32 +49,82 @@ public class UserDao : MonoBehaviour
         var jsonData = JsonUtility.ToJson(user);
         Debug.Log(jsonData);
 
-        using(UnityWebRequest www = UnityWebRequest.Post(url, jsonData)){
-            www.SetRequestHeader("content-type", "application/json");
-            www.uploadHandler.contentType = "application/json";
-            www.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(jsonData));
-            yield return www.SendWebRequest();
+        using(UnityWebRequest webRequest = UnityWebRequest.Post(url, jsonData)){
+            webRequest.SetRequestHeader("content-type", "application/json");
+            webRequest.uploadHandler.contentType = "application/json";
+            webRequest.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(jsonData));
+            yield return webRequest.SendWebRequest();
 
-            if (www.result == UnityWebRequest.Result.ConnectionError){
-                Debug.Log(www.error);
+            if (webRequest.result == UnityWebRequest.Result.ConnectionError){
+                Debug.Log(webRequest.error);
             } else {
-                if (www.isDone){
-                    Debug.Log("reached inner loop");
-                    /*
+                if (webRequest.isDone){
                     // handle the result
-                    var result = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data);  
-                    result = "{\"result\":" + result + "}"; 
-                    var resultUserList = JsonHelper.FromJson<User>(result);
-
-                    foreach (var item in resultUserList) {
-                        Debug.Log(item.username);
-                    }
-                    */
+                    string result = System.Text.Encoding.UTF8.GetString(webRequest.downloadHandler.data);
+                    Debug.Log(result);
                 } else {
                     //handle the problem
                     Debug.Log("Error! data couldn't get.");
                 }
             }
+        }
+    }
+
+    public IEnumerator Delete(string url, int userId)
+    {
+        string urlWithParams = string.Format("{0}?id={1}", url, userId);
+        Debug.Log("url now: " + urlWithParams);
+        using(UnityWebRequest webRequest = UnityWebRequest.Delete(urlWithParams)){           
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.result == UnityWebRequest.Result.ConnectionError)
+            {
+                Debug.Log(webRequest.error);
+            }
+            else
+            {
+                if (webRequest.isDone)
+                {
+                    // handle the result
+                    string result = System.Text.Encoding.UTF8.GetString(webRequest.downloadHandler.data);
+                }
+                else
+                {
+                    //handle the problem
+                    Debug.Log("Error! data couldn't get.");
+                }
+            }   
+        }
+    }
+
+    public IEnumerator Put(string url, User user){
+        var jsonData = JsonUtility.ToJson(user);
+        Debug.Log(jsonData);
+        
+        using(UnityWebRequest webRequest = UnityWebRequest.Put(url, jsonData)){
+            webRequest.SetRequestHeader("content-type", "application/json");
+            webRequest.uploadHandler.contentType = "application/json";
+            webRequest.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(jsonData));
+            
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.result == UnityWebRequest.Result.ConnectionError)
+            {
+                Debug.Log(webRequest.error);
+            }
+            else
+            {
+                if (webRequest.isDone)
+                {
+                    string result = System.Text.Encoding.UTF8.GetString(webRequest.downloadHandler.data);
+                    Debug.Log(result);
+                }
+                else
+                {
+                    //handle the problem
+                    Debug.Log("Error! data couldn't get.");
+                }
+            }   
         }
     }
 }

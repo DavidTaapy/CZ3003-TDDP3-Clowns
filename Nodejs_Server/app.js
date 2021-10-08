@@ -3,9 +3,6 @@ import express, { json, urlencoded } from "express";
 import { userRouter } from './routes/user.routes.js';
 import { leaderboardRouter } from './routes/leaderboard.routes.js';
 
-
-
-
 const app = express();
 
 // parse requests of content-type: application/json
@@ -13,15 +10,6 @@ app.use(json());
 
 // parse requests of content-type: application/x-www-form-urlencoded
 app.use(urlencoded({ extended: true }));
-
-
-// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
-});
-
-//let users = "{'userId' : 122,  'username' : 'ryan tan','primaryLevel' : 2, 'points' : 1000}"
-
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Food wars." });

@@ -10,9 +10,18 @@ namespace apiManagers{
         
         void Start(){
             // By name
-            var linktoUserDAO = GameObject.FindWithTag("Dao").GetComponent<UserDao>();
-            Debug.Log("in START");
-            StartCoroutine(linktoUserDAO.Get(url));
+            var userId = 2;
+            var linktoUserGet = GameObject.FindWithTag("Dao").GetComponent<UserDao>();
+            Debug.Log("============Starting Data Access Manager========");
+            StartCoroutine(linktoUserGet.Get(url, userId));
+
+            User user = new User(6, "Harry Potter", 400, 5);
+            //StartCoroutine(linktoUserGet.Post(url, user));
+
+            //StartCoroutine(linktoUserGet.Delete(url, 0));
+
+            user.setEloRating(500000);
+            //StartCoroutine(linktoUserGet.Put(url, user));
         }
     }
 }
