@@ -13,7 +13,6 @@ const createUser = async(req, res) => {
         res.status(400).send(error.message);
         res.send("error adding user!");
     }
-    console.log("Hi create");
 };
 
 // Retrieve and return a user
@@ -21,26 +20,25 @@ const getUser = async(req, res) => {
     try {
         const data = req.query.id;
         const userdb = firestore.collection('users');
-        const currUser = await userdb.doc(String(data)).get();
-        res.send(currUser);
+        const currUser = await userdb.doc(String(id)).get();
+        res.send(currUser.data());
     } catch (error) {
-        return res.status(400).send(error.message);
+        res.status(400).send(error.message);
+        res.send("user doesnt exist!");
     }
-    console.log("Hi get");
 };
 
 // Delete a user with the specified userId in the request
 const deleteUser = async(req, res) => {
     try {
-        const id = req.params;
+        const id = req.query.id;
         const userdb = firestore.collection('users');
-        const deletedUser = await userdb.where("id", "==", id).delete();
-        res.send(deletedUser.userName + "is deleted!");
+        await userdb.doc(String(id)).delete();
+        res.send("user is deleted!");
     } catch (error) {
-        res.status(400).send(error.message);
-        res.send("invalid user");
+        return res.status(400).send("invalid user");
+        //res.send("invalid user");
     }
-    console.log("Hi delete");  
 };
 
 // Update a user identified by the userId in the request
@@ -48,30 +46,13 @@ const updateUser = async(req, res) => {
     try {
         const data = req.body;
         const userdb = firestore.collection('users');
-        const updatedUser = await userdb.where("id", "==", data.id).set(data)
-        res.send(updatedUser.userName + "is updated!");
+        const updatedUser = await userdb.doc(String(data.id)).set(data)
+        res.send("user is updated!");
     } catch (error) {
         res.status(400).send(error.message);
-        res.send("invalid transaction");
+        res.send("invalid update");
     }
-    console.log("Hi update");  
+
 };
-// Retrieve all Customers from the database.
-/* Leave blank first
-exports.findAll = (req, res) => {
-  
-};
-
-// Find a single Customer with a customerId
-export function findOne(req, res) {
-    console.log("Hi findone");
-}
-
-// Update a Customer identified by the customerId in the request
-export function update(req, res) {
-    console.log("Hi update");
-}
-
-*/
 
 export {createUser, getUser, deleteUser, updateUser};

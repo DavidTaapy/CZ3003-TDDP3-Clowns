@@ -1,6 +1,8 @@
 'use strict';
 import express, { json, urlencoded } from "express";
 import { userRouter } from './routes/user.routes.js';
+import { leaderboardRouter } from './routes/leaderboard.routes.js';
+
 
 
 
@@ -20,6 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.use('/', userRouter);
+app.use('/', leaderboardRouter);
 
 // set port, listen for requests
 app.listen(3000, () => {
