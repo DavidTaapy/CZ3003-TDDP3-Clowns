@@ -7,44 +7,21 @@ namespace apiManagers{
     public class DataAcessManager : MonoBehaviour
     {
         public string url;
-
+        
         void Start(){
-            StartCoroutine(Get(url));
-        }
-    
-        public IEnumerator Get(string url)
-        {
-            using(UnityWebRequest www = UnityWebRequest.Get(url)){
-                yield return www.SendWebRequest();
+            // By name
+            var userId = 2;
+            var linktoUserGet = GameObject.FindWithTag("Dao").GetComponent<UserDao>();
+            Debug.Log("============Starting Data Access Manager========");
+            StartCoroutine(linktoUserGet.Get(url, userId));
 
-                if (www.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.Log(www.error);
-                }
-                else
-                {
-                    if (www.isDone)
-                    {
-                        // handle the result
-                        var result = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data);
-                        //Debug.Log(result);
+            User user = new User(6, "Harry Potter", 400, 5);
+            //StartCoroutine(linktoUserGet.Post(url, user));
 
-                        Debug.Log(result);
-                        var user = JsonUtility.FromJson<User>(result);
+            //StartCoroutine(linktoUserGet.Delete(url, 0));
 
-                        //enemyViewController.DisplayEnemyData(enemy.name, enemy.health.ToString(), enemy.attack.ToString());
-
-                        Debug.Log("Username is " + user.username);
-                        Debug.Log("primary level of user is  " + user.primaryLevel);
-                        Debug.Log("User's points is currently at " + user.points);
-                    }
-                    else
-                    {
-                        //handle the problem
-                        Debug.Log("Error! data couldn't get.");
-                    }
-                }   
-            }
+            user.setEloRating(500000);
+            //StartCoroutine(linktoUserGet.Put(url, user));
         }
     }
 }
