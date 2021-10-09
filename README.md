@@ -1,6 +1,6 @@
 # CZ3003-TDDP3-Clowns
 
-Welcome to our CZ3003 Project titled: Food Wars
+Welcome to our CZ3003 Project titled: Food Wars :pizza: :crossed_swords:
 
 The lab deliverables can be found under [Reports](./Reports)
 
