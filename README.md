@@ -2,11 +2,11 @@
 
 Welcome to our CZ3003 Project titled: Food Wars
 
-The lab deliverables can be found under [Reports](https://github.com/DavidTaapy/CZ3003-TDDP3-Clowns/tree/main/Reports)
+The lab deliverables can be found under [Reports](./Reports)
 
-The backend portion of the project, written in javascript can be found in under [Nodejs_Server](https://github.com/DavidTaapy/CZ3003-TDDP3-Clowns)
+The backend portion of the project, written in javascript can be found in under [Nodejs_Server](./Nodejs_Server)
 
-The frontend portion of the project, written in unity can be found in under [Unity_Client](https://github.com/DavidTaapy/CZ3003-TDDP3-Clowns/tree/main/Unity_Client)
+The frontend portion of the project, written in unity can be found in under [Unity_Client](./Unity_Client)
 
 ## Default User Login
 
