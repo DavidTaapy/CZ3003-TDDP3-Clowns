@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DevAccountEmail: davidtayap@hotmail.com
   DevAccountToken: bru9ajn4fihs67o1ttqfigseqois5gqzmtfox9rf46wchdof8j5wbkwyqzuha9xcpn4jf5rm1aun8xsjf9yu85cz4yg6i3hibg8xymeuw6fbtmdsh8abxe756ctbtq9dfnrqg3wmdgkqnorps547t3fyxsd3fzbz5cf8tuhsfgzqn1asa3scrowxs8q53oznjytf8xx6
-  SelectedStudio: 
+  SelectedStudio: CZ3003-Clowns
   SdkPath: Assets/PlayFabSDK
   EdExPath: 
   LocalCloudScriptPath: 
