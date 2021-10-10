@@ -3,8 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Dao
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -39,15 +38,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 2080233457
-    locked: 0
-  - name: Background 2
-    uniqueID: 4096067261
-    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Top
-    uniqueID: 251268063
     locked: 0
