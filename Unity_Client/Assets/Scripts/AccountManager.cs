@@ -25,7 +25,7 @@ public class AccountManager : MonoBehaviour
         // PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
 
         // Delete all saved data
-        // PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
 
         // Checking if there was any previous logins
         if(PlayerPrefs.HasKey("EMAIL"))
@@ -98,5 +98,18 @@ public class AccountManager : MonoBehaviour
             Password = userPassword
         };
         PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnLoginFailure);
+    }
+
+    public void onClickRegister() {
+        var registerRequest = new RegisterPlayFabUserRequest
+        {
+            Email = userEmail,
+            Password = userPassword,
+            Username = username
+        };
+        Debug.Log(userEmail);
+        Debug.Log(userPassword);
+        Debug.Log(username);
+        PlayFabClientAPI.RegisterPlayFabUser(registerRequest, OnRegisterSuccess, OnRegisterFailure);
     }
 }
