@@ -2,7 +2,7 @@
 import express, { json, urlencoded } from "express";
 import { userRouter } from './routes/user.routes.js';
 import { leaderboardRouter } from './routes/leaderboard.routes.js';
-
+import { questionRouter } from './routes/question.routes.js';
 
 
 
@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
 
 app.use('/', userRouter);
 app.use('/', leaderboardRouter);
+app.use('/', questionRouter);
 
 // set port, listen for requests
 app.listen(3000, () => {
