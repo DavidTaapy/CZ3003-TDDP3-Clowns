@@ -390,17 +390,17 @@ public class FirebaseManager : MonoBehaviour
             }
 
             //Loop through every users UID
-            foreach (DataSnapshot childSnapshot in snapshot.Children.Reverse<DataSnapshot>())
-            {
-                string username = childSnapshot.Child("username").Value.ToString();
-                int kills = int.Parse(childSnapshot.Child("kills").Value.ToString());
-                int deaths = int.Parse(childSnapshot.Child("deaths").Value.ToString());
-                int xp = int.Parse(childSnapshot.Child("xp").Value.ToString());
+            //foreach (DataSnapshot childSnapshot in snapshot.Children.Reverse<DataSnapshot>())
+            //{
+            //    string username = childSnapshot.Child("username").Value.ToString();
+            //    int kills = int.Parse(childSnapshot.Child("kills").Value.ToString());
+            //    int deaths = int.Parse(childSnapshot.Child("deaths").Value.ToString());
+            //    int xp = int.Parse(childSnapshot.Child("xp").Value.ToString());
 
-                //Instantiate new scoreboard elements
-                GameObject scoreboardElement = Instantiate(scoreElement, scoreboardContent);
-                //scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, kills, deaths, xp);
-            }
+            //    //Instantiate new scoreboard elements
+            //    GameObject scoreboardElement = Instantiate(scoreElement, scoreboardContent);
+            //    scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, kills, deaths, xp);
+            //}
 
             //Go to scoareboard screen
             UIManager.instance.ScoreboardScreen();
