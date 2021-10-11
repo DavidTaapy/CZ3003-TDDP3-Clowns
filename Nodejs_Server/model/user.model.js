@@ -9,6 +9,4 @@ class User {
     }
 }
 
-
 export {User};
-
