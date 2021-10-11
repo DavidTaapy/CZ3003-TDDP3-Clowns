@@ -3,6 +3,8 @@ import express, { json, urlencoded } from "express";
 import { userRouter } from './routes/user.routes.js';
 import { leaderboardRouter } from './routes/leaderboard.routes.js';
 import { questionRouter } from './routes/question.routes.js';
+import { shopRouter } from './routes/shop.routes.js';
+import { resRouter } from './routes/restaurant.routes.js';
 
 
 
@@ -24,6 +26,8 @@ app.get("/", (req, res) => {
 app.use('/', userRouter);
 app.use('/', leaderboardRouter);
 app.use('/', questionRouter);
+app.use('/', shopRouter);
+app.use('/', resRouter);
 
 // set port, listen for requests
 app.listen(3000, () => {

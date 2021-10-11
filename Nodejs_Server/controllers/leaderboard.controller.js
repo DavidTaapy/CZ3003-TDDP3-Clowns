@@ -4,11 +4,16 @@ import {firestore} from "../model/db.js";
 const getLeaderboard = async(req, res) => {
     try {
         let temp = {'userName': 'username', 'eloRating': 0};
-        const results = []
+        const results = [];
         const userdb = firestore.collection('users');    
         const snapshot = await userdb.orderBy('eloRating', 'desc').limit(2).get();
         const ranks = snapshot.docs.map(user => user.data());
-        ranks.forEach((user) => {temp.userName = (user.userName); temp.eloRating = (user.eloRating); results.push(temp);});
+        ranks.forEach((user) => {
+            temp.userName = (user.userName); 
+            temp.eloRating = (user.eloRating); 
+            results.push(temp);
+        });
+        console.log(results);
         res.send(results);
 
     } catch (error) {
