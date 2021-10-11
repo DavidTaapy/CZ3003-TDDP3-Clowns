@@ -5,7 +5,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "author": "Ryan",
   "license": "ISC",
@@ -17,6 +18,7 @@
     "nanoid": "^3.1.29"
   },
   "devDependencies": {
-    "@babel/helper-compilation-targets": "^7.15.4"
+    "@babel/helper-compilation-targets": "^7.15.4",
+    "nodemon": "^2.0.13"
   }
 }
