@@ -72,21 +72,31 @@
     <Compile Include="Assets/Scripts/Models/User.cs" />
     <Compile Include="Assets/Scripts/Character.cs" />
     <Compile Include="Assets/Scripts/ScoreKeeper.cs" />
+    <Compile Include="Assets/Scripts/FirebaseManager.cs" />
+    <Compile Include="Assets/Scripts/UIManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
     <None Include="Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets/Parse/Plugins/Unity.Compat.dll" />
+    <None Include="Assets/Firebase/Plugins/x86_64/FirebaseCppDatabase.dll" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />
     <None Include="Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll" />
+    <None Include="Assets/Firebase/Plugins/Firebase.App.dll" />
+    <None Include="Assets/Parse/Plugins/Unity.Tasks.dll" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader" />
     <None Include="Assets/Fonts/NEON_GLOW_Font_Family_(Fontmirror)/README.txt" />
+    <None Include="Assets/Firebase/Plugins/x86_64/FirebaseCppAuth.dll" />
     <None Include="Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets/Firebase/Plugins/Firebase.TaskExtension.dll" />
+    <None Include="Assets/Firebase/m2repository/com/google/firebase/firebase-app-unity/maven-metadata.xml" />
     <None Include="Assets/Mirror/Version.txt" />
     <None Include="Assets/Mirror/Readme.txt" />
+    <None Include="Assets/Firebase/Plugins/Firebase.Auth.dll" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" />
     <None Include="Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" />
@@ -94,16 +104,27 @@
     <None Include="Assets/ParrelSync/VERSION.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" />
+    <None Include="Assets/Firebase/Plugins/Firebase.Database.dll" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" />
+    <None Include="Assets/Firebase/m2repository/com/google/firebase/firebase-auth-unity/maven-metadata.xml" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" />
+    <None Include="Assets/Firebase/Plugins/iOS/Firebase.Auth.dll" />
     <None Include="Assets/Mirror/Notice.txt" />
     <None Include="Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" />
     <None Include="Assets/Mirror/Plugins/Mono.Cecil/License.txt" />
+    <None Include="Assets/Firebase/Plugins/x86_64/FirebaseCppApp-8_3_0.dll" />
+    <None Include="Assets/Firebase/Plugins/iOS/Firebase.Database.dll" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets/Parse/Plugins/dotNet45/Unity.Compat.dll" />
+    <None Include="Assets/Firebase/Plugins/Firebase.Platform.dll" />
+    <None Include="Assets/Parse/Plugins/dotNet45/Unity.Tasks.dll" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" />
+    <None Include="Assets/Firebase/m2repository/com/google/firebase/firebase-database-unity/maven-metadata.xml" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets/Firebase/Plugins/Google.MiniJson.dll" />
     <None Include="Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" />
+    <None Include="Assets/Firebase/Plugins/iOS/Firebase.App.dll" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
@@ -343,6 +364,30 @@
     </Reference>
     <Reference Include="Mono.CecilX.Mdb">
       <HintPath>Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.App">
+      <HintPath>Assets/Firebase/Plugins/Firebase.App.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Tasks">
+      <HintPath>Assets/Parse/Plugins/dotNet45/Unity.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.TaskExtension">
+      <HintPath>Assets/Firebase/Plugins/Firebase.TaskExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.MiniJson">
+      <HintPath>Assets/Firebase/Plugins/Google.MiniJson.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Platform">
+      <HintPath>Assets/Firebase/Plugins/Firebase.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Compat">
+      <HintPath>Assets/Parse/Plugins/dotNet45/Unity.Compat.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Auth">
+      <HintPath>Assets/Firebase/Plugins/Firebase.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Database">
+      <HintPath>Assets/Firebase/Plugins/Firebase.Database.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>/Applications/Unity/Hub/Editor/2020.3.19f1/Unity.app/Contents/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

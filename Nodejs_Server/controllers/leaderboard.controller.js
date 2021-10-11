@@ -3,14 +3,22 @@ import {firestore} from "../model/db.js";
 // Get leaderboard (sort and filter for top) - used 2 in this case
 const getLeaderboard = async(req, res) => {
     try {
-        const userdb = firestore.collection('users');
-        const snapshot = await userdb.get();
-        //const currLeaderboard = await allUsers.doc().orderBy('eloRating').limit(2).get()
-        res.send(snapshot.docs.map(doc => doc.data().id));
-        //res.send(allUsers.data());
+        let temp = {'userName': 'username', 'eloRating': 0};
+        const results = [];
+        const userdb = firestore.collection('users');    
+        const snapshot = await userdb.orderBy('eloRating', 'desc').limit(2).get();
+        const ranks = snapshot.docs.map(user => user.data());
+        ranks.forEach((user) => {
+            temp.userName = (user.userName); 
+            temp.eloRating = (user.eloRating); 
+            results.push(temp);
+        });
+        console.log(results);
+        res.send(results);
+
     } catch (error) {
         res.status(400).send(error.message);
-        res.send("error adding user!");
+        res.send("error getting users!");
     }
 };
 
