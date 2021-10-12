@@ -2,6 +2,11 @@
 import express, { json, urlencoded } from "express";
 import { userRouter } from './routes/user.routes.js';
 import { leaderboardRouter } from './routes/leaderboard.routes.js';
+import { questionRouter } from './routes/question.routes.js';
+import { shopRouter } from './routes/shop.routes.js';
+import { resRouter } from './routes/restaurant.routes.js';
+
+
 
 const app = express();
 
@@ -11,12 +16,18 @@ app.use(json());
 // parse requests of content-type: application/x-www-form-urlencoded
 app.use(urlencoded({ extended: true }));
 
+//let users = "{'userId' : nanoid(),  'username' : 'ryan','primaryLevel' : 2, 'points' : 1000}"
+
+
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Food wars." });
 });
 
 app.use('/', userRouter);
 app.use('/', leaderboardRouter);
+app.use('/', questionRouter);
+app.use('/', shopRouter);
+app.use('/', resRouter);
 
 // set port, listen for requests
 app.listen(3000, () => {
