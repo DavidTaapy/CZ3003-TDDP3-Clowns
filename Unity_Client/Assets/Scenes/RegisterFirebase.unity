@@ -766,9 +766,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1370278848}
-        m_TargetAssemblyTypeName: FirebaseManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: RegisterManager, Assembly-CSharp
         m_MethodName: HandleDropdownData
-        m_Mode: 0
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2450,26 +2450,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1370278847}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 175b88138bd15354baa5a8ae261106f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 62f2ce8aad77f6e41b60a03717e230d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dependencyStatus: 0
-  emailLoginField: {fileID: 0}
-  passwordLoginField: {fileID: 0}
-  warningLoginText: {fileID: 0}
-  confirmLoginText: {fileID: 0}
-  usernameRegisterField: {fileID: 0}
-  emailRegisterField: {fileID: 0}
-  passwordRegisterField: {fileID: 0}
-  passwordRegisterVerifyField: {fileID: 0}
+  usernameRegisterField: {fileID: 28153690}
+  emailRegisterField: {fileID: 1705510913}
+  passwordRegisterField: {fileID: 1484623463}
   grade: 0
-  warningRegisterText: {fileID: 0}
-  usernameField: {fileID: 0}
-  xpField: {fileID: 0}
-  killsField: {fileID: 0}
-  deathsField: {fileID: 0}
-  scoreElement: {fileID: 0}
-  scoreboardContent: {fileID: 0}
+  warningRegisterText: {fileID: 407530996}
 --- !u!4 &1370278849
 Transform:
   m_ObjectHideFlags: 0
@@ -4201,7 +4190,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1370278848}
-        m_TargetAssemblyTypeName: AuthManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: RegisterManager, Assembly-CSharp
         m_MethodName: RegisterButton
         m_Mode: 1
         m_Arguments:
