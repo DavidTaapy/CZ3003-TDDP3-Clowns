@@ -10,15 +10,17 @@ namespace apiManagers{
     {
         public string url_user;
         public string url_qn;
+        public string url_leaderboard;
         
         void Start(){
             // By name
             var userId = "7HHcjbfJq1kD8VFMHHDq";
             
             // Code to get user details
-            var linktoUserGet = GameObject.FindWithTag("Dao").GetComponent<UserDao>();
+            
+            var linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
             Debug.Log("============Starting Data Access Manager========");
-            Debug.Log(linktoUserGet);
+            Debug.Log(GameObject.FindWithTag("Dao"));
             User user = linktoUserGet.getUser(url_user, userId);
             Debug.Log(user.getId());
             
@@ -38,7 +40,7 @@ namespace apiManagers{
             //string result = linktoUserGet.updateUser(url_user, user2);
             //Debug.Log(result);
 
-            var linktoQuestionGet = GameObject.FindWithTag("Dao").GetComponent<QuestionDao>();
+            var linktoQuestionGet = GameObject.Find("QuestionDao").GetComponent<QuestionDao>();
             // Code to get questions from db
             /*var primaryLevel = 4;
             
@@ -49,6 +51,15 @@ namespace apiManagers{
             }
 
             */
+
+            var linktoLeaderboard = GameObject.Find("LeaderboardDao").GetComponent<LeaderboardDao>();
+            // Code to get leaderboard ranking from db
+            List<User> userRanking = linktoLeaderboard.getLeaderboard(url_leaderboard);
+            Debug.Log(userRanking.length);
+            foreach (User u in userRanking)
+            {
+                Debug.Log(u.getEloRating());
+            }
         }
     }
 }
