@@ -24,4 +24,8 @@ public class QuestionSO : ScriptableObject
     {
         return correctAnswerIndex;
     }
+
+    public string ToJSON(){
+        return JsonUtility.ToJson(this);
+    }
 }
