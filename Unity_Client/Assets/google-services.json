@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "807952629040",
+    "firebase_url": "https://cz3003-db-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "cz3003-db",
+    "storage_bucket": "cz3003-db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807952629040:android:952f4d2ec31836917f9cf5",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.FoodWars"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "807952629040-83jmrjcjpg05mesgjh559uk2gt96hapm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXrIKddOKM0p-x2g_Ji89-_1r9xmsNrEA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "807952629040-83jmrjcjpg05mesgjh559uk2gt96hapm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
