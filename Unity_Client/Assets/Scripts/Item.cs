@@ -2,21 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
+public enum ItemType
+{
+	Powerup,
+	Skin
+}
+
+public enum ItemSource
+{
+	Shop,
+	Character,
+	Leaderboard
+}
+
+[System.Serializable]
 public class Item : ScriptableObject
 {
-    public enum ItemType
-    {
-        Powerup,
-        Skin
-    }
-
-    public enum ItemSource
-    {
-        Shop,
-        Character,
-        Leaderboard
-    }
 
     [SerializeField]
     public Sprite itemSprite;
@@ -38,6 +39,8 @@ public class Item : ScriptableObject
 
     [SerializeField]
     public string itemDescription;
+
+	public int itemCount;
 
 	public Sprite getItemSprite() {
 		return this.itemSprite;
