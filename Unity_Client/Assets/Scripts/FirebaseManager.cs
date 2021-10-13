@@ -28,6 +28,7 @@ public class FirebaseManager : MonoBehaviour
     public TMP_InputField emailRegisterField;
     public TMP_InputField passwordRegisterField;
     public TMP_InputField passwordRegisterVerifyField;
+    public int grade;
     public TMP_Text warningRegisterText;
 
     [Header("UserData")]
@@ -116,6 +117,35 @@ public class FirebaseManager : MonoBehaviour
     {
         StartCoroutine(LoadScoreboardData());
     }
+
+    public void HandleDropdownData(int val)
+    {
+        switch (val)
+        {
+            case 0:
+                grade = 1;
+                break;
+            case 1:
+                grade = 2;
+                break;
+            case 2:
+                grade = 3;
+                break;
+            case 3:
+                grade = 4;
+                break;
+            case 4:
+                grade = 5;
+                break;
+            case 5:
+                grade = 6;
+                break;
+            default:
+                grade = 1;
+                break;
+        }
+    }
+
 
     private IEnumerator Login(string _email, string _password)
     {
