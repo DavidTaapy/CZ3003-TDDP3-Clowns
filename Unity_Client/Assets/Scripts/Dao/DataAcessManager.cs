@@ -55,7 +55,7 @@ namespace apiManagers{
             var linktoLeaderboard = GameObject.Find("LeaderboardDao").GetComponent<LeaderboardDao>();
             // Code to get leaderboard ranking from db
             List<User> userRanking = linktoLeaderboard.getLeaderboard(url_leaderboard);
-            Debug.Log(userRanking.length);
+            Debug.Log(userRanking.Count);
             foreach (User u in userRanking)
             {
                 Debug.Log(u.getEloRating());
