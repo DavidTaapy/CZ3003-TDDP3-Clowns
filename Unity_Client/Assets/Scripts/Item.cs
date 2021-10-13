@@ -2,26 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
-public class Item : ScriptableObject
+public enum ItemSource
 {
-    public enum ItemType
-    {
-        Powerup,
-        Skin
-    }
+    Shop,
+    Character,
+    Leaderboard
+}
 
-    public enum ItemSource
-    {
-        Shop,
-        Character,
-        Leaderboard
-    }
-
+[System.Serializable]
+public class Item
+{
     public Sprite itemSprite;
     public int itemID;
     public string itemName;
-    public int price;
-    public ItemType itemType;
+    public int itemPrice;
     public ItemSource itemSource;
+    public int itemCount;
+    public string itemDescription;
 }
