@@ -110,7 +110,7 @@ public class InventoryUIManager : MonoBehaviour
         itemPanel.transform.GetChild(0).GetComponent<Image>().sprite = inventoryManager.items[currentItemIndex].itemSprite;
         itemPanel.transform.GetChild(1).GetComponent<Text>().text = "ID: " + inventoryManager.items[currentItemIndex].itemID.ToString();
         itemPanel.transform.GetChild(2).GetComponent<Text>().text = "Name: " + inventoryManager.items[currentItemIndex].itemName;
-        itemPanel.transform.GetChild(3).GetComponent<Text>().text = "Price: " + inventoryManager.items[currentItemIndex].itemPrice.ToString();
+        itemPanel.transform.GetChild(3).GetComponent<Text>().text = "Price: " + inventoryManager.items[currentItemIndex].price.ToString();
         itemPanel.transform.GetChild(5).GetComponent<Text>().text = "You have: " + inventoryManager.items[currentItemIndex].itemCount.ToString();
         itemPanel.transform.GetChild(6).GetComponent<Text>().text = inventoryManager.items[currentItemIndex].itemDescription.ToString();
 

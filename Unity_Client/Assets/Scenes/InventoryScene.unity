@@ -789,117 +789,133 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - itemSprite: {fileID: 21300000, guid: 1d130991a81017b4a9b4046ef0302b0b, type: 3}
+  - itemSprite: {fileID: 21300000, guid: 720cd1c005f7fe54fbe270433f5424aa, type: 3}
     itemID: 0
-    itemName: Potion
-    itemPrice: 0
+    itemName: Bandage
+    price: 0
+    itemType: 0
     itemSource: 0
-    itemCount: 6
+    itemCount: 0
     itemDescription: Does something
-  - itemSprite: {fileID: 21300000, guid: 83a0213d652a6b749a8403b8e6d421b4, type: 3}
-    itemID: 1
-    itemName: Rope
-    itemPrice: 0
-    itemSource: 0
-    itemCount: 21
-    itemDescription: Does something
-  - itemSprite: {fileID: 21300000, guid: d98957d25635e1844914d42e7a142b29, type: 3}
-    itemID: 2
-    itemName: Book
-    itemPrice: 0
-    itemSource: 0
-    itemCount: 7
-    itemDescription: Does something
-  - itemSprite: {fileID: 21300000, guid: 928b0f07fdd4e374cb94424a91488a53, type: 3}
-    itemID: 3
-    itemName: Ring
-    itemPrice: 0
-    itemSource: 0
-    itemCount: 9
-    itemDescription: Does something
-  - itemSprite: {fileID: 21300000, guid: 1f4a0aae86ebe3a4abe7d92019f422cb, type: 3}
-    itemID: 4
-    itemName: Bomb
-    itemPrice: 0
-    itemSource: 0
-    itemCount: 3
-    itemDescription: Does something
-  - itemSprite: {fileID: 21300000, guid: fbc991a4cc408a44c95f71e2ebaa8b3b, type: 3}
-    itemID: 5
-    itemName: Brick
-    itemPrice: 0
+  - itemSprite: {fileID: 21300000, guid: 9867e2715a85c6345a93f98353a7799d, type: 3}
+    itemID: 0
+    itemName: Ammo
+    price: 0
+    itemType: 0
     itemSource: 0
     itemCount: 0
     itemDescription: Does something
   - itemSprite: {fileID: 21300000, guid: 183ad819c4751ff4b9fde52018778b0c, type: 3}
-    itemID: 6
+    itemID: 0
     itemName: Belt
-    itemPrice: 0
+    price: 0
+    itemType: 0
     itemSource: 0
-    itemCount: 1
+    itemCount: 0
     itemDescription: Does something
-  - itemSprite: {fileID: 21300000, guid: 720cd1c005f7fe54fbe270433f5424aa, type: 3}
-    itemID: 7
-    itemName: Bandage
-    itemPrice: 0
+  - itemSprite: {fileID: 21300000, guid: 1f4a0aae86ebe3a4abe7d92019f422cb, type: 3}
+    itemID: 0
+    itemName: Bomb
+    price: 0
+    itemType: 0
     itemSource: 0
-    itemCount: 2
+    itemCount: 0
+    itemDescription: Does something
+  - itemSprite: {fileID: 21300000, guid: d98957d25635e1844914d42e7a142b29, type: 3}
+    itemID: 0
+    itemName: Book
+    price: 0
+    itemType: 0
+    itemSource: 0
+    itemCount: 0
+    itemDescription: Does something
+  - itemSprite: {fileID: 21300000, guid: fbc991a4cc408a44c95f71e2ebaa8b3b, type: 3}
+    itemID: 0
+    itemName: Brick
+    price: 0
+    itemType: 0
+    itemSource: 0
+    itemCount: 0
+    itemDescription: Does something
+  - itemSprite: {fileID: 21300000, guid: 928b0f07fdd4e374cb94424a91488a53, type: 3}
+    itemID: 0
+    itemName: Ring
+    price: 0
+    itemType: 0
+    itemSource: 0
+    itemCount: 0
+    itemDescription: Does something
+  - itemSprite: {fileID: 21300000, guid: c29162d11d03499498205196908712a5, type: 3}
+    itemID: 0
+    itemName: Coin
+    price: 0
+    itemType: 0
+    itemSource: 0
+    itemCount: 0
     itemDescription: Does something
   - itemSprite: {fileID: 21300000, guid: 7fbd9ab32b329464a8c464e9fea41ded, type: 3}
-    itemID: 8
+    itemID: 0
     itemName: Clover
-    itemPrice: 0
+    price: 0
+    itemType: 0
     itemSource: 0
-    itemCount: 9
+    itemCount: 0
     itemDescription: Does something
   - itemSprite: {fileID: 21300000, guid: 77077ad6096c0a54d9c99e2ad7128a0b, type: 3}
-    itemID: 9
+    itemID: 0
     itemName: Feather
-    itemPrice: 0
+    price: 0
+    itemType: 0
     itemSource: 0
-    itemCount: 3
+    itemCount: 0
     itemDescription: Does something
   - itemSprite: {fileID: 21300000, guid: 13baec530bb89bf45a6f175a1375ea83, type: 3}
-    itemID: 10
+    itemID: 0
     itemName: Flashlight
-    itemPrice: 0
+    price: 0
+    itemType: 0
     itemSource: 0
-    itemCount: 8
+    itemCount: 0
     itemDescription: Does something
   - itemSprite: {fileID: 21300000, guid: 85b5c08cd5f304b4eb3a556df2a428d6, type: 3}
-    itemID: 11
+    itemID: 0
     itemName: Hammer
-    itemPrice: 0
+    price: 0
+    itemType: 0
     itemSource: 0
     itemCount: 0
     itemDescription: Does something
   - itemSprite: {fileID: 21300000, guid: 8161197b3171a5846af6ac8a3eaa30c0, type: 3}
-    itemID: 12
+    itemID: 0
     itemName: Shield
-    itemPrice: 0
-    itemSource: 0
-    itemCount: 10
-    itemDescription: Does something
-  - itemSprite: {fileID: 21300000, guid: 7da4c246df3cdf84d8604fb92b79eca7, type: 3}
-    itemID: 13
-    itemName: Sword
-    itemPrice: 0
-    itemSource: 0
-    itemCount: 5
-    itemDescription: Does something
-  - itemSprite: {fileID: 21300000, guid: 619d73d8279488e44ad15761d2b24b72, type: 3}
-    itemID: 14
-    itemName: Pill
-    itemPrice: 0
+    price: 0
+    itemType: 0
     itemSource: 0
     itemCount: 0
     itemDescription: Does something
-  - itemSprite: {fileID: 21300000, guid: 1211edc30b3a39d428dda9695c953aec, type: 3}
-    itemID: 15
-    itemName: Scroll
-    itemPrice: 0
+  - itemSprite: {fileID: 21300000, guid: 7da4c246df3cdf84d8604fb92b79eca7, type: 3}
+    itemID: 0
+    itemName: Sword
+    price: 0
+    itemType: 0
     itemSource: 0
-    itemCount: 11
+    itemCount: 0
+    itemDescription: Does something
+  - itemSprite: {fileID: 21300000, guid: 619d73d8279488e44ad15761d2b24b72, type: 3}
+    itemID: 0
+    itemName: Pill
+    price: 0
+    itemType: 0
+    itemSource: 0
+    itemCount: 0
+    itemDescription: Does something
+  - itemSprite: {fileID: 21300000, guid: 83a0213d652a6b749a8403b8e6d421b4, type: 3}
+    itemID: 0
+    itemName: Rope
+    price: 0
+    itemType: 0
+    itemSource: 0
+    itemCount: 0
     itemDescription: Does something
 --- !u!4 &141862085
 Transform:

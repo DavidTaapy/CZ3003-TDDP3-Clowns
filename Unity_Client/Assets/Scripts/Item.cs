@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
-public class Item : ScriptableObject
-{
-    public enum ItemType
+public enum ItemType
     {
         Powerup,
         Skin
     }
 
-    public enum ItemSource
-    {
-        Shop,
-        Character,
-        Leaderboard
-    }
+public enum ItemSource
+{
+	Shop,
+	Character,
+	Leaderboard
+}
 
+[System.Serializable] // I think SerializeField can be removed
+public class Item
+{
     [SerializeField]
     public Sprite itemSprite;
 
@@ -35,6 +35,8 @@ public class Item : ScriptableObject
 
     [SerializeField]
     public ItemSource itemSource;
+
+	public int itemCount;
 
     [SerializeField]
     public string itemDescription;
