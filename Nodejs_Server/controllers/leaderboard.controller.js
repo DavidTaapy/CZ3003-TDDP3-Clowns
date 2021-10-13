@@ -14,7 +14,7 @@ const getLeaderboard = async(req, res) => {
             results.push(temp);
         });
         console.log(results);*/
-        res.send(results);
+        res.send(ranks);
 
     } catch (error) {
         res.status(400).send(error.message);

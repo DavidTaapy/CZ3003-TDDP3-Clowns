@@ -53,17 +53,17 @@ namespace apiManagers{
 
 
             // Code to get leaderboard ranking from db
-            var linktoLeaderboard = GameObject.Find("LeaderboardDao").GetComponent<LeaderboardDao>();
+            /*var linktoLeaderboard = GameObject.Find("LeaderboardDao").GetComponent<LeaderboardDao>();
             List<User> userRanking = linktoLeaderboard.getLeaderboard(url_leaderboard);
             Debug.Log(userRanking.Count);
             foreach (User u in userRanking)
             {
                 Debug.Log(u.ToJSON());
-            }
+            }*/
             
 
             // Code to get shop items (skins and powerups separately) from from db
-            var linktoItems = GameObject.Find("ItemsDao").GetComponent<ItemDao>();
+            /*var linktoItems = GameObject.Find("ItemsDao").GetComponent<ItemDao>();
             List<Item> shopPowerUps = linktoItems.getItems(url_items, "Powerup", "Shop"); //returns list of powerups in shop
             List<Item> shopSkins = linktoItems.getItems(url_items, "Skin", "Shop"); //returns list of powerups in shop
             Debug.Log("\n num of shop powerup: " + shopPowerUps.Count);
@@ -76,7 +76,7 @@ namespace apiManagers{
             foreach (Item i in shopSkins)
             {
                 Debug.Log(i.ToJSON());
-            }
+            }*/
         }
     }
 }
