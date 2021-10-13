@@ -11,6 +11,7 @@ namespace apiManagers{
         public string url_user;
         public string url_qn;
         public string url_leaderboard;
+        public string url_items;
         
         void Start(){
             // By name
@@ -40,25 +41,41 @@ namespace apiManagers{
             //string result = linktoUserGet.updateUser(url_user, user2);
             //Debug.Log(result);
 
-            var linktoQuestionGet = GameObject.Find("QuestionDao").GetComponent<QuestionDao>();
             // Code to get questions from db
+            var linktoQuestionGet = GameObject.Find("QuestionDao").GetComponent<QuestionDao>();
             /*var primaryLevel = 4;
-            
             List<QuestionSO> qnList = linktoQuestionGet.getQuestions(url_qn, primaryLevel);
             foreach (var qn in qnList)
             {
                 Debug.Log(qn.ToJSON);
             }
-
             */
 
-            var linktoLeaderboard = GameObject.Find("LeaderboardDao").GetComponent<LeaderboardDao>();
+
             // Code to get leaderboard ranking from db
+            var linktoLeaderboard = GameObject.Find("LeaderboardDao").GetComponent<LeaderboardDao>();
             List<User> userRanking = linktoLeaderboard.getLeaderboard(url_leaderboard);
             Debug.Log(userRanking.Count);
             foreach (User u in userRanking)
             {
                 Debug.Log(u.getEloRating());
+            }
+            
+
+            // Code to get shop items (skins and powerups separately) from from db
+            var linktoItems = GameObject.Find("ItemsDao").GetComponent<ItemDao>();
+            List<Item> shopPowerUps = linktoItems.getItems(url_items, "Powerup", "Shop"); //returns list of powerups in shop
+            List<Item> shopSkins = linktoItems.getItems(url_items, "Skin", "Shop"); //returns list of powerups in shop
+            Debug.Log("\n num of shop powerup: " + shopPowerUps.Count);
+            Debug.Log("\n num of shop skins: " + shopSkins.Count);
+            foreach (Item i in shopPowerUps)
+            {
+                Debug.Log(i.ToJSON());
+            }
+
+            foreach (Item i in shopSkins)
+            {
+                Debug.Log(i.ToJSON());
             }
         }
     }

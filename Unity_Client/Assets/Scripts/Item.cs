@@ -36,6 +36,9 @@ public class Item : ScriptableObject
     [SerializeField]
     public ItemSource itemSource;
 
+    [SerializeField]
+    public string itemDescription;
+
 	public Sprite getItemSprite() {
 		return this.itemSprite;
 	}

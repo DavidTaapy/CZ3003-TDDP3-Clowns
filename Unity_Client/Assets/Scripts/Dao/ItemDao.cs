@@ -14,10 +14,12 @@ public class ItemDao : MonoBehaviour
 
     public List<Item> getItems(string url, string itemType, string itemSource){
         
-        HttpResponseMessage response = client.GetAsync(url).GetAwaiter().GetResult();
+        string urlWithParams = string.Format("{0}?itemType={1}&itemSource={2}", url, itemType, itemSource);
+
+        HttpResponseMessage response = client.GetAsync(urlWithParams).GetAwaiter().GetResult();
         string responseStr = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
         List<Item> itemList = JsonConvert.DeserializeObject<List<Item>>(responseStr);
-        Debug.Log(itemList[0].ToJSON());
+        //Debug.Log(itemList[0].ToJSON());
         return itemList;
     }
 }
