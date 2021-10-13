@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Item.cs" />
      <Compile Include="Assets\Scripts\ItemManager.cs" />
+     <Compile Include="Assets\Scripts\RegisterManager.cs" />
      <Compile Include="Assets\Scripts\CharacterManager.cs" />
      <Compile Include="Assets\Scripts\CharacterDatabase.cs" />
      <Compile Include="Assets\Scripts\EndScreen.cs" />
@@ -69,7 +70,6 @@
      <Compile Include="Assets\Scripts\FirebaseManager.cs" />
      <Compile Include="Assets\Scripts\Character.cs" />
      <Compile Include="Assets\Scripts\ScoreKeeper.cs" />
-     <Compile Include="Assets\Scripts\RegisterManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
