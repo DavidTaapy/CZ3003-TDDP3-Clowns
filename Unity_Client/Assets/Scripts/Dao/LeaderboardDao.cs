@@ -17,7 +17,6 @@ public class LeaderboardDao : MonoBehaviour
         HttpResponseMessage response = client.GetAsync(url).GetAwaiter().GetResult();
         string responseStr = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
         List<User> userRanking = JsonConvert.DeserializeObject<List<User>>(responseStr);
-        Debug.Log(userRanking[0].ToJSON());
         return userRanking;
     }
 }

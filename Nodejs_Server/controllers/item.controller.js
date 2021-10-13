@@ -5,8 +5,6 @@ const addItems = async(req, res) => {
     try {
         const items = req.body;
         const itemsdb = firestore.collection('items'); 
-        //var itemUpdate = {};
-        //itemUpdate[`${type}`] = items;  
         itemsdb.add(items).then(function(docRef) {
             itemsdb.doc(docRef.id).set({"id": docRef.id}, { merge: true });
         });
@@ -21,12 +19,10 @@ const getItems = async(req, res) => {
     try {
         const source = req.query.itemSource;
         const type = req.query.itemType;
-        console.log(source + "\n" + type);
         var itemsdb = firestore.collection('items');
         itemsdb = itemsdb.where('itemSource', '==', source);
         itemsdb = itemsdb.where("itemType", "==", type);
         const snapshot = await itemsdb.get();
-        console.log(snapshot.size);
         res.send(snapshot.docs.map( item=> item.data()));
 
     } catch (error) {

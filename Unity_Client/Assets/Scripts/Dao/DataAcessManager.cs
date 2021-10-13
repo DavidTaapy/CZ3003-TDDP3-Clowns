@@ -58,7 +58,7 @@ namespace apiManagers{
             Debug.Log(userRanking.Count);
             foreach (User u in userRanking)
             {
-                Debug.Log(u.getEloRating());
+                Debug.Log(u.ToJSON());
             }
             
 
