@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 69cdaa11abc434f408c58e60a6f2e545
+guid: fe48d4c2e91f50148a87993d924fe54f
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,11 +8,10 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: Do Hyeon
   fontNames:
-  - NEON GLOW
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: 057ab41d076dd0d4e8d2d03731d7eb67, type: 3}
-  - {fileID: 12800000, guid: c1f76cabd40602b4a9c1a60975046ef9, type: 3}
+  - Do Hyeon
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
