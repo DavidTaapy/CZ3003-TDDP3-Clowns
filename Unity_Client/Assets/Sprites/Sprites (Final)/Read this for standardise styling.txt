@@ -1,5 +1,0 @@
-Background for game ( use for character, user profile, leaderboard)
-
--> rounded button Darker green, ( for navigation buttons)
-
-skins/accessories - hat/ sunglass
