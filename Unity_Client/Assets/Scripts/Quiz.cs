@@ -28,14 +28,16 @@ public class Quiz : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     ScoreKeeper scoreKeeper;
 
-    [Header("ProgressBar")]
+    [Header("Progress Bar")]
     [SerializeField] Slider progressBar;
 
-    [Header("ExtendTime Powerups")]
-    [SerializeField] GameObject extendTimePowerupButton;
-    [SerializeField] int extendTimeNumber;
+    [Header("ExtendTime Powerup")]
+    [SerializeField] GameObject extendTimeButton;
+    int extendTimeNumber;
+
 
     public bool isComplete;
+    public bool useExtendTime;
 
     void Awake()
     {
@@ -43,11 +45,11 @@ public class Quiz : MonoBehaviour
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         progressBar.maxValue = questions.Count;
         progressBar.value = 0;
+        extendTimeNumber = 2;
     }
 
     void Update()
     {
-        DisplayExtendTimePowerup();
         timerImage.fillAmount = timer.fillFraction;
         if (timer.loadNextQuestion)
         {
@@ -56,7 +58,6 @@ public class Quiz : MonoBehaviour
                 isComplete = true;
                 return;
             }
-
             hasAnsweredEarly = false;
             GetNextQuestion();
             timer.loadNextQuestion = false;
@@ -66,6 +67,8 @@ public class Quiz : MonoBehaviour
             DisplayAnswer(-1);
             SetButtonState(false);
         }
+
+        DisplayExtendTime();
     }
 
     public void OnAnswerSelected(int index)
@@ -105,6 +108,7 @@ public class Quiz : MonoBehaviour
             SetDefaultButtonSprites();
             GetRandomQuestion();
             DisplayQuestion();
+            DisplayExtendTime();
             progressBar.value++;
             scoreKeeper.IncrementQuestionsSeen();
         }
@@ -150,17 +154,19 @@ public class Quiz : MonoBehaviour
         }
     }
 
-    void DisplayExtendTimePowerup()
+    void DisplayExtendTime()
     {
-        Text extendTimePowerupText = extendTimePowerupButton.GetComponent<Text>();
-        extendTimePowerupText.text = "Extend Time = " + extendTimeNumber;
+        Text extendTimeText = extendTimeButton.GetComponentInChildren<Text>();
+        extendTimeText.text = "Extend Time = " + extendTimeNumber;
     }
 
-    void UseExtendTime()
+    public void OnExtendTimeSelected()
     {
         if (extendTimeNumber > 0)
         {
-            
+            useExtendTime = true;
+            extendTimeNumber -= 1;
+            timer.ActivateExtendTime();
         }
     }
 }
