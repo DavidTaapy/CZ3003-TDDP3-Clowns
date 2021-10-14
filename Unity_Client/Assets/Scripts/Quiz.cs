@@ -40,7 +40,6 @@ public class Quiz : MonoBehaviour
     int showHintNumber;
 
     public bool isComplete;
-    public bool useExtendTime;
     public bool useShowHint;
 
     void Awake()
@@ -71,6 +70,12 @@ public class Quiz : MonoBehaviour
         {
             DisplayAnswer(-1);
             SetButtonState(false);
+        }
+
+        if (useShowHint)
+        {
+            questionText.text = currentQuestion.GetHint();
+            useShowHint = false;
         }
 
         DisplayExtendTime();
@@ -117,12 +122,6 @@ public class Quiz : MonoBehaviour
             DisplayExtendTime();
             progressBar.value++;
             scoreKeeper.IncrementQuestionsSeen();
-
-            if (useShowHint)
-            {
-                questionText.text = currentQuestion.GetHint();
-                useShowHint = false;
-            }
         }
     }
 
@@ -176,7 +175,6 @@ public class Quiz : MonoBehaviour
     {
         if (extendTimeNumber > 0)
         {
-            useExtendTime = true;
             extendTimeNumber -= 1;
             timer.ActivateExtendTime();
         }

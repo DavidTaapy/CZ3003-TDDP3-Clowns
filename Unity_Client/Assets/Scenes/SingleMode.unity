@@ -2074,9 +2074,8 @@ MonoBehaviour:
   scoreText: {fileID: 211141332}
   progressBar: {fileID: 1309022587}
   extendTimeButton: {fileID: 461589669}
-  showHintButton: {fileID: 0}
+  showHintButton: {fileID: 2099092120}
   isComplete: 0
-  useExtendTime: 0
   useShowHint: 0
 --- !u!1 &894361939 stripped
 GameObject:
