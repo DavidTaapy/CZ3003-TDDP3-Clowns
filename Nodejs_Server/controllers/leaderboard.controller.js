@@ -6,15 +6,15 @@ const getLeaderboard = async(req, res) => {
         let temp = {'userName': 'username', 'eloRating': 0};
         const results = [];
         const userdb = firestore.collection('users');    
-        const snapshot = await userdb.orderBy('eloRating', 'desc').limit(2).get();
+        const snapshot = await userdb.orderBy('eloRating', 'desc').get(); // removed .limit(2)
         const ranks = snapshot.docs.map(user => user.data());
-        ranks.forEach((user) => {
+        /*ranks.forEach((user) => {
             temp.userName = (user.userName); 
             temp.eloRating = (user.eloRating); 
             results.push(temp);
         });
-        console.log(results);
-        res.send(results);
+        console.log(results);*/
+        res.send(ranks);
 
     } catch (error) {
         res.status(400).send(error.message);

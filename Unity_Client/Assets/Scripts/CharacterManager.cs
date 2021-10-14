@@ -8,6 +8,7 @@ public class CharacterManager : MonoBehaviour
 {
     public CharacterDatabase characterDB;
     public Text nameText;
+    public Text descriptionText;
     public SpriteRenderer artworkSprite;
     private int selectedOption = 0;
 
@@ -26,7 +27,6 @@ public class CharacterManager : MonoBehaviour
         UpdateCharacter(selectedOption);
     }
 
-    // NextOption is called when user clicks 'Next'
     public void NextOption()
     {
         selectedOption++;
@@ -40,12 +40,11 @@ public class CharacterManager : MonoBehaviour
         Save();
     }
 
-    // BackOption is called when user clicks 'Back'
     public void BackOption()
     {
         selectedOption--;
 
-        if (selectedOption < 0 )
+        if (selectedOption < 0)
         {
             selectedOption = characterDB.CharacterCount - 1;
         }
@@ -60,6 +59,7 @@ public class CharacterManager : MonoBehaviour
         Character character = characterDB.GetCharacter(selectedOption);
         artworkSprite.sprite = character.characterSprite;
         nameText.text = character.characterName;
+        descriptionText.text = character.characterDescription;
     }
 
     // Loads previously selected character
