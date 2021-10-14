@@ -31,6 +31,10 @@ public class Quiz : MonoBehaviour
     [Header("ProgressBar")]
     [SerializeField] Slider progressBar;
 
+    [Header("ExtendTime Powerups")]
+    [SerializeField] GameObject extendTimePowerupButton;
+    [SerializeField] int extendTimeNumber;
+
     public bool isComplete;
 
     void Awake()
@@ -43,6 +47,7 @@ public class Quiz : MonoBehaviour
 
     void Update()
     {
+        DisplayExtendTimePowerup();
         timerImage.fillAmount = timer.fillFraction;
         if (timer.loadNextQuestion)
         {
@@ -142,6 +147,20 @@ public class Quiz : MonoBehaviour
         {
             Image buttonImage = answerButtons[i].GetComponent<Image>();
             buttonImage.sprite = defaultAnswerSprite;
+        }
+    }
+
+    void DisplayExtendTimePowerup()
+    {
+        Text extendTimePowerupText = extendTimePowerupButton.GetComponent<Text>();
+        extendTimePowerupText.text = "Extend Time = " + extendTimeNumber;
+    }
+
+    void UseExtendTime()
+    {
+        if (extendTimeNumber > 0)
+        {
+            
         }
     }
 }

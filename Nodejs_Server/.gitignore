@@ -1,2 +1,4 @@
 node_modules
 configs/serviceAccountKey.json
+configs/serviceAccountKey.json.json
+.DS_Store

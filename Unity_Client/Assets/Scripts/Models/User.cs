@@ -6,18 +6,33 @@ using UnityEngine.UI;
 [System.Serializable]
 public class User
 {
-    public int eloRating;
-    public long id;
+    [SerializeField]
+    private string id;
 
-    public string userName;
+    [SerializeField]
+    private string userName;
 
-    public int primaryLevel;
+    [SerializeField]
+    private int primaryLevel;
 
-    public User(int id, string username, int eloRating, int primaryLevel){
-        this.id = id;
+    [SerializeField]
+    private int eloRating;
+
+    [SerializeField]
+    private List<Item> inventory;
+
+    [SerializeField]
+    private Character character;
+    
+    [SerializeField]
+    private int points;
+
+    public User(string username, int eloRating, int primaryLevel){
         this.userName = username;
         this.eloRating = eloRating;
         this.primaryLevel = primaryLevel;
+        this.inventory = new List<Item>();
+        this.points = 0;
     }
 
     public string ToJSON(){
@@ -34,12 +49,12 @@ public class User
         this.eloRating = eloRating;
     }
 
-    public long getId()
+    public string getId()
     {
         return this.id;
     }
 
-    public void setId(long id)
+    public void setId(string id)
     {
         this.id = id;
     }
@@ -63,20 +78,29 @@ public class User
     {
         this.primaryLevel = primaryLevel;
     }
+
+    public List<Item> getInventory() {
+		return this.inventory;
+	}
+
+	public void setInventory(List<Item> inventory) {
+		this.inventory = inventory;
+	}
+
+	public Character getCharacter() {
+		return this.character;
+	}
+
+	public void setCharacter(Character character) {
+		this.character = character;
+	}
+
+	public int getPoints() {
+		return this.points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
+	}
     
-
-    
-
-    
-
-// temporarily commented out for testing purposes
-/*
-    public List<Item> inventory;
-
-    public int eloRating;
-
-    
-
-    public Character character;  
-    */
 }
