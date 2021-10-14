@@ -8,4 +8,5 @@ public class Character
     public Sprite characterSprite;
     public int characterID;
     public string characterName;
+    public string characterDescription;
 }
