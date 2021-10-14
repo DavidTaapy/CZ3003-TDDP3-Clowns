@@ -9,6 +9,8 @@ public class QuestionSO : ScriptableObject
     [SerializeField] string question = "Enter new question text here";
     [SerializeField] string[] answers = new string[4];
     [SerializeField] int correctAnswerIndex;
+    [TextArea(2,6)]
+    [SerializeField] string hint = "Enter your hint here";
 
     public string GetQuestion()
     {
@@ -18,6 +20,11 @@ public class QuestionSO : ScriptableObject
     public string GetAnswer(int index)
     {
         return answers[index];
+    }
+
+    public string GetHint()
+    {
+        return hint;
     }
 
     public int GetCorrectAnswerIndex()

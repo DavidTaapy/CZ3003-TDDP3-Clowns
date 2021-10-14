@@ -35,9 +35,13 @@ public class Quiz : MonoBehaviour
     [SerializeField] GameObject extendTimeButton;
     int extendTimeNumber;
 
+    [Header("ShowHint Powerup")]
+    [SerializeField] GameObject showHintButton;
+    int showHintNumber;
 
     public bool isComplete;
     public bool useExtendTime;
+    public bool useShowHint;
 
     void Awake()
     {
@@ -46,6 +50,7 @@ public class Quiz : MonoBehaviour
         progressBar.maxValue = questions.Count;
         progressBar.value = 0;
         extendTimeNumber = 2;
+        showHintNumber = 2;
     }
 
     void Update()
@@ -69,6 +74,7 @@ public class Quiz : MonoBehaviour
         }
 
         DisplayExtendTime();
+        DisplayShowHint();
     }
 
     public void OnAnswerSelected(int index)
@@ -111,6 +117,12 @@ public class Quiz : MonoBehaviour
             DisplayExtendTime();
             progressBar.value++;
             scoreKeeper.IncrementQuestionsSeen();
+
+            if (useShowHint)
+            {
+                questionText.text = currentQuestion.GetHint();
+                useShowHint = false;
+            }
         }
     }
 
@@ -169,4 +181,20 @@ public class Quiz : MonoBehaviour
             timer.ActivateExtendTime();
         }
     }
+
+    void DisplayShowHint()
+    {
+        Text showHintText = showHintButton.GetComponentInChildren<Text>();
+        showHintText.text = "Show Hint = " + showHintNumber;
+    }
+
+    public void OnShowHintSelected()
+    {
+        if (showHintNumber > 0)
+        {
+            useShowHint = true;
+            showHintNumber -= 1;
+        }
+    }
+
 }
