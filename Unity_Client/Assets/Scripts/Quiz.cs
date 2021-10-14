@@ -39,6 +39,10 @@ public class Quiz : MonoBehaviour
     [SerializeField] GameObject showHintButton;
     int showHintNumber;
 
+    [Header("Skip Question Powerup")]
+    [SerializeField] GameObject skipQuestionButton;
+    int skipQuestionNumber;
+
     public bool isComplete;
     public bool useShowHint;
 
@@ -50,6 +54,7 @@ public class Quiz : MonoBehaviour
         progressBar.value = 0;
         extendTimeNumber = 2;
         showHintNumber = 2;
+        skipQuestionNumber = 2;
     }
 
     void Update()
@@ -80,6 +85,7 @@ public class Quiz : MonoBehaviour
 
         DisplayExtendTime();
         DisplayShowHint();
+        DisplaySkipQuestion();
     }
 
     public void OnAnswerSelected(int index)
@@ -195,4 +201,18 @@ public class Quiz : MonoBehaviour
         }
     }
 
+    public void DisplaySkipQuestion()
+    {
+        Text skipQuestionText = skipQuestionButton.GetComponentInChildren<Text>();
+        skipQuestionText.text = "Skip Qn = " + skipQuestionNumber;
+    }
+
+    public void OnSkipQuestionSelected()
+    {
+        if (skipQuestionNumber > 0)
+        {
+            skipQuestionNumber -= 1;
+            timer.loadNextQuestion = true;
+        }
+    }
 }
