@@ -61,6 +61,7 @@
     <Compile Include="Assets/Scripts/UIManager.cs" />
     <Compile Include="Assets/Scripts/Dao/DataAcessManager.cs" />
     <Compile Include="Assets/Scripts/MainMenuManager.cs" />
+    <Compile Include="Assets/Scripts/ShopManager.cs" />
     <Compile Include="Assets/Scripts/GameManager.cs" />
     <Compile Include="Assets/Scripts/Item.cs" />
     <Compile Include="Assets/Scripts/RegisterManager.cs" />
@@ -81,7 +82,8 @@
     <Compile Include="Assets/Scripts/Character.cs" />
     <Compile Include="Assets/Scripts/ScoreKeeper.cs" />
     <Compile Include="Assets/Scripts/Dao/QuestionDao.cs" />
-    <Compile Include="Assets/Scripts/ShopManager.cs" />
+    <Compile Include="Assets/Scripts/MultiQuiz.cs" />
+    <Compile Include="Assets/Scripts/MultiGameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll" />
