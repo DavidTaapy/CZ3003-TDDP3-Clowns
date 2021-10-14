@@ -5,14 +5,14 @@ import { User }  from "../model/user.model.js";
 const createUser = async(req, res) => {
     try {
         const data = req.body;
-        if (data.userName == null || data.primaryLevel == null) {res.send("please fill up all fields!");}
+        if (data.userName == null || data.primaryLevel == null || data.id == null) {res.send("please fill up all fields!");}
         else {
-            const newUser = new User(data.userName, data.primaryLevel);
+            const newUser = new User(data.id, data.userName, data.primaryLevel);
             const userdb = firestore.collection('users');
-            userdb.add(JSON.parse(JSON.stringify(newUser)))
-            .then(function(docRef) {
-                userdb.doc(docRef.id).set({"id": docRef.id}, { merge: true });
-            });
+            await userdb.doc(data.id).set(JSON.parse(JSON.stringify(newUser)));
+            //.then(function(docRef) {
+             //   userdb.doc(docRef.id).set({"id": docRef.id}, { merge: true });
+            //});
             res.send("user added!");
         }
     } catch (error) {
