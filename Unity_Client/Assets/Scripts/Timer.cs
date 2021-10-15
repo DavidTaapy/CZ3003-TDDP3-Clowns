@@ -10,6 +10,9 @@ public class Timer : MonoBehaviour
     public bool loadNextQuestion;
     public float fillFraction;
     public bool isAnsweringQuestion;
+
+    // Flag for use extend time powerup
+    public bool useExtendTime;
     
     float timerValue;
 
@@ -23,15 +26,36 @@ public class Timer : MonoBehaviour
         timerValue = 0;
     }
 
+    public void ActivateExtendTime()
+    {
+        useExtendTime = true;
+    }
+
+    public void ResetTime()
+    {
+        timeToCompleteQuestion = 30f;
+    }
+
+
     void UpdateTimer()
     {
         timerValue -= Time.deltaTime;
+
+        // Activate the extend time powerup
+        if (useExtendTime)
+        {
+            timerValue += 5f;
+            useExtendTime = false;
+        }
+
 
         if(isAnsweringQuestion)
         {
             if(timerValue > 0)
             {
+                
                 fillFraction = timerValue / timeToCompleteQuestion;
+           
             }
             else
             {

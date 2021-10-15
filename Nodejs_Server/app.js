@@ -3,10 +3,10 @@ import express, { json, urlencoded } from "express";
 import { userRouter } from './routes/user.routes.js';
 import { leaderboardRouter } from './routes/leaderboard.routes.js';
 import { questionRouter } from './routes/question.routes.js';
-import { shopRouter } from './routes/shop.routes.js';
+import { itemRouter } from './routes/item.routes.js';
 import { resRouter } from './routes/restaurant.routes.js';
 
-
+//hellu ryannieeee
 
 const app = express();
 
@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
 app.use('/', userRouter);
 app.use('/', leaderboardRouter);
 app.use('/', questionRouter);
-app.use('/', shopRouter);
+app.use('/', itemRouter);
 app.use('/', resRouter);
 
 // set port, listen for requests

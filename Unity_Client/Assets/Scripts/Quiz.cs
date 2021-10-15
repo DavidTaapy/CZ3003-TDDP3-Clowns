@@ -28,10 +28,23 @@ public class Quiz : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     ScoreKeeper scoreKeeper;
 
-    [Header("ProgressBar")]
+    [Header("Progress Bar")]
     [SerializeField] Slider progressBar;
 
+    [Header("ExtendTime Powerup")]
+    [SerializeField] GameObject extendTimeButton;
+    int extendTimeNumber;
+
+    [Header("ShowHint Powerup")]
+    [SerializeField] GameObject showHintButton;
+    int showHintNumber;
+
+    [Header("Skip Question Powerup")]
+    [SerializeField] GameObject skipQuestionButton;
+    int skipQuestionNumber;
+
     public bool isComplete;
+    public bool useShowHint;
 
     void Awake()
     {
@@ -39,6 +52,9 @@ public class Quiz : MonoBehaviour
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         progressBar.maxValue = questions.Count;
         progressBar.value = 0;
+        extendTimeNumber = 2;
+        showHintNumber = 2;
+        skipQuestionNumber = 2;
     }
 
     void Update()
@@ -51,7 +67,6 @@ public class Quiz : MonoBehaviour
                 isComplete = true;
                 return;
             }
-
             hasAnsweredEarly = false;
             GetNextQuestion();
             timer.loadNextQuestion = false;
@@ -61,6 +76,16 @@ public class Quiz : MonoBehaviour
             DisplayAnswer(-1);
             SetButtonState(false);
         }
+
+        if (useShowHint)
+        {
+            questionText.text = currentQuestion.GetHint();
+            useShowHint = false;
+        }
+
+        DisplayExtendTime();
+        DisplayShowHint();
+        DisplaySkipQuestion();
     }
 
     public void OnAnswerSelected(int index)
@@ -100,6 +125,7 @@ public class Quiz : MonoBehaviour
             SetDefaultButtonSprites();
             GetRandomQuestion();
             DisplayQuestion();
+            DisplayExtendTime();
             progressBar.value++;
             scoreKeeper.IncrementQuestionsSeen();
         }
@@ -142,6 +168,51 @@ public class Quiz : MonoBehaviour
         {
             Image buttonImage = answerButtons[i].GetComponent<Image>();
             buttonImage.sprite = defaultAnswerSprite;
+        }
+    }
+
+    void DisplayExtendTime()
+    {
+        Text extendTimeText = extendTimeButton.GetComponentInChildren<Text>();
+        extendTimeText.text = "Extend Time = " + extendTimeNumber;
+    }
+
+    public void OnExtendTimeSelected()
+    {
+        if (extendTimeNumber > 0)
+        {
+            extendTimeNumber -= 1;
+            timer.ActivateExtendTime();
+        }
+    }
+
+    void DisplayShowHint()
+    {
+        Text showHintText = showHintButton.GetComponentInChildren<Text>();
+        showHintText.text = "Show Hint = " + showHintNumber;
+    }
+
+    public void OnShowHintSelected()
+    {
+        if (showHintNumber > 0)
+        {
+            useShowHint = true;
+            showHintNumber -= 1;
+        }
+    }
+
+    public void DisplaySkipQuestion()
+    {
+        Text skipQuestionText = skipQuestionButton.GetComponentInChildren<Text>();
+        skipQuestionText.text = "Skip Qn = " + skipQuestionNumber;
+    }
+
+    public void OnSkipQuestionSelected()
+    {
+        if (skipQuestionNumber > 0)
+        {
+            skipQuestionNumber -= 1;
+            timer.loadNextQuestion = true;
         }
     }
 }
