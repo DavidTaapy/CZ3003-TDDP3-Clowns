@@ -51,6 +51,7 @@ public class Quiz : MonoBehaviour
     {
         timer = FindObjectOfType<Timer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        // dao = FindObjectOfType<Dao>();
         progressBar.maxValue = questions.Count;
         progressBar.value = 0;
         extendTimeNumber = 2;
@@ -66,6 +67,7 @@ public class Quiz : MonoBehaviour
             if (progressBar.value == progressBar.maxValue)
             {
                 isComplete = true;
+                // 
                 return;
             }
             hasAnsweredEarly = false;
@@ -87,6 +89,8 @@ public class Quiz : MonoBehaviour
         DisplayExtendTime();
         DisplayShowHint();
         DisplaySkipQuestion();
+
+        
     }
 
     public void OnAnswerSelected(int index)
@@ -213,7 +217,10 @@ public class Quiz : MonoBehaviour
         if (skipQuestionNumber > 0)
         {
             skipQuestionNumber -= 1;
+            scoreKeeper.IncrementCorrectAnswers();
             timer.loadNextQuestion = true;
         }
     }
+
+    
 }
