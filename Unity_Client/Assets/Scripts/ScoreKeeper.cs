@@ -6,6 +6,7 @@ public class ScoreKeeper : MonoBehaviour
 {
     int correctAnswers = 0;
     int questionsSeen = 0;
+    int pointPerCorrectAnswer = 5;
 
     public int GetCorrectAnswers()
     {
@@ -30,5 +31,10 @@ public class ScoreKeeper : MonoBehaviour
     public int CalculateScore()
     {
         return Mathf.RoundToInt(correctAnswers / (float)questionsSeen * 100);
+    }
+
+    public int CalculatePoints()
+    {
+        return correctAnswers * pointPerCorrectAnswer;
     }
 }
