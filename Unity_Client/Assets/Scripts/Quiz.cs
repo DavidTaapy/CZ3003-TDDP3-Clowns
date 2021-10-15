@@ -126,7 +126,6 @@ public class Quiz : MonoBehaviour
             SetDefaultButtonSprites();
             GetRandomQuestion();
             DisplayQuestion();
-            DisplayExtendTime();
             progressBar.value++;
             scoreKeeper.IncrementQuestionsSeen();
         }

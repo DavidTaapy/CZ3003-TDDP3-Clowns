@@ -132,7 +132,6 @@ public class MultiQuiz : MonoBehaviour
             SetDefaultButtonSprites();
             GetRandomQuestion();
             DisplayQuestion();
-            DisplayExtendTime();
             progressBar.value++;
             scoreKeeper.IncrementQuestionsSeen();
         }
