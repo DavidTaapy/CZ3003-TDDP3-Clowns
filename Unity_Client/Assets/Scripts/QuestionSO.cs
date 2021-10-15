@@ -9,6 +9,8 @@ public class QuestionSO : ScriptableObject
     [SerializeField] string question = "Enter new question text here";
     [SerializeField] string[] answers = new string[4];
     [SerializeField] int correctAnswerIndex;
+    [TextArea(2, 6)]
+    [SerializeField] string hint = "Enter your hint here";
 
     /*public QuestionSO(string question, string[] answers, int correctanswer)
     {
@@ -30,6 +32,11 @@ public class QuestionSO : ScriptableObject
     public int GetCorrectAnswerIndex()
     {
         return correctAnswerIndex;
+    }
+
+    public string GetHint()
+    {
+        return hint;
     }
 
     public string ToJSON(){
