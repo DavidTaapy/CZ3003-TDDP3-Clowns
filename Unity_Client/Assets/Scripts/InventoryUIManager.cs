@@ -7,16 +7,28 @@ using UnityEngine.EventSystems;
 public class InventoryUIManager : MonoBehaviour
 {
     public InventoryManager inventoryManager;
+    public string url_user;
     public GameObject[] inventorySlots;
     private int itemPerPage = 8;
     public int pageID;
     public Text pageText;
     public GameObject inventoryPanel;
     public GameObject itemPanel;
+    public List<Item> inventory;
+    private string userId = "7HHcjbfJq1kD8VFMHHDq";
+    Sprite sprite;
     
     // Start is called before the first frame update
     void Start()
     {
+        // Need to get the correct userId from playfab
+        var userDaoObject = GameObject.Find("UserDao").GetComponent<UserDao>();
+        User user = userDaoObject.getUser(url_user, userId);
+        inventory = user.getInventory();
+        Debug.Log(inventory[0].ToJSON());
+
+        //testing code
+        //sprite = Resources.Load<Sprite> ("Sprites/Single Mode Scene Sprites");
         DisplayItems();
         inventoryPanel.gameObject.SetActive(true);
         itemPanel.gameObject.SetActive(false);
@@ -29,13 +41,16 @@ public class InventoryUIManager : MonoBehaviour
     
     void DisplayItems()
     {
-        for (int i = 0; i < inventoryManager.items.Count; i++)
+        var tmp = inventory.Count;
+        for (int i = 0; i < itemPerPage; i++)
         {
-            if (i >= pageID * itemPerPage && i < (pageID + 1) * itemPerPage)
+            if (i >= pageID * itemPerPage && i < (pageID + 1) * itemPerPage && tmp > 0)
             {
+                //testing code
+                sprite = Resources.Load<Sprite>(inventory[i].getSpriteSource());
                 inventorySlots[i].gameObject.SetActive(true);
-                inventorySlots[i].transform.GetChild(0).GetComponent<Image>().sprite = inventoryManager.items[i].itemSprite;
-                inventorySlots[i].transform.GetChild(1).GetComponent<Text>().text = inventoryManager.items[i].itemCount.ToString();
+                inventorySlots[i].transform.GetChild(0).GetComponent<Image>().sprite = sprite;
+                inventorySlots[i].transform.GetChild(1).GetComponent<Text>().text = inventory[i].getItemCount().ToString();
                 inventorySlots[i].transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
                 /*
                 if (inventoryManager.items[i].itemCount == 0)
@@ -47,12 +62,17 @@ public class InventoryUIManager : MonoBehaviour
                     inventorySlots[i].transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255);
                 }
                 */
+                tmp--;
             }
             else
             {
                 inventorySlots[i].gameObject.SetActive(false);
             }
         }
+        
+        /*for (int j = tmp; j < itemPerPage; j++){
+            inventorySlots[j].gameObject.SetActive(false);
+        }*/
     }
 
     public void NextPage()
