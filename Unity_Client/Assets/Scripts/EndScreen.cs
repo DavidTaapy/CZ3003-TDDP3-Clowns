@@ -15,7 +15,9 @@ public class EndScreen : MonoBehaviour
 
     public void ShowFinalScore()
     {
-        finalScoreText.text = "Congratulations!\nYou got a score of " + 
-                                scoreKeeper.CalculateScore() + "%";
+        finalScoreText.text = "Congratulations!\nYou got a score of " +
+                               scoreKeeper.CalculateScore() + "%!\n You have answered "
+                               + scoreKeeper.GetCorrectAnswers() + " out of " +
+                               scoreKeeper.GetQuestionSeen() + " correctly!";
     }
 }

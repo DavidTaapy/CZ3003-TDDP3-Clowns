@@ -50,6 +50,7 @@ public class Quiz : MonoBehaviour
     {
         timer = FindObjectOfType<Timer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        // dao = FindObjectOfType<Dao>();
         progressBar.maxValue = questions.Count;
         progressBar.value = 0;
         extendTimeNumber = 2;
@@ -212,6 +213,7 @@ public class Quiz : MonoBehaviour
         if (skipQuestionNumber > 0)
         {
             skipQuestionNumber -= 1;
+            scoreKeeper.IncrementCorrectAnswers();
             timer.loadNextQuestion = true;
         }
     }

@@ -219,6 +219,7 @@ public class MultiQuiz : MonoBehaviour
         if (skipQuestionNumber > 0)
         {
             skipQuestionNumber -= 1;
+            scoreKeeper.IncrementCorrectAnswers();
             timer.loadNextQuestion = true;
         }
     }
