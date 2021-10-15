@@ -50,11 +50,9 @@
      <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\ClientApi.cs" />
      <Compile Include="Assets\ParrelSync\Examples\CustomArgumentExample.cs" />
-     <Compile Include="Assets\Scripts\LeaderboardScripts\ScoreData.cs" />
      <Compile Include="Assets\Scripts\QuestionSO.cs" />
      <Compile Include="Assets\Scripts\SceneLoader.cs" />
      <Compile Include="Assets\Scripts\UIManager.cs" />
-     <Compile Include="Assets\Scripts\LeaderboardScripts\Score.cs" />
      <Compile Include="Assets\Scripts\Dao\DataAcessManager.cs" />
      <Compile Include="Assets\Scripts\MainMenuManager.cs" />
      <Compile Include="Assets\Scripts\ShopManager.cs" />
@@ -67,7 +65,6 @@
      <Compile Include="Assets\Scripts\CharacterManager.cs" />
      <Compile Include="Assets\Scripts\CharacterDatabase.cs" />
      <Compile Include="Assets\Scripts\EndScreen.cs" />
-     <Compile Include="Assets\Scripts\LeaderboardScripts\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\AccountManager.cs" />
      <Compile Include="Assets\Scripts\Dao\UserDao.cs" />
      <Compile Include="Assets\Scripts\InventoryUIManager.cs" />
