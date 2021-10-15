@@ -23,16 +23,11 @@ namespace apiManagers{
             Debug.Log("============Starting Data Access Manager========");
 
             var linktoItems = GameObject.Find("ItemsDao").GetComponent<ItemDao>();
-            List<Item> shopPowerUps = linktoItems.getItems(url_items, "Powerup", "Shop");
-            Debug.Log(shopPowerUps[0]);
             User user = linktoUserGet.getUser(url_user, userId);
-            user.setInventory(shopPowerUps);
-            Debug.Log(user.ToJSON());
-            string result = linktoUserGet.updateUser(url_user, user);
-            Debug.Log(result);
             
             // Code to create user
             //User user2 = new User("Harry Potter", 400, 5);
+            //user2.setId("55555555");
             //string result = linktoUserGet.createUser(url_user, user2);
             //Debug.Log(result);
 
