@@ -7,6 +7,8 @@ public class ScoreKeeper : MonoBehaviour
     int correctAnswers = 0;
     int questionsSeen = 0;
     int pointPerCorrectAnswer = 5;
+    List<QuestionSO> questionsGotCorrect;
+    List<QuestionSO> questionsGotWrong;
 
     public int GetCorrectAnswers()
     {
@@ -36,5 +38,43 @@ public class ScoreKeeper : MonoBehaviour
     public int CalculatePoints()
     {
         return correctAnswers * pointPerCorrectAnswer;
+    }
+
+    public void SaveQuestionGotCorrect(QuestionSO currentQuestion)
+    {
+        questionsGotCorrect.Add(currentQuestion);
+    }
+
+    public void SaveQuestionGotWrong(QuestionSO currentQuestion)
+    {
+        questionsGotWrong.Add(currentQuestion);
+    }
+
+    public string[] GetQuestionsGotCorrect()
+    {
+        string[] correctQuestions = { };
+        int i = 0;
+
+        foreach (var question in questionsGotCorrect)
+        {
+            correctQuestions[i] = question.GetQuestion();
+            i += 1;
+        }
+
+        return correctQuestions;
+    }
+
+    public string[] GetQuestionsGotWrong ()
+    {
+        string[] wrongQuestions = { };
+        int i = 0;
+
+        foreach (var question in questionsGotCorrect)
+        {
+            wrongQuestions[i] = question.GetQuestion();
+            i += 1;
+        }
+
+        return wrongQuestions;
     }
 }
