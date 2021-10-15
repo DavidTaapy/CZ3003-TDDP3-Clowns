@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class Quiz : MonoBehaviour
+public class MultiQuiz : MonoBehaviour
 {
     [Header("Questions")]
     [SerializeField] TextMeshProUGUI questionText;
@@ -43,6 +43,11 @@ public class Quiz : MonoBehaviour
     [SerializeField] GameObject skipQuestionButton;
     int skipQuestionNumber;
 
+    [Header("Opponent Score")]
+    [SerializeField] GameObject opponentScoreImage;
+    int opponentScore;
+
+    [Header("Auxiliary")]
     public bool isComplete;
     public bool useShowHint;
 
@@ -50,12 +55,12 @@ public class Quiz : MonoBehaviour
     {
         timer = FindObjectOfType<Timer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
-        // dao = FindObjectOfType<Dao>();
         progressBar.maxValue = questions.Count;
         progressBar.value = 0;
         extendTimeNumber = 2;
         showHintNumber = 2;
         skipQuestionNumber = 2;
+        opponentScore = 3;
     }
 
     void Update()
@@ -63,7 +68,6 @@ public class Quiz : MonoBehaviour
         timerImage.fillAmount = timer.fillFraction;
         if (timer.loadNextQuestion)
         {
-            // Check if game ends
             if (progressBar.value == progressBar.maxValue)
             {
                 isComplete = true;
@@ -88,6 +92,7 @@ public class Quiz : MonoBehaviour
         DisplayExtendTime();
         DisplayShowHint();
         DisplaySkipQuestion();
+        DisplayOpponentScore();
     }
 
     public void OnAnswerSelected(int index)
@@ -204,7 +209,7 @@ public class Quiz : MonoBehaviour
         }
     }
 
-    public void DisplaySkipQuestion()
+    void DisplaySkipQuestion()
     {
         Text skipQuestionText = skipQuestionButton.GetComponentInChildren<Text>();
         skipQuestionText.text = "Skip Qn = " + skipQuestionNumber;
@@ -215,9 +220,14 @@ public class Quiz : MonoBehaviour
         if (skipQuestionNumber > 0)
         {
             skipQuestionNumber -= 1;
-            scoreKeeper.SaveQuestionGotCorrect(currentQuestion);
             scoreKeeper.IncrementCorrectAnswers();
             timer.loadNextQuestion = true;
         }
+    }
+
+    void DisplayOpponentScore()
+    {
+        Text opponentScoreText = opponentScoreImage.GetComponentInChildren<Text>();
+        opponentScoreText.text = "Opponent's Score: " + opponentScore;
     }
 }

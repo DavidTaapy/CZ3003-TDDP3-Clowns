@@ -9,15 +9,8 @@ public class QuestionSO : ScriptableObject
     [SerializeField] string question = "Enter new question text here";
     [SerializeField] string[] answers = new string[4];
     [SerializeField] int correctAnswerIndex;
-    [TextArea(2, 6)]
+    [TextArea(2,6)]
     [SerializeField] string hint = "Enter your hint here";
-
-    /*public QuestionSO(string question, string[] answers, int correctanswer)
-    {
-        this.question = question;
-        this.answers = answers;
-        this.correctAnswerIndex = correctanswer;
-    }*/
 
     public string GetQuestion()
     {
@@ -29,27 +22,17 @@ public class QuestionSO : ScriptableObject
         return answers[index];
     }
 
-    public int GetCorrectAnswerIndex()
-    {
-        return correctAnswerIndex;
-    }
-
     public string GetHint()
     {
         return hint;
     }
 
+    public int GetCorrectAnswerIndex()
+    {
+        return correctAnswerIndex;
+    }
+
     public string ToJSON(){
         return JsonUtility.ToJson(this);
-    }
-}
-
-/*public class UserQuestions
-{
-    List<QuestionSO> userQuestions;
-
-    public List<QuestionSO> getQuestions()
-    {
-        return userQuestions;
     }
 }

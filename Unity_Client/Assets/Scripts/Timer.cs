@@ -31,12 +31,6 @@ public class Timer : MonoBehaviour
         useExtendTime = true;
     }
 
-    public void ResetTime()
-    {
-        timeToCompleteQuestion = 30f;
-    }
-
-
     void UpdateTimer()
     {
         timerValue -= Time.deltaTime;
