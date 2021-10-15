@@ -48,7 +48,7 @@ namespace apiManagers{
             List<QuestionSO> qnList = linktoQuestionGet.getQuestions(url_qn, primaryLevel);
             foreach (var qn in qnList)
             {
-                Debug.Log(qn.ToJSON);
+                Debug.Log(qn.ToJSON());
             }
             */
 
