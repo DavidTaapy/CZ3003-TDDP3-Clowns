@@ -17,8 +17,11 @@ const getQuestions = async(req, res) => {
     try {
         const lvl = req.query.lvl;
         const questiondb = firestore.collection('questions');
-        //todo: try to randomize qns to get    
+        //todo: try to randomize qns to get   
+        
+        console.log(questiondb);
         const snapshot = await questiondb.where('primaryLevel', '==', lvl).get();
+        console.log(snapshot);
         res.send(snapshot.docs.map(qn => qn.data()));
 
     } catch (error) {
@@ -26,8 +29,6 @@ const getQuestions = async(req, res) => {
         res.send("error getting questions!");
     }
 };
-
-
 
 
 export {getQuestions, addQuestions};
