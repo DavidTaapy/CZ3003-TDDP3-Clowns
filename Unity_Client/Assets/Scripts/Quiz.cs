@@ -63,6 +63,7 @@ public class Quiz : MonoBehaviour
         timerImage.fillAmount = timer.fillFraction;
         if (timer.loadNextQuestion)
         {
+            // Check if game ends
             if (progressBar.value == progressBar.maxValue)
             {
                 isComplete = true;
@@ -106,6 +107,7 @@ public class Quiz : MonoBehaviour
             questionText.text = "Correct!";
             buttonImage = answerButtons[index].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
+            scoreKeeper.SaveQuestionGotCorrect(currentQuestion);
             scoreKeeper.IncrementCorrectAnswers();
         }
         else
@@ -115,6 +117,7 @@ public class Quiz : MonoBehaviour
             questionText.text = "Sorry, the correct answer was:\n" + correctAnswer;
             buttonImage = answerButtons[correctAnswerIndex].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
+            scoreKeeper.SaveQuestionGotWrong(currentQuestion);
         }
     }
 
@@ -212,6 +215,7 @@ public class Quiz : MonoBehaviour
         if (skipQuestionNumber > 0)
         {
             skipQuestionNumber -= 1;
+            scoreKeeper.SaveQuestionGotCorrect(currentQuestion);
             scoreKeeper.IncrementCorrectAnswers();
             timer.loadNextQuestion = true;
         }

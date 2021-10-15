@@ -112,6 +112,7 @@ public class MultiQuiz : MonoBehaviour
             questionText.text = "Correct!";
             buttonImage = answerButtons[index].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
+            scoreKeeper.SaveQuestionGotCorrect(currentQuestion);
             scoreKeeper.IncrementCorrectAnswers();
         }
         else
@@ -121,6 +122,7 @@ public class MultiQuiz : MonoBehaviour
             questionText.text = "Sorry, the correct answer was:\n" + correctAnswer;
             buttonImage = answerButtons[correctAnswerIndex].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
+            scoreKeeper.SaveQuestionGotWrong(currentQuestion);
         }
     }
 
