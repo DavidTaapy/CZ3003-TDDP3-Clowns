@@ -18,12 +18,12 @@ const getQuestions = async(req, res) => {
         const lvl = req.query.lvl;
         const questiondb = firestore.collection('questions');
         //todo: try to randomize qns to get    
-        const snapshot = await questiondb.where('primaryLevel', '==', lvl).get();
-        res.send(snapshot.docs.map(qn => qn.data()));
+        const snapshot = await questiondb.where('primaryLevel', '==', parseInt(lvl)).get();
+        res.send(snapshot.docs.map(user => user.data()));
 
     } catch (error) {
-        res.status(400).send(error.message);
-        res.send("error getting questions!");
+        return res.status(400).send(error.message);
+        //res.send("error getting questions!");
     }
 };
 

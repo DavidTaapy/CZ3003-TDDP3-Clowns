@@ -6,11 +6,20 @@ using UnityEngine.EventSystems;
 
 public class HistoryManager : MonoBehaviour
 {
-    public Text qn;
+    //public UserQuestions userQuestions;
+    public GameObject QnPanel;
+    public GameObject[] questionSlots;
+    public List<QuestionSO> userQuestions;
+    public string url_qn;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        var linktoQuestionGet = GameObject.Find("QuestionDao").GetComponent<QuestionDao>();
+        var primaryLevel = 1;
+        userQuestions = linktoQuestionGet.getQuestions(url_qn, primaryLevel);
+        DisplayQuestions();
+        QnPanel.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -18,21 +27,18 @@ public class HistoryManager : MonoBehaviour
     {
         
     }
-    /*void DisplayQuestions()
+    void DisplayQuestions()
     {
-        for (int i = 0; i < userQuestions.items.Count; i++)
+        for (int i = 0; i < userQuestions.Count; i++)
         {
-            if (i >= pageID * itemPerPage && i < (pageID + 1) * itemPerPage)
-            {
-                inventorySlots[i].gameObject.SetActive(true);
-                inventorySlots[i].transform.GetChild(0).GetComponent<Image>().sprite = inventoryManager.items[i].itemSprite;
-                inventorySlots[i].transform.GetChild(1).GetComponent<Text>().text = inventoryManager.items[i].itemCount.ToString();
-                inventorySlots[i].transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
-            }
-            else
-            {
-                inventorySlots[i].gameObject.SetActive(false);
-            }
+            Debug.Log(userQuestions.Count);
+            Debug.Log(i);
+            questionSlots[i].gameObject.SetActive(true);
+            int correctAns = userQuestions[i].GetCorrectAnswerIndex();
+            
+
+            questionSlots[i].transform.GetChild(0).GetComponent<Text>().text = userQuestions[i].GetQuestion();
+            questionSlots[i].transform.GetChild(1).GetComponent<Text>().text = userQuestions[i].GetAnswer(correctAns);
         }
-    }*/
+    }
 }

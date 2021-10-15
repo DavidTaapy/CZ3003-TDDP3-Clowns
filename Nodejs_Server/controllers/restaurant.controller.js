@@ -47,4 +47,4 @@ const getRes = async(req, res) => {
 
 
 
-export {getRes, addRes, addDish};
+export {getRes, addRes};

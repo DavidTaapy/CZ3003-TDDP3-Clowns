@@ -6,9 +6,16 @@ using UnityEngine;
 public class QuestionSO : ScriptableObject
 {
     [TextArea(2,6)]
-    [SerializeField] string question = "Enter new question text here";
+    [SerializeField] string question;
     [SerializeField] string[] answers = new string[4];
     [SerializeField] int correctAnswerIndex;
+
+    /*public QuestionSO(string question, string[] answers, int correctanswer)
+    {
+        this.question = question;
+        this.answers = answers;
+        this.correctAnswerIndex = correctanswer;
+    }*/
 
     public string GetQuestion()
     {
@@ -29,3 +36,13 @@ public class QuestionSO : ScriptableObject
         return JsonUtility.ToJson(this);
     }
 }
+
+/*public class UserQuestions
+{
+    List<QuestionSO> userQuestions;
+
+    public List<QuestionSO> getQuestions()
+    {
+        return userQuestions;
+    }
+}*/
