@@ -9,10 +9,11 @@ using UnityEngine.UI;
 public class SingleModeTest
 {
     [UnityTest]
-    public IEnumerator SkipQuestionIncreaseCorrectQuestion()
+    // Test the functionality of skip question power-up. When the user clicks on
+    // this button, the number of correct questions count increases by one.
+    public IEnumerator skip_question_on_click_increase_correct_question()
     {
         SceneManager.LoadScene("SingleMode");
-        // Use yield to skip a frame.
         yield return new WaitForSeconds(3);
 
         Button skipQuestionButton = GameObject.Find("SkipQuestionButton").GetComponent<Button>();
@@ -25,7 +26,9 @@ public class SingleModeTest
     }
 
     [UnityTest]
-    public IEnumerator ReplayResetQuestionSeen()
+    // Test the functionality of replay. When the user clicks on the replay
+    // button, the points are reset to zero.
+    public IEnumerator replay_on_click_reset_points()
     {
         SceneManager.LoadScene("SingleMode");
         yield return new WaitForSeconds(105);
@@ -40,7 +43,9 @@ public class SingleModeTest
     }
 
     [UnityTest]
-    public IEnumerator SelectAnswerIncreaseQuestionSeen()
+    // Test the functionality of answer buttons. When the user clicks on the
+    // answer button, the count of questions seen increases by one.
+    public IEnumerator answer_on_click_increase_questions_seen()
     {
         SceneManager.LoadScene("SingleMode");
         yield return new WaitForSeconds(3);
