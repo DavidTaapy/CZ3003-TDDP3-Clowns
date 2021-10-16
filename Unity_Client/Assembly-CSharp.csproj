@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\ClientApi.cs" />
      <Compile Include="Assets\ParrelSync\Examples\CustomArgumentExample.cs" />
+     <Compile Include="Assets\Scripts\MultiGameManager.cs" />
      <Compile Include="Assets\Scripts\QuestionSO.cs" />
      <Compile Include="Assets\Scripts\SceneLoader.cs" />
      <Compile Include="Assets\Scripts\UIManager.cs" />
@@ -64,6 +65,7 @@
      <Compile Include="Assets\Scripts\Dao\ItemDao.cs" />
      <Compile Include="Assets\Scripts\CharacterManager.cs" />
      <Compile Include="Assets\Scripts\CharacterDatabase.cs" />
+     <Compile Include="Assets\Scripts\HistoryManager.cs" />
      <Compile Include="Assets\Scripts\EndScreen.cs" />
      <Compile Include="Assets\Scripts\AccountManager.cs" />
      <Compile Include="Assets\Scripts\Dao\UserDao.cs" />
@@ -77,8 +79,8 @@
      <Compile Include="Assets\Scripts\FirebaseManager.cs" />
      <Compile Include="Assets\Scripts\Character.cs" />
      <Compile Include="Assets\Scripts\ScoreKeeper.cs" />
+     <Compile Include="Assets\Scripts\MultiQuiz.cs" />
      <Compile Include="Assets\Scripts\Dao\QuestionDao.cs" />
-     <Compile Include="Assets\Scripts\HistoryManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -89,7 +91,7 @@
      <None Include="Assets\Firebase\m2repository\com\google\firebase\firebase-app-unity\maven-metadata.xml" />
      <None Include="Assets\Mirror\Version.txt" />
      <None Include="Assets\Mirror\Readme.txt" />
-     <None Include="Assets\Sprites\Sprites (Final)\Read this for standardise styling.txt" />
+     <None Include="Assets\Resources\Sprites\Sprites (Final)\Read this for standardise styling.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
