@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: d7aa09c773319094f86d3176ec573f4c
+  - enabled: 1
+    path: Assets/Scenes/LoginFirebase.unity
+    guid: 80f6df488338cf743935b8c8e7942dab
   m_configObjects: {}
