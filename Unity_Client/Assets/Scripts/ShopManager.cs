@@ -26,6 +26,7 @@ public class ShopManager : MonoBehaviour
 
     [Header("View Item Details")]
     public GameObject itemPanel;
+    private GameObject currentItem;
     
     [Header("Page Details")]
     private int itemPerPage = 8;
@@ -48,7 +49,7 @@ public class ShopManager : MonoBehaviour
         shopPowerups = getShopPowerups(url_items);
         shopAccessory = getShopAccessory(url_items);
         userPoints = user.getPoints();
-        pointsText.text = userPoints.ToString();
+        pointsText.text = "Points: " + userPoints.ToString();
 
         // Initialise powerups
         displayPowerups();
@@ -110,8 +111,9 @@ public class ShopManager : MonoBehaviour
 
     public void activateItemPanel()
     {
-        GameObject currentItemButton = EventSystem.current.currentSelectedGameObject;
-        updateItemPanel(currentItemButton);
+        // GameObject currentItemButton = EventSystem.current.currentSelectedGameObject;
+        currentItem = EventSystem.current.currentSelectedGameObject.transform.parent.gameObject;
+        updateItemPanel(currentItem);
 
         powerupPanel.gameObject.SetActive(false);
         accessoryPanel.gameObject.SetActive(false);
@@ -122,61 +124,78 @@ public class ShopManager : MonoBehaviour
 
     void displayPowerups()
     {
+        int tmp = shopPowerups.Count;
         for (int i = 0; i < itemPerPage; i++)
         {
-            powerupSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = shopPowerups[i].itemSprite;
-            powerupSlots[i].transform.GetChild(1).GetComponent<Text>().text = shopPowerups[i].price.ToString();
-            powerupSlots[i].transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
+            if (tmp > 0)
+            {
+                powerupSlots[i].gameObject.SetActive(true);
+                powerupSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = shopPowerups[i].getItemSprite();
+                powerupSlots[i].transform.GetChild(1).GetComponent<Text>().text = shopPowerups[i].getPrice().ToString();
+                powerupSlots[i].transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
+                tmp--;
+            }
+            else
+            {
+                powerupSlots[i].gameObject.SetActive(false);
+            }
         }
     }
 
     void displayAccessory()
     {
+        int tmp = shopAccessory.Count;
         for (int i = 0; i < itemPerPage; i++)
         {
-            accessorySlots[i].transform.GetChild(0).GetComponent<Image>().sprite = shopAccessory[i].itemSprite;
-            accessorySlots[i].transform.GetChild(1).GetComponent<Text>().text = shopAccessory[i].price.ToString();
-            accessorySlots[i].transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
+            if (tmp > 0)
+            {
+                accessorySlots[i].gameObject.SetActive(true);
+                accessorySlots[i].transform.GetChild(0).GetComponent<Image>().sprite = shopAccessory[i].getItemSprite();
+                accessorySlots[i].transform.GetChild(1).GetComponent<Text>().text = shopAccessory[i].getPrice().ToString();
+                accessorySlots[i].transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
+                tmp--;
+            }
+            else
+            {
+                accessorySlots[i].gameObject.SetActive(false);
+            }
         }
     }
 
-    void updateItemPanel(GameObject currentItemButton)
+    void updateItemPanel(GameObject currentItem)
     {
-        GameObject currentItem = currentItemButton.transform.parent.gameObject;
         int currentItemIndex = currentItem.transform.GetSiblingIndex();
 
         if (currentItem.transform.parent.gameObject == powerupPanel)
         {
-            itemPanel.transform.GetChild(0).GetComponent<Image>().sprite = shopPowerups[currentItemIndex].itemSprite;
-            itemPanel.transform.GetChild(1).GetComponent<Text>().text = "Name: " + shopPowerups[currentItemIndex].itemName;
-            itemPanel.transform.GetChild(2).GetComponent<Text>().text = "Price: " + shopPowerups[currentItemIndex].price.ToString();
-            itemPanel.transform.GetChild(3).GetComponent<Text>().text = shopPowerups[currentItemIndex].itemDescription.ToString();
+            itemPanel.transform.GetChild(0).GetComponent<Image>().sprite = shopPowerups[currentItemIndex].getItemSprite();
+            itemPanel.transform.GetChild(1).GetComponent<Text>().text = "Name: " + shopPowerups[currentItemIndex].getItemName();
+            itemPanel.transform.GetChild(2).GetComponent<Text>().text = "Price: " + shopPowerups[currentItemIndex].getPrice().ToString();
+            itemPanel.transform.GetChild(3).GetComponent<Text>().text = shopPowerups[currentItemIndex].getItemDescription().ToString();
         }
         else
         {
-            itemPanel.transform.GetChild(0).GetComponent<Image>().sprite = shopAccessory[currentItemIndex].itemSprite;
-            itemPanel.transform.GetChild(1).GetComponent<Text>().text = "Name: " + shopAccessory[currentItemIndex].itemName;
-            itemPanel.transform.GetChild(2).GetComponent<Text>().text = "Price: " + shopAccessory[currentItemIndex].price.ToString();
-            itemPanel.transform.GetChild(3).GetComponent<Text>().text = shopAccessory[currentItemIndex].itemDescription.ToString();
+            itemPanel.transform.GetChild(0).GetComponent<Image>().sprite = shopAccessory[currentItemIndex].getItemSprite();
+            itemPanel.transform.GetChild(1).GetComponent<Text>().text = "Name: " + shopAccessory[currentItemIndex].getItemName();
+            itemPanel.transform.GetChild(2).GetComponent<Text>().text = "Price: " + shopAccessory[currentItemIndex].getPrice().ToString();
+            itemPanel.transform.GetChild(3).GetComponent<Text>().text = shopAccessory[currentItemIndex].getItemDescription().ToString();
         }
     }
 
     // TODO: buy item and update user inventory, substract userpoints by price
-    public void purchaseItem(int price)
+    public void purchaseItem()
     {
+        int currentItemIndex = currentItem.transform.GetSiblingIndex();
+        int price = shopPowerups[currentItemIndex].getPrice();
+
         if (userPoints >= price)
         {
-            UpdatePoints(price);
-            Debug.Log("Purchase successful!");
+            userPoints -= price;
+            print("Purchase successful!");
         }
         else
         {
-            Debug.Log("Not enough points!");
+            print("Not enough points!");
         }
-    }
-
-    void UpdatePoints(int price)
-    {
-        userPoints -= price;
     }
 }
