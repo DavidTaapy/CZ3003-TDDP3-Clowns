@@ -21,12 +21,13 @@ namespace apiManagers{
             
             var linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
             Debug.Log("============Starting Data Access Manager========");
-            Debug.Log(GameObject.FindWithTag("Dao"));
+
+            var linktoItems = GameObject.Find("ItemsDao").GetComponent<ItemDao>();
             User user = linktoUserGet.getUser(url_user, userId);
-            Debug.Log(user.getId());
             
             // Code to create user
             //User user2 = new User("Harry Potter", 400, 5);
+            //user2.setId("55555555");
             //string result = linktoUserGet.createUser(url_user, user2);
             //Debug.Log(result);
 
@@ -47,7 +48,7 @@ namespace apiManagers{
             List<QuestionSO> qnList = linktoQuestionGet.getQuestions(url_qn, primaryLevel);
             foreach (var qn in qnList)
             {
-                Debug.Log(qn.ToJSON);
+                Debug.Log(qn.ToJSON());
             }
             */
 

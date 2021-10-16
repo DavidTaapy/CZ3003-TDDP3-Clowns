@@ -42,7 +42,20 @@ public class Item
     [SerializeField]
     public string itemDescription;
 
-	public Sprite getItemSprite() {
+    public string spriteSource;
+
+    public string getSpriteSource()
+    {
+        return this.spriteSource;
+    }
+
+    public void setSpriteSource(string spriteSource)
+    {
+        this.spriteSource = spriteSource;
+    }
+
+
+    public Sprite getItemSprite() {
 		return this.itemSprite;
 	}
 
