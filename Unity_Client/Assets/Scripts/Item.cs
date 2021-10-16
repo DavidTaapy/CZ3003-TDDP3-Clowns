@@ -36,12 +36,25 @@ public class Item
     [SerializeField]
     public ItemSource itemSource;
 
-	public int itemCount;
+    public int itemCount;
 
     [SerializeField]
     public string itemDescription;
 
-	public Sprite getItemSprite() {
+    public string spriteSource;
+
+    public string getSpriteSource()
+    {
+        return this.spriteSource;
+    }
+
+    public void setSpriteSource(string spriteSource)
+    {
+        this.spriteSource = spriteSource;
+    }
+
+
+    public Sprite getItemSprite() {
 		return this.itemSprite;
 	}
 
@@ -89,6 +102,15 @@ public class Item
 		this.itemSource = itemSource;
 	}
 
+	public int getItemCount()
+    {
+        return this.itemCount;
+    }
+
+    public void setItemCount(int itemCount)
+    {
+        this.itemCount = itemCount;
+    }
 
     public string ToJSON(){
         return JsonUtility.ToJson(this);

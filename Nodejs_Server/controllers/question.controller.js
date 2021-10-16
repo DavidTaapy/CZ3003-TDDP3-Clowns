@@ -12,6 +12,7 @@ const addQuestions = async(req, res) => {
         res.send("error adding questions!");
     }
 };
+
 // Get questions by primary level
 const getQuestions = async(req, res) => {
     try {
@@ -26,8 +27,6 @@ const getQuestions = async(req, res) => {
         //res.send("error getting questions!");
     }
 };
-
-
 
 
 export {getQuestions, addQuestions};
