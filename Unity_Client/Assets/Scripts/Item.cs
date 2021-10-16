@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum ItemType
-    {
+{
         Powerup,
         Skin
-    }
+}
 
 public enum ItemSource
 {
@@ -15,7 +15,7 @@ public enum ItemSource
 	Leaderboard
 }
 
-[System.Serializable] // I think SerializeField can be removed
+[System.Serializable]
 public class Item
 {
     [SerializeField]
@@ -36,7 +36,8 @@ public class Item
     [SerializeField]
     public ItemSource itemSource;
 
-    public int itemCount;
+	[SerializeField]
+	public int itemCount;
 
     [SerializeField]
     public string itemDescription;
@@ -102,15 +103,21 @@ public class Item
 		this.itemSource = itemSource;
 	}
 
-	public int getItemCount()
-    {
-        return this.itemCount;
-    }
+	public int getItemCount() {
+		return this.itemCount;
+	}
 
-    public void setItemCount(int itemCount)
-    {
-        this.itemCount = itemCount;
-    }
+	public void setItemCount(int itemCount) {
+		this.itemCount = itemCount;
+	}
+
+	public string getItemDescription() {
+		return this.itemDescription;
+	}
+
+	public void setItemDescription(string itemDescription) {
+		this.itemDescription = itemDescription;
+	}
 
     public string ToJSON(){
         return JsonUtility.ToJson(this);
