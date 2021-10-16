@@ -42,6 +42,7 @@ public class Item
     [SerializeField]
     public string itemDescription;
 
+	[SerializeField]
     public string spriteSource;
 
     public string getSpriteSource()
