@@ -46,8 +46,41 @@
     <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
-  <ItemGroup>
+  <<ItemGroup>
+     <Compile Include="Assets\Scripts\Timer.cs" />
+     <Compile Include="Assets\Scripts\ClientApi.cs" />
      <Compile Include="Assets\ParrelSync\Examples\CustomArgumentExample.cs" />
+     <Compile Include="Assets\Scripts\MultiGameManager.cs" />
+     <Compile Include="Assets\Scripts\QuestionSO.cs" />
+     <Compile Include="Assets\Scripts\SceneLoader.cs" />
+     <Compile Include="Assets\Scripts\UIManager.cs" />
+     <Compile Include="Assets\Scripts\Dao\DataAcessManager.cs" />
+     <Compile Include="Assets\Scripts\MainMenuManager.cs" />
+     <Compile Include="Assets\Scripts\ShopManager.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Item.cs" />
+     <Compile Include="Assets\Scripts\LeaderboardScripts\ScoreUi.cs" />
+     <Compile Include="Assets\Scripts\RegisterManager.cs" />
+     <Compile Include="Assets\Scripts\Dao\LeaderboardDao.cs" />
+     <Compile Include="Assets\Scripts\Dao\ItemDao.cs" />
+     <Compile Include="Assets\Scripts\CharacterManager.cs" />
+     <Compile Include="Assets\Scripts\CharacterDatabase.cs" />
+     <Compile Include="Assets\Scripts\HistoryManager.cs" />
+     <Compile Include="Assets\Scripts\EndScreen.cs" />
+     <Compile Include="Assets\Scripts\AccountManager.cs" />
+     <Compile Include="Assets\Scripts\Dao\UserDao.cs" />
+     <Compile Include="Assets\Scripts\InventoryUIManager.cs" />
+     <Compile Include="Assets\Scripts\Quiz.cs" />
+     <Compile Include="Assets\Scripts\LeaderboardScripts\RowUi.cs" />
+     <Compile Include="Assets\Scripts\InventoryManager.cs" />
+     <Compile Include="Assets\Scripts\SceneManager.cs" />
+     <Compile Include="Assets\Scripts\LoaderCallback.cs" />
+     <Compile Include="Assets\Scripts\Models\User.cs" />
+     <Compile Include="Assets\Scripts\FirebaseManager.cs" />
+     <Compile Include="Assets\Scripts\Character.cs" />
+     <Compile Include="Assets\Scripts\ScoreKeeper.cs" />
+     <Compile Include="Assets\Scripts\MultiQuiz.cs" />
+     <Compile Include="Assets\Scripts\Dao\QuestionDao.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
