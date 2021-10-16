@@ -6,14 +6,13 @@ using UnityEngine.EventSystems;
 
 public class ShopManager : MonoBehaviour
 {
-    private string url_items;
-    private string url_user;
+    private string userId = "7HHcjbfJq1kD8VFMHHDq";
+    private string url_user = "http://localhost:3000/user";
+    private string url_items = "http://localhost:3000/items";
 
     [Header("User Details")]
-    public string userId = "7HHcjbfJq1kD8VFMHHDq";
     public User user;
     private int userPoints;
-    private List<Item> userInventory;
 
     [Header("Powerup Details")]
     public GameObject powerupPanel;
@@ -38,7 +37,8 @@ public class ShopManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Initialise panels
+        // Initialise panels and text
+        pageText.text = "Powerups";
         itemPanel.gameObject.SetActive(false);
         accessoryPanel.gameObject.SetActive(false);
         toPowerupPage.gameObject.SetActive(false);
@@ -48,10 +48,6 @@ public class ShopManager : MonoBehaviour
         shopPowerups = getShopPowerups(url_items);
         shopAccessory = getShopAccessory(url_items);
         userPoints = user.getPoints();
-        userInventory = user.getInventory();
-
-        // Initialise text
-        pageText.text = "Powerups";
         pointsText.text = userPoints.ToString();
 
         // Initialise powerups
