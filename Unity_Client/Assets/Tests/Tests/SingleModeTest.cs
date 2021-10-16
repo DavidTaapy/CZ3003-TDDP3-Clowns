@@ -28,13 +28,13 @@ public class SingleModeTest
     public IEnumerator ReplayResetQuestionSeen()
     {
         SceneManager.LoadScene("SingleMode");
-        // yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(105);
 
         Button replayButton = GameObject.Find("ReplayButton").GetComponent<Button>();
         replayButton.onClick.Invoke();
 
-        var questionSeen = GameObject.FindObjectOfType<ScoreKeeper>().GetQuestionSeen();
-        Assert.AreEqual(0, questionSeen);
+        var points = GameObject.FindObjectOfType<ScoreKeeper>().CalculatePoints();
+        Assert.AreEqual(0, points);
 
         yield return new WaitForSeconds(3);
     }
@@ -45,13 +45,13 @@ public class SingleModeTest
         SceneManager.LoadScene("SingleMode");
         yield return new WaitForSeconds(3);
 
-        var oldQuestionSeen = GameObject.FindObjectOfType<ScoreKeeper>().GetQuestionSeen();
-
         Button replayButton = GameObject.Find("AnswerButton (0)").GetComponent<Button>();
         replayButton.onClick.Invoke();
 
+        yield return new WaitForSeconds(3);
+
         var newQuestionSeen = GameObject.FindObjectOfType<ScoreKeeper>().GetQuestionSeen();
-        Assert.AreEqual(oldQuestionSeen, newQuestionSeen);
+        Assert.AreEqual(1, newQuestionSeen);
 
         yield return new WaitForSeconds(3);
     }
