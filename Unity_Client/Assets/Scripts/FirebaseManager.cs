@@ -119,7 +119,7 @@ public class FirebaseManager : MonoBehaviour
             warningLoginText.text = "";
             confirmLoginText.text = "Logged In";
 
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(3);
 
             confirmLoginText.text = "";
             ClearLoginFields();

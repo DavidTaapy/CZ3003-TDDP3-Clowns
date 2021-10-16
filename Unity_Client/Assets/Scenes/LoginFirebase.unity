@@ -1858,17 +1858,6 @@ MonoBehaviour:
   passwordLoginField: {fileID: 288471328}
   warningLoginText: {fileID: 1120505766}
   confirmLoginText: {fileID: 1646347145}
-  usernameRegisterField: {fileID: 0}
-  emailRegisterField: {fileID: 0}
-  passwordRegisterField: {fileID: 0}
-  passwordRegisterVerifyField: {fileID: 0}
-  warningRegisterText: {fileID: 0}
-  usernameField: {fileID: 0}
-  xpField: {fileID: 0}
-  killsField: {fileID: 0}
-  deathsField: {fileID: 0}
-  scoreElement: {fileID: 0}
-  scoreboardContent: {fileID: 0}
 --- !u!4 &1370278849
 Transform:
   m_ObjectHideFlags: 0
@@ -2343,7 +2332,6 @@ GameObject:
   - component: {fileID: 1687258585}
   - component: {fileID: 1687258584}
   - component: {fileID: 1687258582}
-  - component: {fileID: 1687258586}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2416,18 +2404,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 20.146, y: 195.09, z: 0.001}
---- !u!114 &1687258586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687258581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1984384894
 GameObject:
   m_ObjectHideFlags: 0
