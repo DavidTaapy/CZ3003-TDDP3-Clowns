@@ -77,9 +77,4 @@ public class ScoreKeeper : MonoBehaviour
 
         return wrongQuestions;
     }
-
-    public int GetCorrectNum()
-    {
-        return questionsGotCorrect.Count;
-    }
 }

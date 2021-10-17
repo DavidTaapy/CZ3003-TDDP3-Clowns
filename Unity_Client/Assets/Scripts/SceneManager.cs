@@ -10,7 +10,8 @@ public static class Loader
     public enum Scene {
         LoadingScene,
         MainMenu,
-        LeaderboardScene
+        LeaderboardScene,
+        RegisterFirebase
     }
 
     private static Action onLoaderCallback;

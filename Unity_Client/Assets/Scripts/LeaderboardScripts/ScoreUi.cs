@@ -42,6 +42,7 @@ public class ScoreUi : MonoBehaviour
         {
             // Debug.Log(userRanking[i].userName);
             var row = Instantiate(rowUi, transform).GetComponent<RowUi>();
+            row.gameObject.name = "Row" + (i + 1).ToString();
             row.rank.text = (i + 1).ToString();
             row.name.text = userRanking[i].userName;
             row.score.text = userRanking[i].elorating.ToString();
