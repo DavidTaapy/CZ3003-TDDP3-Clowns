@@ -38,7 +38,7 @@ public class HistoryManager : MonoBehaviour
             
 
             questionSlots[i].transform.GetChild(0).GetComponent<Text>().text = userQuestions[i].GetQuestion();
-            questionSlots[i].transform.GetChild(1).GetComponent<Text>().text = userQuestions[i].GetAnswer(correctAns);
+            questionSlots[i].transform.GetChild(1).GetComponent<Text>().text = "Answer: " + userQuestions[i].GetAnswer(correctAns);
         }
     }
 }

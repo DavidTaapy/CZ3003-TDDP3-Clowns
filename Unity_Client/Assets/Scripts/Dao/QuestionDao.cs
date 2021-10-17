@@ -17,8 +17,8 @@ public class QuestionDao : MonoBehaviour
         Debug.Log(urlWithParams);
         HttpResponseMessage response = client.GetAsync(urlWithParams).GetAwaiter().GetResult();
         string responseStr = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-        Debug.Log(responseStr);
         List<Question> qnList = JsonConvert.DeserializeObject<List<Question>>(responseStr);
+        
         return qnList;
     }
 }
