@@ -918,6 +918,11 @@
       <Name>where-allocations</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+    <ProjectReference Include="GameAssembly.csproj">
+      <Project>{81F63C4C-5D8C-84FB-3132-D64A82AD06F1}</Project>
+      <Name>GameAssembly</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
     <ProjectReference Include="Unity.2D.Common.Editor.csproj">
       <Project>{DE4369D7-46D5-A4A9-F801-8CCA1584FB56}</Project>
       <Name>Unity.2D.Common.Editor</Name>
