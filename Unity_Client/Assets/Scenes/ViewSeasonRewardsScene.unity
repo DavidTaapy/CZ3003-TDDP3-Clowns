@@ -1274,7 +1274,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1633572458}
         m_TargetAssemblyTypeName: RedirectionManager, GameAssembly
-        m_MethodName: redirectToMainMenu
+        m_MethodName: redirectToLeaderboard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
