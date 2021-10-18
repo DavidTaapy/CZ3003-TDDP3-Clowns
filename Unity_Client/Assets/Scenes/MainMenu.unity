@@ -1939,7 +1939,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 900371083}
         m_TargetAssemblyTypeName: RedirectionManager, GameAssembly
-        m_MethodName: redirectToMultiMatchmaking
+        m_MethodName: redirectToMultiFoundMatch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
