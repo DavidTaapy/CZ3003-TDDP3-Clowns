@@ -712,7 +712,7 @@ GameObject:
   - component: {fileID: 446377557}
   - component: {fileID: 446377556}
   m_Layer: 0
-  m_Name: LeaderboardManager
+  m_Name: SceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -727,10 +727,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 446377555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a97b8cb9273ee814c8f0e742ee362b8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d9f5057fa7343b4291db80bd773b7c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rowUi: {fileID: 0}
 --- !u!4 &446377557
 Transform:
   m_ObjectHideFlags: 0
@@ -1516,7 +1515,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 446377556}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ScoreUi, GameAssembly
         m_MethodName: redirectToMain
         m_Mode: 1
@@ -2547,8 +2546,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 446377556}
-        m_TargetAssemblyTypeName: ScoreUi, GameAssembly
-        m_MethodName: redirectToSeasonRewards
+        m_TargetAssemblyTypeName: MainMenuManager, GameAssembly
+        m_MethodName: redirectToMulti
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

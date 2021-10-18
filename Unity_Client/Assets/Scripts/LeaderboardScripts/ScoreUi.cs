@@ -56,14 +56,4 @@ public class ScoreUi : MonoBehaviour
         public int elorating { get; set; }
     }
 
-    public void redirectToMain()
-    {
-        Loader.Load(Loader.Scene.MainMenu);
-    }
-
-    public void redirectToSeasonRewards()
-    {
-        Loader.Load(Loader.Scene.ViewSeasonRewardsScene);
-    }
-
 }
