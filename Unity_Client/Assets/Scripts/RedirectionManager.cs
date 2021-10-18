@@ -17,7 +17,7 @@ public class RedirectionManager : MonoBehaviour
 
     public void redirectToMulti()
     {
-        Loader.Load(Loader.Scene.MP_Finding);
+        Loader.Load(Loader.Scene.MultiMode);
     }
 
     public void redirectToShop()
