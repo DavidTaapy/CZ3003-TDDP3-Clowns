@@ -712,7 +712,7 @@ GameObject:
   - component: {fileID: 446377557}
   - component: {fileID: 446377556}
   m_Layer: 0
-  m_Name: SceneManager
+  m_Name: RedirectionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1515,9 +1515,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ScoreUi, GameAssembly
-        m_MethodName: redirectToMain
+      - m_Target: {fileID: 446377556}
+        m_TargetAssemblyTypeName: RedirectionManager, GameAssembly
+        m_MethodName: redirectToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2546,8 +2546,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 446377556}
-        m_TargetAssemblyTypeName: MainMenuManager, GameAssembly
-        m_MethodName: redirectToMulti
+        m_TargetAssemblyTypeName: RedirectionManager, GameAssembly
+        m_MethodName: redirectToSeasonRewards
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
