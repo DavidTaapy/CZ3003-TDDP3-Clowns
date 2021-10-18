@@ -205,7 +205,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 67293239}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 277308307}
+        m_TargetAssemblyTypeName: MainMenuManager, GameAssembly
+        m_MethodName: redirectToLeaderboard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &67293239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1091,7 +1103,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1458038985}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 277308307}
+        m_TargetAssemblyTypeName: MainMenuManager, GameAssembly
+        m_MethodName: redirectToShop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1458038985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1212,7 +1236,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1497539528}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 277308307}
+        m_TargetAssemblyTypeName: MainMenuManager, GameAssembly
+        m_MethodName: logOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1497539528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1333,7 +1369,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1531140287}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 277308307}
+        m_TargetAssemblyTypeName: MainMenuManager, GameAssembly
+        m_MethodName: redirectToInventory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1531140287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1454,7 +1502,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1551989509}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 277308307}
+        m_TargetAssemblyTypeName: MainMenuManager, GameAssembly
+        m_MethodName: redirectToSingle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1551989509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1876,7 +1936,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2123780995}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 277308307}
+        m_TargetAssemblyTypeName: MainMenuManager, GameAssembly
+        m_MethodName: redirectToMulti
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2123780995
 MonoBehaviour:
   m_ObjectHideFlags: 0
