@@ -9,6 +9,7 @@ using TMPro;
 
 public class LoginTest
 {
+    // Checks that valid inputs does result in successful login
     [UnityTest]
     public IEnumerator Valid_Input_LoginButton_Onclick_Warning_Text()
     {
@@ -33,6 +34,7 @@ public class LoginTest
         yield return new WaitForSeconds(3);
     }
 
+    // Checks that missing email results in warning text prompting user for the email
     [UnityTest]
     public IEnumerator MissingEmail_Input_LoginButton_Onclick_Warning_Text()
     {
@@ -57,6 +59,7 @@ public class LoginTest
         yield return new WaitForSeconds(3);
     }
 
+    // Checks that missing password results in warning text prompting user for the password
     [UnityTest]
     public IEnumerator MissingPassword_LoginButton_Onclick_Warning_Text()
     {
@@ -81,6 +84,7 @@ public class LoginTest
         yield return new WaitForSeconds(3);
     }
 
+    // Check that wrong password results in login failure and warning text informing user of the wrong password
     [UnityTest]
     public IEnumerator WrongPassword_LoginButton_Onclick_Warning_Text()
     {
@@ -105,6 +109,7 @@ public class LoginTest
         yield return new WaitForSeconds(3);
     }
 
+    // Check that wrong email results in login failure and warning text informing user of the wrong email
     [UnityTest]
     public IEnumerator InvalidEmail_LoginButton_Onclick_Warning_Text()
     {
@@ -129,6 +134,7 @@ public class LoginTest
         yield return new WaitForSeconds(3);
     }
 
+    // Check that wrong username results in login failure and warning text informing user of the wrong username
     [UnityTest]
     public IEnumerator UserNotFound_LoginButton_Onclick_Warning_Text()
     {
