@@ -206,8 +206,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 277308307}
-        m_TargetAssemblyTypeName: MainMenuManager, GameAssembly
+      - m_Target: {fileID: 900371083}
+        m_TargetAssemblyTypeName: RedirectionManager, GameAssembly
         m_MethodName: redirectToLeaderboard
         m_Mode: 1
         m_Arguments:
@@ -256,49 +256,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67293236}
   m_CullTransparentMesh: 1
---- !u!1 &277308306
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 277308308}
-  - component: {fileID: 277308307}
-  m_Layer: 0
-  m_Name: MainMenuManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &277308307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277308306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d9f5057fa7343b4291db80bd773b7c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &277308308
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277308306}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &292233177
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,6 +765,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 850812097}
   m_CullTransparentMesh: 1
+--- !u!1 &900371082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 900371084}
+  - component: {fileID: 900371083}
+  m_Layer: 0
+  m_Name: RedirectionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &900371083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900371082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9f5057fa7343b4291db80bd773b7c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &900371084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900371082}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 910.1565, y: 372.07312, z: -162.78111}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &995684158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,8 +1104,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 277308307}
-        m_TargetAssemblyTypeName: MainMenuManager, GameAssembly
+      - m_Target: {fileID: 900371083}
+        m_TargetAssemblyTypeName: RedirectionManager, GameAssembly
         m_MethodName: redirectToShop
         m_Mode: 1
         m_Arguments:
@@ -1237,9 +1237,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 277308307}
-        m_TargetAssemblyTypeName: MainMenuManager, GameAssembly
-        m_MethodName: logOut
+      - m_Target: {fileID: 900371083}
+        m_TargetAssemblyTypeName: RedirectionManager, GameAssembly
+        m_MethodName: redirectToLogin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1370,8 +1370,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 277308307}
-        m_TargetAssemblyTypeName: MainMenuManager, GameAssembly
+      - m_Target: {fileID: 900371083}
+        m_TargetAssemblyTypeName: RedirectionManager, GameAssembly
         m_MethodName: redirectToInventory
         m_Mode: 1
         m_Arguments:
@@ -1503,8 +1503,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 277308307}
-        m_TargetAssemblyTypeName: MainMenuManager, GameAssembly
+      - m_Target: {fileID: 900371083}
+        m_TargetAssemblyTypeName: RedirectionManager, GameAssembly
         m_MethodName: redirectToSingle
         m_Mode: 1
         m_Arguments:
@@ -1937,9 +1937,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 277308307}
-        m_TargetAssemblyTypeName: MainMenuManager, GameAssembly
-        m_MethodName: redirectToMulti
+      - m_Target: {fileID: 900371083}
+        m_TargetAssemblyTypeName: RedirectionManager, GameAssembly
+        m_MethodName: redirectToMultiMatchmaking
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
