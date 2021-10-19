@@ -8,16 +8,17 @@ public class Question
     [SerializeField] string question;
     [SerializeField] string[] answers = new string[4];
     [SerializeField] int correctAnswerIndex;
-    //[SerializeField] int primaryLevel;
+    [SerializeField] int primaryLevel;
+    [SerializeField] string[] answers = new string[3];
 
-    public Question(string question, string[] answers, int correctAnswerIndex)
+    public Question(string question, string[] answers, int correctAnswerIndex, int primaryLevel, string[] hints)
     {
         this.question = question;
         this.answers = answers;
         this.correctAnswerIndex = correctAnswerIndex;
+        this.primaryLevel = primaryLevel;
+        this.hints = hints;
     }
-
-
 
     public string GetQuestion()
     {
