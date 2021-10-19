@@ -47,7 +47,7 @@ public class ScoreUi : MonoBehaviour
             row.name.text = userRanking[i].userName;
             row.score.text = userRanking[i].elorating.ToString();
         }
-        
+
     }
 
     public class User
@@ -55,4 +55,5 @@ public class ScoreUi : MonoBehaviour
         public string userName { get; set; }
         public int elorating { get; set; }
     }
+
 }

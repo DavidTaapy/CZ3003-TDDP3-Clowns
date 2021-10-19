@@ -13,12 +13,12 @@ const addRes = async(req, res) => {
     }
 };
 
-/* //add dish
+//add dish
 const addDish = async(req, res) => {
     try {
         //TODO: change if need, not correct
         const res = req.body;
-        const shopdb = firestore.collection('shop'); 
+        const shopdb = firestore.collection('restaurant'); 
         var itemUpdate = {};
         itemUpdate[`${type}`] = items;   
         await shopdb.doc('items').set(itemUpdate, { merge: true });
@@ -27,7 +27,7 @@ const addDish = async(req, res) => {
         res.status(400).send(error.message);
         res.send("error adding");
     }
-};*/
+};
 
 // Get restaurant by selection
 const getRes = async(req, res) => {
