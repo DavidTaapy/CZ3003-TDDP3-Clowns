@@ -9,8 +9,9 @@ public class HistoryManager : MonoBehaviour
     //public UserQuestions userQuestions;
     public GameObject QnPanel;
     public GameObject[] questionSlots;
-    public List<QuestionSO> userQuestions;
+    public List<Question> userQuestions;
     public string url_qn;
+    public int displayNum = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -31,14 +32,23 @@ public class HistoryManager : MonoBehaviour
     {
         for (int i = 0; i < userQuestions.Count; i++)
         {
-            Debug.Log(userQuestions.Count);
-            Debug.Log(i);
+            Debug.Log(userQuestions[i].ToJSON());
+
             questionSlots[i].gameObject.SetActive(true);
             int correctAns = userQuestions[i].GetCorrectAnswerIndex();
             
 
             questionSlots[i].transform.GetChild(0).GetComponent<Text>().text = userQuestions[i].GetQuestion();
-            questionSlots[i].transform.GetChild(1).GetComponent<Text>().text = userQuestions[i].GetAnswer(correctAns);
+            questionSlots[i].transform.GetChild(1).GetComponent<Text>().text = "Answer: " + userQuestions[i].GetAnswer(correctAns);
         }
+
+      
+        for (int i = userQuestions.Count; i < displayNum; i++)
+        {
+            string curr = "questionslots (" + i.ToString() + ")";
+            Debug.Log(curr);
+            GameObject.Find(curr).SetActive(false);
+        }
+
     }
 }

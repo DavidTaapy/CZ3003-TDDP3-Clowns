@@ -18,6 +18,48 @@ EditorBuildSettings:
     path: Assets/Scenes/LeaderboardScene.unity
     guid: 32242c0410dc890409a51135ed1d28e0
   - enabled: 1
+    path: Assets/Scenes/ViewSeasonRewardsScene.unity
+    guid: 14052b6c6f86525499e58fa94df1e58f
+  - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: d7aa09c773319094f86d3176ec573f4c
+  - enabled: 1
+    path: Assets/Scenes/LoginFirebase.unity
+    guid: 80f6df488338cf743935b8c8e7942dab
+  - enabled: 1
+    path: Assets/Scenes/UserProfileScene.unity
+    guid: 2d951dafd94c24897a51fa287b83565a
+  - enabled: 1
+    path: Assets/Scenes/CharacterScene.unity
+    guid: 279b40bc50185e24aaabc77d48c867d8
+  - enabled: 1
+    path: Assets/Scenes/MP_Finding.unity
+    guid: 4d4ac3c73b4e4464db0215b4ad718c66
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerWinScene.unity
+    guid: 40d50da04c6ff274181396c2f8afa6c0
+  - enabled: 1
+    path: Assets/Scenes/MultiMode.unity
+    guid: d613855538a0b48059e9f5e7f56b7b87
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerLoseScene.unity
+    guid: 8ea2da6a3b4baf24298c455c30f56f6d
+  - enabled: 1
+    path: Assets/Scenes/RegisterFirebase.unity
+    guid: 4c087d1c9e4e4f249a7d2051363d7ee0
+  - enabled: 1
+    path: Assets/Scenes/ReportScene.unity
+    guid: cb3f3c1697f887a4d96d453f324de817
+  - enabled: 1
+    path: Assets/Scenes/MP_Matched.unity
+    guid: eb971baa36c4f7c429cb037ebd9d57d3
+  - enabled: 1
+    path: Assets/Scenes/InventoryScene.unity
+    guid: 9643899d79dcf2d43a22a3d70d6effef
+  - enabled: 1
+    path: Assets/Scenes/ChooseRestuarantScene.unity
+    guid: 5045dfbdd8d6c0b4c941b0f49cb7491c
+  - enabled: 1
+    path: Assets/Scenes/ShopScene.unity
+    guid: c29dcea43e4eb491b9fe1db6012463ce
   m_configObjects: {}
