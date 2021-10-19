@@ -11,6 +11,7 @@ public class HistoryManager : MonoBehaviour
     public GameObject[] questionSlots;
     public List<Question> userQuestions;
     public string url_qn;
+    public int displayNum = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -40,5 +41,14 @@ public class HistoryManager : MonoBehaviour
             questionSlots[i].transform.GetChild(0).GetComponent<Text>().text = userQuestions[i].GetQuestion();
             questionSlots[i].transform.GetChild(1).GetComponent<Text>().text = "Answer: " + userQuestions[i].GetAnswer(correctAns);
         }
+
+      
+        for (int i = userQuestions.Count; i < displayNum; i++)
+        {
+            string curr = "questionslots (" + i.ToString() + ")";
+            Debug.Log(curr);
+            GameObject.Find(curr).SetActive(false);
+        }
+
     }
 }
