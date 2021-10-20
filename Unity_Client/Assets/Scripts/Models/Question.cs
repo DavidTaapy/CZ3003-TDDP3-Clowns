@@ -9,7 +9,7 @@ public class Question
     [SerializeField] string[] answers = new string[4];
     [SerializeField] int correctAnswerIndex;
     [SerializeField] int primaryLevel;
-    [SerializeField] string[] answers = new string[3];
+    [SerializeField] string[] hints = new string[3];
 
     public Question(string question, string[] answers, int correctAnswerIndex, int primaryLevel, string[] hints)
     {

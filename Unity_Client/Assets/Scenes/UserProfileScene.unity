@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa2f253b977a0654e88f7777d3652936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url_user: http://localhost:3000/users
+  url_user: http://localhost:3000/user
 --- !u!4 &413363441
 Transform:
   m_ObjectHideFlags: 0
