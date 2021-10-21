@@ -5,8 +5,10 @@ const addRes = async(req, res) => {
     try {
         const game = req.body;
         const resdb = firestore.collection('restaurant');    
-        resdb.add(game);
-        res.send("res added");
+        await resdb.add(game).then(function(docRef) {
+            resdb.doc(docRef.id).set({"id": docRef.id}, { merge: true });
+        });
+        return res.send("restaurant added");
     } catch (error) {
         res.status(400).send(error.message);
         res.send("error adding");
@@ -16,13 +18,17 @@ const addRes = async(req, res) => {
 //add dish
 const addDish = async(req, res) => {
     try {
-        //TODO: change if need, not correct
-        const res = req.body;
-        const shopdb = firestore.collection('restaurant'); 
-        var itemUpdate = {};
-        itemUpdate[`${type}`] = items;   
-        await shopdb.doc('items').set(itemUpdate, { merge: true });
-        res.send("items added");
+        const newDish = req.body;
+        const id = req.query.id;
+        const resdb = firestore.collection('restaurant'); 
+        var currRes = resdb.doc(id);
+        currRes.set({
+            "Dishes": newDish
+        }, {merge: true}).then(function() {
+            res.send("Document successfully updated!");
+        }).catch(function(error) {
+           res.send("no such restaurant");
+        });
     } catch (error) {
         res.status(400).send(error.message);
         res.send("error adding");
@@ -32,12 +38,10 @@ const addDish = async(req, res) => {
 // Get restaurant by selection
 const getRes = async(req, res) => {
     try {
-        const lvl = req.query.lvl;
-        const questiondb = firestore.collection('questions');
-        //todo: try to randomize qns to get    
-        const snapshot = await questiondb.where('primaryLevel', '==', lvl).get();
-        res.send(snapshot.docs.map(qn => qn.data()));
-
+        const name = req.query.name;
+        const resdb = firestore.collection('restaurant'); 
+        const snapshot = await resdb.where('name', '==', name).get();
+        res.send(snapshot.docs.map(currRes => currRes.data()));
     } catch (error) {
         res.status(400).send(error.message);
         res.send("error getting questions!");
@@ -47,4 +51,4 @@ const getRes = async(req, res) => {
 
 
 
-export {getRes, addRes};
+export {getRes, addRes, addDish};

@@ -9,7 +9,7 @@ const createUser = async(req, res) => {
         else {
             const newUser = new User(data.id, data.userName, data.primaryLevel);
             const userdb = firestore.collection('users');
-            await userdb.doc(data.id).set(JSON.parse(JSON.stringify(newUser)));
+            userdb.doc(data.id).set(JSON.parse(JSON.stringify(newUser)));
             //.then(function(docRef) {
              //   userdb.doc(docRef.id).set({"id": docRef.id}, { merge: true });
             //});
