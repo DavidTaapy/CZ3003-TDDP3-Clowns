@@ -27,6 +27,12 @@ public class User
     [SerializeField]
     private int points;
 
+    [SerializeField]
+    private int correctQns;
+
+    [SerializeField]
+    private int wrongQns;
+
     public User(string username, int eloRating, int primaryLevel){
         this.userName = username;
         this.eloRating = eloRating;
@@ -102,5 +108,25 @@ public class User
 	public void setPoints(int points) {
 		this.points = points;
 	}
-    
+
+    public int getCorrectQns()
+    {
+        return this.correctQns;
+    }
+
+    public void setCorrectQns(int qns)
+    {
+        this.correctQns += qns;
+    }
+
+    public int getWrongQns()
+    {
+        return this.wrongQns;
+    }
+
+    public void setWrongQns(int qns)
+    {
+        this.wrongQns += qns;
+    }
+
 }
