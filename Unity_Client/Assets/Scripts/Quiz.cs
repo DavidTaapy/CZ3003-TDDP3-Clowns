@@ -53,22 +53,26 @@ public class Quiz : MonoBehaviour
 
     UserDao linktoUserGet;
 
+    List<Question> completedQns;
+    int numberOfQns = 5;
+
     void Awake()
     {
         timer = FindObjectOfType<Timer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        scoreKeeper.resetFields();
         //Need to make change userId accordingly
         string userId = "7HHcjbfJq1kD8VFMHHDq";
         linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
         currentUser = linktoUserGet.getUser(url_user, userId);
+        completedQns = currentUser.getCompletedQns();
 
         var linktoQuestionGet = GameObject.Find("QuestionDao").GetComponent<QuestionDao>();     //Getting qn list from db
         var primaryLevel = currentUser.getPrimaryLevel();
         qnList = linktoQuestionGet.getQuestions(url_qn, primaryLevel);
-        currentQn = qnList[0];
-        qnList.Remove(currentQn);
-        
-        progressBar.maxValue = qnList.Count;
+        GetRandomQuestion();
+                
+        progressBar.maxValue = numberOfQns;
         progressBar.value = 0;
         extendTimeNumber = 2;
         showHintNumber = 2;
@@ -85,6 +89,8 @@ public class Quiz : MonoBehaviour
             {
                 isComplete = true;
                 UpdateUserPoints();
+                UpdateUserQns();
+                Debug.Log(currentUser.ToJSON());
                 string result = linktoUserGet.updateUser(url_user, currentUser);
                 Debug.Log(result);
                 return;
@@ -162,6 +168,18 @@ public class Quiz : MonoBehaviour
         if (qnList.Contains(currentQn))
         {
             qnList.Remove(currentQn);
+        }
+        if (completedQns.Count == 0){
+            completedQns.Add(currentQn);
+            return;
+        } else {
+            foreach (var qns in completedQns)
+            {
+                if (string.Equals(qns.GetQuestion(), currentQn.GetQuestion())){
+                    return;
+                }
+            }
+            completedQns.Add(currentQn);
         }
     }
 
@@ -245,5 +263,13 @@ public class Quiz : MonoBehaviour
         int score = currentUser.getPoints();
         score += scoreKeeper.CalculatePoints();
         currentUser.setPoints(score);
+    }
+
+    private void UpdateUserQns(){
+        currentUser.setCompletedQns(completedQns);
+        int correctAns = currentUser.getCorrectQns() + scoreKeeper.GetCorrectAnswers();
+        currentUser.setCorrectQns(correctAns);
+        int wrongAns = currentUser.getWrongQns() + scoreKeeper.GetWrongAnswers();
+        currentUser.setWrongQns(wrongAns);
     }
 }

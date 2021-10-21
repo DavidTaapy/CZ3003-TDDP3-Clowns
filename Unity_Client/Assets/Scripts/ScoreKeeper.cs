@@ -13,6 +13,10 @@ public class ScoreKeeper : MonoBehaviour
     List<Question> qnsGotCorrect = new List<Question>();
     List<Question> qnsGotWrong = new List<Question>();
 
+    public int GetWrongAnswers(){
+        return questionsSeen - correctAnswers;
+    }
+
     public int GetCorrectAnswers()
     {
         return correctAnswers;
@@ -90,5 +94,12 @@ public class ScoreKeeper : MonoBehaviour
         }
 
         return wrongQuestions;
+    }
+
+    public void resetFields(){
+        this.correctAnswers = 0;
+        this.questionsSeen = 0;
+        this.qnsGotCorrect = new List<Question>();
+        this.qnsGotWrong = new List<Question>();
     }
 }

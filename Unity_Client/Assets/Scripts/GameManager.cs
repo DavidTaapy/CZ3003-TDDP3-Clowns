@@ -7,17 +7,20 @@ public class GameManager : MonoBehaviour
 {
     Quiz quiz;
     EndScreen endScreen;
+    ScoreKeeper scoreKeeper;
 
     void Awake()
     {
         quiz = FindObjectOfType<Quiz>();
         endScreen = FindObjectOfType<EndScreen>();
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
     }
 
     void Start()
     {
         quiz.gameObject.SetActive(true);
         endScreen.gameObject.SetActive(false);
+        scoreKeeper.resetFields();
     }
 
     void Update()
