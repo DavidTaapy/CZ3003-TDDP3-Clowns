@@ -7,6 +7,8 @@ class User {
         this.points = 0;
         this.inventory = [];
         this.questions = [];
+        this.correctQns = 0;
+        this.wrongQns = 0;
     }
 }
 

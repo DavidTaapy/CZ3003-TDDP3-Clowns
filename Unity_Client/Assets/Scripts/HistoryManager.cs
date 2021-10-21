@@ -11,12 +11,13 @@ public class HistoryManager : MonoBehaviour
     public GameObject[] questionSlots;
     public List<Question> userQuestions;
     public string url_qn;
+    public int displayNum = 5;
 
     // Start is called before the first frame update
     void Start()
     {
         var linktoQuestionGet = GameObject.Find("QuestionDao").GetComponent<QuestionDao>();
-        var primaryLevel = 1;
+        var primaryLevel = 2;
         userQuestions = linktoQuestionGet.getQuestions(url_qn, primaryLevel);
         DisplayQuestions();
         QnPanel.gameObject.SetActive(true);
@@ -40,5 +41,14 @@ public class HistoryManager : MonoBehaviour
             questionSlots[i].transform.GetChild(0).GetComponent<Text>().text = userQuestions[i].GetQuestion();
             questionSlots[i].transform.GetChild(1).GetComponent<Text>().text = "Answer: " + userQuestions[i].GetAnswer(correctAns);
         }
+
+      
+        for (int i = userQuestions.Count; i < displayNum; i++)
+        {
+            string curr = "questionslots (" + i.ToString() + ")";
+            Debug.Log(curr);
+            GameObject.Find(curr).SetActive(false);
+        }
+
     }
 }
