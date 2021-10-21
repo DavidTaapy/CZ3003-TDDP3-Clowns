@@ -17,7 +17,7 @@ public class HistoryManager : MonoBehaviour
     void Start()
     {
         var linktoQuestionGet = GameObject.Find("QuestionDao").GetComponent<QuestionDao>();
-        var primaryLevel = 1;
+        var primaryLevel = 2;
         userQuestions = linktoQuestionGet.getQuestions(url_qn, primaryLevel);
         DisplayQuestions();
         QnPanel.gameObject.SetActive(true);
