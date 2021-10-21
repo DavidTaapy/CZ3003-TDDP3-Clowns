@@ -27,6 +27,7 @@ const getUser = async(req, res) => {
         const id = req.query.id;
         const userdb = firestore.collection('users');
         const currUser = await userdb.doc(String(id)).get();
+        res.contentType('application/json');
         res.send(JSON.stringify(currUser.data()));
     } catch (error) {
         res.status(400).send(error.message);
