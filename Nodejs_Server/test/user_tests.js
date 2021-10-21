@@ -8,16 +8,16 @@ chai.should();
 
 chai.use(chaiHttp);
 
-/*describe('Init', function () {
+describe('Init', function () {
     it('check app status', function (done) {
-      chai.request("http://localhost:3000").get('/').end((err, res) => {
-        should.not.exist(err);
-        res.should.have.status(200);
+      chai.request(server).get('/').end((err, res) => {
+        expect(res).to.have.status(200);
         done();
       })
     });
      
-});*/
+});
+
 describe('User API', () => {
     //Test GET user
     var user_id = "testttt"
