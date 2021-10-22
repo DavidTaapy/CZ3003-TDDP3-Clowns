@@ -10,6 +10,7 @@ public class MultiQuiz : MonoBehaviour
     [SerializeField] TextMeshProUGUI questionText;
     [SerializeField] List<QuestionSO> questions = new List<QuestionSO>();
     QuestionSO currentQuestion;
+    Question currentQn;
 
     [Header("Answers")]
     [SerializeField] GameObject[] answerButtons;
@@ -51,11 +52,32 @@ public class MultiQuiz : MonoBehaviour
     public bool isComplete;
     public bool useShowHint;
 
+    List<Question> qnList;
+    User currentUser;
+    string url_qn = "http://localhost:3000/questions";
+
+    string url_user = "http://localhost:3000/user";
+
+    UserDao linktoUserGet;
+
     void Awake()
     {
         timer = FindObjectOfType<Timer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
-        progressBar.maxValue = questions.Count;
+
+        //Need to make change userId accordingly
+        string userId = "7HHcjbfJq1kD8VFMHHDq";
+        linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
+        currentUser = linktoUserGet.getUser(url_user, userId);
+
+        var linktoQuestionGet = GameObject.Find("QuestionDao").GetComponent<QuestionDao>();     //Getting qn list from db
+        var primaryLevel = currentUser.getPrimaryLevel();
+        qnList = linktoQuestionGet.getQuestions(url_qn, primaryLevel);
+        currentQn = qnList[0];
+        qnList.Remove(currentQn);
+
+
+        progressBar.maxValue = qnList.Count;
         progressBar.value = 0;
         extendTimeNumber = 2;
         showHintNumber = 2;
@@ -71,6 +93,8 @@ public class MultiQuiz : MonoBehaviour
             if (progressBar.value == progressBar.maxValue)
             {
                 isComplete = true;
+                // update user elo rating here
+
                 return;
             }
             hasAnsweredEarly = false;
@@ -85,7 +109,7 @@ public class MultiQuiz : MonoBehaviour
 
         if (useShowHint)
         {
-            questionText.text = currentQuestion.GetHint();
+            questionText.text = currentQn.GetHint();
             useShowHint = false;
         }
 
@@ -107,28 +131,28 @@ public class MultiQuiz : MonoBehaviour
     void DisplayAnswer(int index)
     {
         Image buttonImage;
-        if (index == currentQuestion.GetCorrectAnswerIndex())
+        if (index == currentQn.GetCorrectAnswerIndex())
         {
             questionText.text = "Correct!";
             buttonImage = answerButtons[index].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
-            scoreKeeper.SaveQuestionGotCorrect(currentQuestion);
+            scoreKeeper.SaveQuestionGotCorrect(currentQn);
             scoreKeeper.IncrementCorrectAnswers();
         }
         else
         {
-            correctAnswerIndex = currentQuestion.GetCorrectAnswerIndex();
-            string correctAnswer = currentQuestion.GetAnswer(correctAnswerIndex);
+            correctAnswerIndex = currentQn.GetCorrectAnswerIndex();
+            string correctAnswer = currentQn.GetAnswer(correctAnswerIndex);
             questionText.text = "Sorry, the correct answer was:\n" + correctAnswer;
             buttonImage = answerButtons[correctAnswerIndex].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
-            scoreKeeper.SaveQuestionGotWrong(currentQuestion);
+            scoreKeeper.SaveQuestionGotWrong(currentQn);
         }
     }
 
     void GetNextQuestion()
     {
-        if (questions.Count > 0)
+        if (qnList.Count > 0)
         {
             SetButtonState(true);
             SetDefaultButtonSprites();
@@ -141,23 +165,23 @@ public class MultiQuiz : MonoBehaviour
 
     void GetRandomQuestion()
     {
-        int index = Random.Range(0, questions.Count);
-        currentQuestion = questions[index];
+        int index = Random.Range(0, qnList.Count);
+        currentQn = qnList[index];
 
-        if (questions.Contains(currentQuestion))
+        if (qnList.Contains(currentQn))
         {
-            questions.Remove(currentQuestion);
+            qnList.Remove(currentQn);
         }
     }
 
     void DisplayQuestion()
     {
-        questionText.text = currentQuestion.GetQuestion();
+        questionText.text = currentQn.GetQuestion();
 
         for (int i = 0; i < answerButtons.Length; i++)
         {
             TextMeshProUGUI buttonText = answerButtons[i].GetComponentInChildren<TextMeshProUGUI>();
-            buttonText.text = currentQuestion.GetAnswer(i);
+            buttonText.text = currentQn.GetAnswer(i);
         }
     }
 
