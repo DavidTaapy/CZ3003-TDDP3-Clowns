@@ -10,6 +10,13 @@ public class ScoreKeeper : MonoBehaviour
     List<QuestionSO> questionsGotCorrect = new List<QuestionSO>();
     List<QuestionSO> questionsGotWrong = new List<QuestionSO>();
 
+    List<Question> qnsGotCorrect = new List<Question>();
+    List<Question> qnsGotWrong = new List<Question>();
+
+    public int GetWrongAnswers(){
+        return questionsSeen - correctAnswers;
+    }
+
     public int GetCorrectAnswers()
     {
         return correctAnswers;
@@ -50,6 +57,17 @@ public class ScoreKeeper : MonoBehaviour
         questionsGotWrong.Add(currentQuestion);
     }
 
+    // Duplicated methods here
+    public void SaveQuestionGotCorrect(Question currentQuestion)
+    {
+        qnsGotCorrect.Add(currentQuestion);
+    }
+
+    public void SaveQuestionGotWrong(Question currentQuestion)
+    {
+        qnsGotWrong.Add(currentQuestion);
+    }
+
     public string[] GetQuestionsGotCorrect()
     {
         string[] correctQuestions = new string[] { };
@@ -76,5 +94,12 @@ public class ScoreKeeper : MonoBehaviour
         }
 
         return wrongQuestions;
+    }
+
+    public void resetFields(){
+        this.correctAnswers = 0;
+        this.questionsSeen = 0;
+        this.qnsGotCorrect = new List<Question>();
+        this.qnsGotWrong = new List<Question>();
     }
 }
