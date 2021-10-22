@@ -6,16 +6,22 @@ using UnityEngine.EventSystems;
 
 public class InventoryUIManager : MonoBehaviour
 {
-    public InventoryManager inventoryManager;
-    public string url_user;
-    public GameObject[] inventorySlots;
-    private int itemPerPage = 8;
-    public int pageID;
-    public Text pageText;
-    public GameObject inventoryPanel;
-    public GameObject itemPanel;
-    public List<Item> inventory;
     private string userId = "7HHcjbfJq1kD8VFMHHDq";
+    private string url_user = "http://localhost:3000/user";
+
+    [Header("Inventory Details")]
+    public GameObject inventoryPanel;
+    // public InventoryManager inventoryManager;
+    public GameObject[] inventorySlots;
+    public List<Item> inventory;
+
+    [Header("Page Details")]
+    private int itemPerPage = 8;
+    private int pageID;
+    public Text pageText;
+
+    [Header("View Item Details")]
+    public GameObject itemPanel;
     Sprite sprite;
     
     // Start is called before the first frame update
@@ -52,16 +58,6 @@ public class InventoryUIManager : MonoBehaviour
                 inventorySlots[i].transform.GetChild(0).GetComponent<Image>().sprite = sprite;
                 inventorySlots[i].transform.GetChild(1).GetComponent<Text>().text = inventory[i].getItemCount().ToString();
                 inventorySlots[i].transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
-                /*
-                if (inventoryManager.items[i].itemCount == 0)
-                {
-                    inventorySlots[i].transform.GetChild(0).GetComponent<Image>().color = new Color(0, 0, 0);
-                }
-                else
-                {
-                    inventorySlots[i].transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255);
-                }
-                */
                 tmp--;
             }
             else
@@ -77,7 +73,7 @@ public class InventoryUIManager : MonoBehaviour
 
     public void NextPage()
     {
-        if (pageID >= Mathf.Floor((inventoryManager.items.Count - 1) / itemPerPage))
+        if (pageID >= Mathf.Floor((inventory.Count - 1) / itemPerPage))
         {
             pageID = 0;
         }
@@ -93,7 +89,7 @@ public class InventoryUIManager : MonoBehaviour
     {
         if (pageID <= 0)
         {
-            pageID = Mathf.FloorToInt((inventoryManager.items.Count - 1) / itemPerPage);
+            pageID = Mathf.FloorToInt((inventory.Count - 1) / itemPerPage);
         }
         else
         {
@@ -127,14 +123,15 @@ public class InventoryUIManager : MonoBehaviour
         GameObject currentItem = currentItemButton.transform.parent.gameObject;
         int currentItemIndex = currentItem.transform.GetSiblingIndex();
 
-        itemPanel.transform.GetChild(0).GetComponent<Image>().sprite = inventoryManager.items[currentItemIndex].itemSprite;
-        itemPanel.transform.GetChild(1).GetComponent<Text>().text = "ID: " + inventoryManager.items[currentItemIndex].itemID.ToString();
-        itemPanel.transform.GetChild(2).GetComponent<Text>().text = "Name: " + inventoryManager.items[currentItemIndex].itemName;
-        itemPanel.transform.GetChild(3).GetComponent<Text>().text = "Price: " + inventoryManager.items[currentItemIndex].price.ToString();
-        itemPanel.transform.GetChild(5).GetComponent<Text>().text = "You have: " + inventoryManager.items[currentItemIndex].itemCount.ToString();
-        itemPanel.transform.GetChild(6).GetComponent<Text>().text = inventoryManager.items[currentItemIndex].itemDescription.ToString();
+        sprite = Resources.Load<Sprite>(inventory[currentItemIndex].getSpriteSource());
+        itemPanel.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
+        itemPanel.transform.GetChild(1).GetComponent<Text>().text = "ID: " + inventory[currentItemIndex].getItemID().ToString();
+        itemPanel.transform.GetChild(2).GetComponent<Text>().text = "Name: " + inventory[currentItemIndex].getItemName();
+        itemPanel.transform.GetChild(3).GetComponent<Text>().text = "Price: " + inventory[currentItemIndex].getPrice().ToString();
+        itemPanel.transform.GetChild(5).GetComponent<Text>().text = "You have: " + inventory[currentItemIndex].getItemCount().ToString();
+        itemPanel.transform.GetChild(6).GetComponent<Text>().text = inventory[currentItemIndex].getItemDescription().ToString();
 
-        switch (inventoryManager.items[currentItemIndex].itemSource)
+        switch (inventory[currentItemIndex].itemSource)
         {
             case ItemSource.Shop:
             {
@@ -152,15 +149,5 @@ public class InventoryUIManager : MonoBehaviour
                 break;
             }
         }
-        /*
-        if (inventoryManager.items[currentItemIndex].itemCount == 0)
-        {
-            itemPanel.transform.GetChild(0).GetComponent<Image>().color = new Color(0, 0, 0);
-        }
-        else
-        {
-            itemPanel.transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255);
-        }
-        */
     }
 }
