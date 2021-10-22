@@ -150,7 +150,7 @@ public class RegisterManager : MonoBehaviour
                     
                     var linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
                     // Code to create user
-                    User user2 = new User(User.UserId, 0, _grade);
+                    User user2 = new User(_username, 0, _grade);
                     user2.setId(User.UserId);
                     string result = linktoUserGet.createUser(url_user, user2);
                     Debug.Log(User.UserId + " created");
