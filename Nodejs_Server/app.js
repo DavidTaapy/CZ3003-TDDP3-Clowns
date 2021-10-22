@@ -6,8 +6,6 @@ import { questionRouter } from './routes/question.routes.js';
 import { itemRouter } from './routes/item.routes.js';
 import { resRouter } from './routes/restaurant.routes.js';
 
-//hellu ryannieeee
-
 const app = express();
 
 // parse requests of content-type: application/json
@@ -33,3 +31,5 @@ app.use('/', resRouter);
 app.listen(3000, () => {
   console.log("Server is running on port 3000.");
 });
+
+export {app as server};
