@@ -48,19 +48,16 @@ public class Quiz : MonoBehaviour
     List<Question> qnList;
     User currentUser;
     string url_qn = "http://localhost:3000/questions";
-
     string url_user = "http://localhost:3000/user";
-
     UserDao linktoUserGet;
-
     List<Question> completedQns;
-    int numberOfQns = 5;
 
     void Awake()
     {
         timer = FindObjectOfType<Timer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         scoreKeeper.resetFields();
+
         //Need to make change userId accordingly
         string userId = "7HHcjbfJq1kD8VFMHHDq";
         linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
@@ -72,7 +69,7 @@ public class Quiz : MonoBehaviour
         qnList = linktoQuestionGet.getQuestions(url_qn, primaryLevel);
         GetRandomQuestion();
                 
-        progressBar.maxValue = numberOfQns;
+        progressBar.maxValue = qnList.Count;
         progressBar.value = 0;
         extendTimeNumber = 2;
         showHintNumber = 2;
@@ -90,9 +87,9 @@ public class Quiz : MonoBehaviour
                 isComplete = true;
                 UpdateUserPoints();
                 UpdateUserQns();
-                Debug.Log(currentUser.ToJSON());
-                string result = linktoUserGet.updateUser(url_user, currentUser);
-                Debug.Log(result);
+                // Debug.Log(currentUser.ToJSON());
+                // string result = linktoUserGet.updateUser(url_user, currentUser);
+                // Debug.Log(result);
                 return;
             }
             hasAnsweredEarly = false;
@@ -169,6 +166,7 @@ public class Quiz : MonoBehaviour
         {
             qnList.Remove(currentQn);
         }
+
         if (completedQns.Count == 0){
             completedQns.Add(currentQn);
             return;
@@ -272,4 +270,6 @@ public class Quiz : MonoBehaviour
         int wrongAns = currentUser.getWrongQns() + scoreKeeper.GetWrongAnswers();
         currentUser.setWrongQns(wrongAns);
     }
+
+
 }
