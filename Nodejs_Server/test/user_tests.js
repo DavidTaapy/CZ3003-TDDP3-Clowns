@@ -20,13 +20,26 @@ describe('Init', function () {
 
 describe('User API', () => {
     //Test GET user
-    var user_id = "testttt"
+    var user_id = "testttt";
+    var wrong_id = "wrong";
+    var new_user = {
+        "id": "1234",
+        "userName": "ryannieeeee",
+        "primaryLevel": 1
+    }
+
+    var change_user = {
+        "id": "1234",
+        "userName": "ryannieeeee",
+        "primaryLevel": 4
+    }
+    var id_to_delete = "1234";
 
     describe('GET /user', () => {
         it("This should get the user with corresponding id", (done) => {
             chai.request(server)
             .get("/user")
-            .query({id: "testttt"})
+            .query({id: user_id})
             .end((err, res) => {
                 expect(res).to.have.status(200);
                 expect(res).to.be.json;
@@ -38,5 +51,61 @@ describe('User API', () => {
             })
         })
     })
+
+    describe('GET /user (wrong)', () => {
+        it("This should return error message", (done) => {
+            chai.request(server)
+            .get("/user")
+            .query({id: wrong_id})
+            .end((err, res) => {
+                expect(res).to.have.status(400);
+                res.text.should.be.eq("user doesnt exist!");
+            done();
+            })
+        })
+    })
+    
+    describe('POST /user', () => {
+        it("This should add a user", (done) => {
+            chai.request(server)
+            .post("/user")
+            .type("JSON")
+            .send(new_user)
+            .end((err, res) => {
+                expect(res).to.have.status(200);
+                res.text.should.be.eq("user added!");
+            done();
+            })
+        })
+    })
+
+    describe('PUT /user', () => {
+        it("This should edit a user details", (done) => {
+            chai.request(server)
+            .put("/user")
+            .query({id: id_to_delete})
+            .type("JSON")
+            .send(change_user)
+            .end((err, res) => {
+                expect(res).to.have.status(200);
+                res.text.should.be.eq("user is updated!");
+            done();
+            })
+        })
+    })
+
+    describe('DELETE /user', () => {
+        it("This should delete a user", (done) => {
+            chai.request(server)
+            .delete("/user")
+            .query({id: id_to_delete})
+            .end((err, res) => {
+                expect(res).to.have.status(200);
+                res.text.should.be.eq("user is deleted!");
+            done();
+            })
+        })
+    })
+
     
 })
