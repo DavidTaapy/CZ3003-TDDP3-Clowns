@@ -33,6 +33,9 @@ public class User
     [SerializeField]
     private int wrongQns;
 
+    [SerializeField]
+    private List<Question> completedQns;
+
     public User(string username, int eloRating, int primaryLevel){
         this.userName = username;
         this.eloRating = eloRating;
@@ -116,7 +119,7 @@ public class User
 
     public void setCorrectQns(int qns)
     {
-        this.correctQns += qns;
+        this.correctQns = qns;
     }
 
     public int getWrongQns()
@@ -126,7 +129,17 @@ public class User
 
     public void setWrongQns(int qns)
     {
-        this.wrongQns += qns;
+        this.wrongQns = qns;
+    }
+
+    public List<Question> getCompletedQns()
+    {
+        return this.completedQns;
+    }
+
+    public void setCompletedQns(List<Question> completedQns)
+    {
+        this.completedQns = completedQns;
     }
 
 }

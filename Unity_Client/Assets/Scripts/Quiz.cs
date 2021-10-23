@@ -8,8 +8,7 @@ public class Quiz : MonoBehaviour
 {
     [Header("Questions")]
     [SerializeField] TextMeshProUGUI questionText;
-    [SerializeField] List<QuestionSO> questions = new List<QuestionSO>();
-    QuestionSO currentQuestion;
+    Question currentQn;
 
     [Header("Answers")]
     [SerializeField] GameObject[] answerButtons;
@@ -46,12 +45,34 @@ public class Quiz : MonoBehaviour
     public bool isComplete;
     public bool useShowHint;
 
+    List<Question> qnList;
+    User currentUser;
+    string url_qn = "http://localhost:3000/questions";
+
+    string url_user = "http://localhost:3000/user";
+
+    UserDao linktoUserGet;
+
+    List<Question> completedQns;
+    int numberOfQns = 5;
+
     void Awake()
     {
         timer = FindObjectOfType<Timer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
-        // dao = FindObjectOfType<Dao>();
-        progressBar.maxValue = questions.Count;
+        scoreKeeper.resetFields();
+        //Need to make change userId accordingly
+        string userId = "7HHcjbfJq1kD8VFMHHDq";
+        linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
+        currentUser = linktoUserGet.getUser(url_user, userId);
+        completedQns = currentUser.getCompletedQns();
+
+        var linktoQuestionGet = GameObject.Find("QuestionDao").GetComponent<QuestionDao>();     //Getting qn list from db
+        var primaryLevel = currentUser.getPrimaryLevel();
+        qnList = linktoQuestionGet.getQuestions(url_qn, primaryLevel);
+        GetRandomQuestion();
+                
+        progressBar.maxValue = numberOfQns;
         progressBar.value = 0;
         extendTimeNumber = 2;
         showHintNumber = 2;
@@ -67,6 +88,11 @@ public class Quiz : MonoBehaviour
             if (progressBar.value == progressBar.maxValue)
             {
                 isComplete = true;
+                UpdateUserPoints();
+                UpdateUserQns();
+                Debug.Log(currentUser.ToJSON());
+                string result = linktoUserGet.updateUser(url_user, currentUser);
+                Debug.Log(result);
                 return;
             }
             hasAnsweredEarly = false;
@@ -81,7 +107,7 @@ public class Quiz : MonoBehaviour
 
         if (useShowHint)
         {
-            questionText.text = currentQuestion.GetHint();
+            questionText.text = string.Format("{0}\n{1}", currentQn.GetQuestion(), currentQn.GetHint());
             useShowHint = false;
         }
 
@@ -102,28 +128,28 @@ public class Quiz : MonoBehaviour
     void DisplayAnswer(int index)
     {
         Image buttonImage;
-        if (index == currentQuestion.GetCorrectAnswerIndex())
+        if (index == currentQn.GetCorrectAnswerIndex())
         {
             questionText.text = "Correct!";
             buttonImage = answerButtons[index].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
-            scoreKeeper.SaveQuestionGotCorrect(currentQuestion);
+            scoreKeeper.SaveQuestionGotCorrect(currentQn);
             scoreKeeper.IncrementCorrectAnswers();
         }
         else
         {
-            correctAnswerIndex = currentQuestion.GetCorrectAnswerIndex();
-            string correctAnswer = currentQuestion.GetAnswer(correctAnswerIndex);
+            correctAnswerIndex = currentQn.GetCorrectAnswerIndex();
+            string correctAnswer = currentQn.GetAnswer(correctAnswerIndex);
             questionText.text = "Sorry, the correct answer was:\n" + correctAnswer;
             buttonImage = answerButtons[correctAnswerIndex].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
-            scoreKeeper.SaveQuestionGotWrong(currentQuestion);
+            scoreKeeper.SaveQuestionGotWrong(currentQn);
         }
     }
 
     void GetNextQuestion()
     {
-        if (questions.Count > 0)
+        if (qnList.Count > 0)
         {
             SetButtonState(true);
             SetDefaultButtonSprites();
@@ -136,23 +162,35 @@ public class Quiz : MonoBehaviour
 
     void GetRandomQuestion()
     {
-        int index = Random.Range(0, questions.Count);
-        currentQuestion = questions[index];
+        int index = Random.Range(0, qnList.Count);
+        currentQn = qnList[index];
 
-        if (questions.Contains(currentQuestion))
+        if (qnList.Contains(currentQn))
         {
-            questions.Remove(currentQuestion);
+            qnList.Remove(currentQn);
+        }
+        if (completedQns.Count == 0){
+            completedQns.Add(currentQn);
+            return;
+        } else {
+            foreach (var qns in completedQns)
+            {
+                if (string.Equals(qns.GetQuestion(), currentQn.GetQuestion())){
+                    return;
+                }
+            }
+            completedQns.Add(currentQn);
         }
     }
 
     void DisplayQuestion()
     {
-        questionText.text = currentQuestion.GetQuestion();
+        questionText.text = currentQn.GetQuestion();
 
         for (int i = 0; i < answerButtons.Length; i++)
         {
             TextMeshProUGUI buttonText = answerButtons[i].GetComponentInChildren<TextMeshProUGUI>();
-            buttonText.text = currentQuestion.GetAnswer(i);
+            buttonText.text = currentQn.GetAnswer(i);
         }
     }
 
@@ -215,9 +253,23 @@ public class Quiz : MonoBehaviour
         if (skipQuestionNumber > 0)
         {
             skipQuestionNumber -= 1;
-            scoreKeeper.SaveQuestionGotCorrect(currentQuestion);
+            scoreKeeper.SaveQuestionGotCorrect(currentQn);
             scoreKeeper.IncrementCorrectAnswers();
             timer.loadNextQuestion = true;
         }
+    }
+
+    private void UpdateUserPoints(){
+        int score = currentUser.getPoints();
+        score += scoreKeeper.CalculatePoints();
+        currentUser.setPoints(score);
+    }
+
+    private void UpdateUserQns(){
+        currentUser.setCompletedQns(completedQns);
+        int correctAns = currentUser.getCorrectQns() + scoreKeeper.GetCorrectAnswers();
+        currentUser.setCorrectQns(correctAns);
+        int wrongAns = currentUser.getWrongQns() + scoreKeeper.GetWrongAnswers();
+        currentUser.setWrongQns(wrongAns);
     }
 }

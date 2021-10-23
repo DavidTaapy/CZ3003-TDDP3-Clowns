@@ -27,10 +27,13 @@ const getUser = async(req, res) => {
         const id = req.query.id;
         const userdb = firestore.collection('users');
         const currUser = await userdb.doc(String(id)).get();
-        res.send(JSON.stringify(currUser.data()));
+        if (currUser.exists) {
+            res.contentType('application/json');
+            res.send(JSON.stringify(currUser.data()));
+        }
+        else {res.status(400).send("user doesnt exist!");}
     } catch (error) {
         res.status(400).send(error.message);
-        res.send("user doesnt exist!");
     }
 };
 

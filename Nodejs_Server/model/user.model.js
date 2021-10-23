@@ -6,9 +6,10 @@ class User {
         this.eloRating = 0;
         this.points = 0;
         this.inventory = [];
-        this.questions = [];
+        this.completedQns = [];
         this.correctQns = 0;
         this.wrongQns = 0;
+        this.character = "";
     }
 }
 
