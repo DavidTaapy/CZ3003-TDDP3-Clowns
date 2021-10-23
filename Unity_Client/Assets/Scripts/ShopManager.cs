@@ -13,6 +13,7 @@ public class ShopManager : MonoBehaviour
     [Header("User Details")]
     public User user;
     private int userPoints;
+    private List<Item> userInventory;
 
     [Header("Powerup Details")]
     public GameObject powerupPanel;
@@ -27,10 +28,10 @@ public class ShopManager : MonoBehaviour
     [Header("View Item Details")]
     public GameObject itemPanel;
     private GameObject currentItem;
+    public Text pointsText;
     
     [Header("Page Details")]
     private int itemPerPage = 8;
-    public Text pointsText;
     public Text pageText;
     public GameObject toAccessoryPage;
     public GameObject toPowerupPage;
@@ -50,6 +51,7 @@ public class ShopManager : MonoBehaviour
         shopAccessory = getShopAccessory(url_items);
         userPoints = user.getPoints();
         pointsText.text = "Points: " + userPoints.ToString();
+        userInventory = user.getInventory();
 
         // Initialise powerups
         displayPowerups();
@@ -74,13 +76,18 @@ public class ShopManager : MonoBehaviour
 
     private List<Item> getShopAccessory(string url){
         var linktoItems = GameObject.Find("ItemsDao").GetComponent<ItemDao>();
-        List<Item> shopAccessory = linktoItems.getItems(url_items, "Skin", "Shop"); //returns list of powerups in shop
+        List<Item> shopAccessory = linktoItems.getItems(url_items, "Skin", "Shop"); //returns list of accessory in shop
         Debug.Log("\n num of shop skins: " + shopAccessory.Count);
         foreach (Item i in shopAccessory)
         {
             Debug.Log(i.ToJSON());
         }
         return shopAccessory;
+    }
+
+    private void updateUserInventory(string url, User user) {
+        var linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
+        linktoUserGet.updateUser(url, user);
     }
 
     public void activatePowerupPanel()
@@ -111,7 +118,6 @@ public class ShopManager : MonoBehaviour
 
     public void activateItemPanel()
     {
-        // GameObject currentItemButton = EventSystem.current.currentSelectedGameObject;
         currentItem = EventSystem.current.currentSelectedGameObject.transform.parent.gameObject;
         updateItemPanel(currentItem);
 
@@ -165,13 +171,15 @@ public class ShopManager : MonoBehaviour
     void updateItemPanel(GameObject currentItem)
     {
         int currentItemIndex = currentItem.transform.GetSiblingIndex();
+        GameObject currentPanel = currentItem.transform.parent.gameObject;
 
-        if (currentItem.transform.parent.gameObject == powerupPanel)
+        if (currentPanel == powerupPanel)
         {
             itemPanel.transform.GetChild(0).GetComponent<Image>().sprite = shopPowerups[currentItemIndex].getItemSprite();
             itemPanel.transform.GetChild(1).GetComponent<Text>().text = "Name: " + shopPowerups[currentItemIndex].getItemName();
             itemPanel.transform.GetChild(2).GetComponent<Text>().text = "Price: " + shopPowerups[currentItemIndex].getPrice().ToString();
             itemPanel.transform.GetChild(3).GetComponent<Text>().text = shopPowerups[currentItemIndex].getItemDescription().ToString();
+            itemPanel.transform.GetChild(4).GetComponent<Text>().text = shopPowerups[currentItemIndex].getItemID().ToString();
         }
         else
         {
@@ -179,23 +187,65 @@ public class ShopManager : MonoBehaviour
             itemPanel.transform.GetChild(1).GetComponent<Text>().text = "Name: " + shopAccessory[currentItemIndex].getItemName();
             itemPanel.transform.GetChild(2).GetComponent<Text>().text = "Price: " + shopAccessory[currentItemIndex].getPrice().ToString();
             itemPanel.transform.GetChild(3).GetComponent<Text>().text = shopAccessory[currentItemIndex].getItemDescription().ToString();
+            itemPanel.transform.GetChild(4).GetComponent<Text>().text = shopAccessory[currentItemIndex].getItemID().ToString();
         }
+
+        itemPanel.transform.GetChild(4).gameObject.SetActive(false);
     }
 
-    // TODO: buy item and update user inventory, substract userpoints by price
     public void purchaseItem()
     {
+        int price;
+        Item purchasedItem;
         int currentItemIndex = currentItem.transform.GetSiblingIndex();
-        int price = shopPowerups[currentItemIndex].getPrice();
+        GameObject currentPanel = currentItem.transform.parent.gameObject;
+
+        if (currentPanel == powerupPanel)
+        {
+            purchasedItem = shopPowerups[currentItemIndex];
+            price = purchasedItem.getPrice();
+        }
+        else
+        {
+            purchasedItem = shopAccessory[currentItemIndex];
+            price = purchasedItem.getPrice();
+        }
 
         if (userPoints >= price)
         {
             userPoints -= price;
+            user.setPoints(userPoints); // update points in database
+            pointsText.text = "Points: " + userPoints.ToString(); // update points on shop UI
+            
+            // get name of the current item and match it with item names in user's inventory
+            string purchasedItemName = purchasedItem.getItemName();
+            bool existingItem = false; // indicates if the purchased item exists in user's inventory
+
+            for (int i = 0; i < userInventory.Count; i++)
+            {
+                int currentCount; // current count of purchased item in user's inventory
+                if (userInventory[i].getItemName() == purchasedItemName)
+                {
+                    existingItem = true; // purchased item EXISTS in user's inventory
+                    currentCount = userInventory[i].getItemCount();
+                    currentCount++;
+                    userInventory[i].setItemCount(currentCount); // updates count of purchased item in user's inventory
+                    break;
+                }
+            }
+
+            if (!existingItem) // if purchased item DOES NOT EXIST in user's inventory
+            {
+                userInventory.Add(purchasedItem); // adds purchased item into user's inventory
+                user.setInventory(userInventory); // updates user's inventory
+            }
+
             print("Purchase successful!");
         }
         else
         {
             print("Not enough points!");
         }
+        updateUserInventory(url_user, user);
     }
 }
