@@ -18,7 +18,7 @@ namespace Handlers
         private void Start() => JoinQueue();
 
         private void JoinQueue() =>
-            MatchmakingManager.Instance.JoinQueue(MainManager.Instance.currentLocalPlayerId, gameId =>
+            MainManager.Instance.matchmakingManager.JoinQueue(MainManager.Instance.currentLocalPlayerId, gameId =>
                 {
                     this.gameId = gameId;
                     gameFound = true;
