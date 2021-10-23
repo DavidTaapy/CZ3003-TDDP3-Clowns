@@ -10,7 +10,7 @@ namespace APIs
     {
         private static DatabaseReference reference;
 
-        public static void InitializeDatabase() => reference = FirebaseDatabase.DefaultInstance.RootReference;
+        public static void InitializeRTDatabase() => reference = FirebaseDatabase.DefaultInstance.RootReference;
 
         public static void PostJSON(string path, string json, Action callback, Action<AggregateException> fallback)
         {
