@@ -62,6 +62,7 @@ public class RedirectionManager : MonoBehaviour
 
     public void redirectToMultiFoundMatch()
     {
+        InitializeDatabase();
         Loader.Load(Loader.Scene.MP_Finding);
     }
 
