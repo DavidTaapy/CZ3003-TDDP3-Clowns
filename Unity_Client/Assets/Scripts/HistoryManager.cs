@@ -9,17 +9,18 @@ public class HistoryManager : MonoBehaviour
     //public UserQuestions userQuestions;
     public GameObject Content;
     public GameObject[] qnSlots;
+    public User user;
     public List<Question> userQuestions;
-    public string url_qn;
-    //public int displayNum = 5;
+    public string url_user;
+    public int displayNum = 17;
 
     // Start is called before the first frame update
     void Start()
     {
-        var linktoQuestionGet = GameObject.Find("QuestionDao").GetComponent<QuestionDao>();
-        var primaryLevel = 2;
-        userQuestions = linktoQuestionGet.getQuestions(url_qn, primaryLevel);
-        userQuestions = linktoQuestionGet.getQuestions(url_qn, primaryLevel);
+        var linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
+        var userId = "7HHcjbfJq1kD8VFMHHDq";
+        user = linktoUserGet.getUser(url_user, userId);
+        userQuestions = user.getCompletedQns();
         DisplayQuestions();
         Content.SetActive(true);
     }
@@ -33,6 +34,7 @@ public class HistoryManager : MonoBehaviour
     {
         for (int i = 0; i < userQuestions.Count; i++)
         {
+            Debug.Log(userQuestions[i].ToJSON());
             qnSlots[i].gameObject.SetActive(true);
             int correctAns = userQuestions[i].GetCorrectAnswerIndex();
 
@@ -42,12 +44,11 @@ public class HistoryManager : MonoBehaviour
         }
 
       
-        /*for (int i = userQuestions.Count; i < displayNum; i++)
+        for (int i = userQuestions.Count; i < displayNum; i++)
         {
-            string curr = "questionslots (" + i.ToString() + ")";
-            Debug.Log(curr);
+            string curr = "Questions (" + i.ToString() + ")";
             GameObject.Find(curr).SetActive(false);
-        }*/
+        }
 
     }
 }
