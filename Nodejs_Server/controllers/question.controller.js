@@ -20,7 +20,7 @@ const getQuestions = async(req, res) => {
         const questiondb = firestore.collection('questions');
         //todo: try to randomize qns to get    
         const snapshot = await questiondb.where('primaryLevel', '==', parseInt(lvl)).get();
-        res.send(snapshot.docs.map(user => user.data()));
+        res.send(snapshot.docs.map(qn => qn.data()));
 
     } catch (error) {
         return res.status(400).send(error.message);
