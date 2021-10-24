@@ -43,7 +43,6 @@ public class Quiz : MonoBehaviour
     int skipQuestionCount;
 
     public GameObject dishGroup;
-
     public GameObject ingredientGroup;
 
     public bool isComplete;
@@ -95,8 +94,6 @@ public class Quiz : MonoBehaviour
 
         sprite = Resources.Load<Sprite>(currentRestaurant.getDishes()[NUMBER_OF_QNS]);
         dishGroup.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
-        //sprite = Resources.Load<Sprite>(currentRestaurant.getDishes()[(int)progressBar.value]);
-        //ingredientGroup.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
     }
 
     void Update()
@@ -108,12 +105,9 @@ public class Quiz : MonoBehaviour
             if (progressBar.value == progressBar.maxValue)
             {
                 isComplete = true;
-                // Update user elo rating here
                 UpdateUserPoints();
                 UpdateUserQns();
-                // Debug.Log(currentUser.ToJSON());
-                // string result = linktoUserGet.updateUser(url_user, currentUser);
-                // Debug.Log(result);
+                string result = linktoUserGet.updateUser(url_user, currentUser);
                 return;
             }
             hasAnsweredEarly = false;
@@ -331,6 +325,7 @@ public class Quiz : MonoBehaviour
 
     private void UpdateUserQns()
     {
+        Debug.Log(completedQns);
         currentUser.setCompletedQns(completedQns);
         int correctAns = currentUser.getCorrectQns() + scoreKeeper.GetCorrectAnswers();
         currentUser.setCorrectQns(correctAns);
