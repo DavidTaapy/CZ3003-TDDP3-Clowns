@@ -5,7 +5,7 @@ using UnityEngine;
 public enum ItemType
 {
         Powerup,
-        Skin
+        Accessory
 }
 
 public enum ItemSource
