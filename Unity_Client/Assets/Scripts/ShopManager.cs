@@ -157,7 +157,7 @@ public class ShopManager : MonoBehaviour
         {
             if (tmp > 0)
             {
-                sprite = Resources.Load<Sprite>(shopPowerups[i].getSpriteSource());
+                sprite = Resources.Load<Sprite>(shopAccessory[i].getSpriteSource());
                 accessorySlots[i].gameObject.SetActive(true);
                 accessorySlots[i].transform.GetChild(0).GetComponent<Image>().sprite = sprite;
                 accessorySlots[i].transform.GetChild(1).GetComponent<Text>().text = shopAccessory[i].getPrice().ToString();
@@ -178,7 +178,8 @@ public class ShopManager : MonoBehaviour
 
         if (currentPanel == powerupPanel)
         {
-            itemPanel.transform.GetChild(0).GetComponent<Image>().sprite = shopPowerups[currentItemIndex].getItemSprite();
+            sprite = Resources.Load<Sprite>(shopPowerups[currentItemIndex].getSpriteSource());
+            itemPanel.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
             itemPanel.transform.GetChild(1).GetComponent<Text>().text = "Name: " + shopPowerups[currentItemIndex].getItemName();
             itemPanel.transform.GetChild(2).GetComponent<Text>().text = "Price: " + shopPowerups[currentItemIndex].getPrice().ToString();
             itemPanel.transform.GetChild(3).GetComponent<Text>().text = shopPowerups[currentItemIndex].getItemDescription().ToString();
@@ -186,7 +187,8 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
-            itemPanel.transform.GetChild(0).GetComponent<Image>().sprite = shopAccessory[currentItemIndex].getItemSprite();
+            sprite = Resources.Load<Sprite>(shopAccessory[currentItemIndex].getSpriteSource());
+            itemPanel.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
             itemPanel.transform.GetChild(1).GetComponent<Text>().text = "Name: " + shopAccessory[currentItemIndex].getItemName();
             itemPanel.transform.GetChild(2).GetComponent<Text>().text = "Price: " + shopAccessory[currentItemIndex].getPrice().ToString();
             itemPanel.transform.GetChild(3).GetComponent<Text>().text = shopAccessory[currentItemIndex].getItemDescription().ToString();

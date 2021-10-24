@@ -13,16 +13,39 @@ public class Restaurant
     private string name;
 
     [SerializeField]
-    private string resSource;
+    private string spriteSource;
 
     [SerializeField]
-    private Dictionary<string , List<string>> Dishes;
+    private List<string> dishes;
 
-    public List<string> getDishes(string dish){
-        return Dishes[dish];
+    public Restaurant(string id, string name, string spriteSource, List<string> dishes){
+        this.id = id;
+        this.name = name;
+        this.spriteSource = spriteSource;
+        this.dishes = dishes;
     }
 
-    
+    public string getSpriteSource()
+    {
+        return this.spriteSource;
+    }
+
+    public void setSpriteSource(string spriteSource)
+    {
+        this.spriteSource = spriteSource;
+    }
+
+    public List<string> getDishes()
+    {
+        return this.dishes;
+    }
+
+    public void setDishes(List<string> dishes)
+    {
+        this.dishes = dishes;
+    }
+
+
     public string getId()
     {
         return this.id;
@@ -41,15 +64,6 @@ public class Restaurant
     public void setName(string name)
     {
         this.name = name;
-    }
-    public string getResSource()
-    {
-        return this.resSource;
-    }
-
-    public void setResSource(string resSource)
-    {
-        this.resSource = resSource;
     }
 
     public string ToJSON(){

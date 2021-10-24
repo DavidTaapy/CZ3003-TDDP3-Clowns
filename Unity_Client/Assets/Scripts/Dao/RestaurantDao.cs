@@ -12,13 +12,14 @@ public class RestaurantDao : MonoBehaviour
     
     HttpClient client = new HttpClient();
 
-    public Restaurant getRestaurant(string url, string restaurantName){
+    public List<Restaurant> getRestaurant(string url, string restaurantName){
         
         string urlWithParams = string.Format("{0}?name={1}", url, restaurantName);
 
         HttpResponseMessage response = client.GetAsync(urlWithParams).GetAwaiter().GetResult();
         string responseStr = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-        Restaurant restaurant = JsonUtility.FromJson<Restaurant>(responseStr);;
+        Debug.Log(responseStr);
+        List<Restaurant> restaurant = JsonConvert.DeserializeObject<List<Restaurant>>(responseStr);
         return restaurant;
     }
 }

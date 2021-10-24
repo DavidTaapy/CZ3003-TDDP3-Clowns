@@ -82,13 +82,10 @@ namespace apiManagers{
 
             // Code to get restaurant  from db
             var linktoRestaurant = GameObject.Find("RestaurantDao").GetComponent<RestaurantDao>();
-            Restaurant restaurant = linktoRestaurant.getRestaurant(url_restaurant, "Cafe2");
-            Debug.Log(restaurant.ToJSON());
-            Debug.Log(restaurant.getDishes("Burger"));
-            List<string> temp = restaurant.getDishes("Burger");
-            foreach (string i in temp)
+            List<Restaurant> restaurant = linktoRestaurant.getRestaurant(url_restaurant, "Diner");
+            foreach (Restaurant res in restaurant)
             {
-                Debug.Log(i);
+                Debug.Log(res.ToJSON());
             }
         }
     }
