@@ -50,8 +50,8 @@ public class SingleModeTest
         SceneManager.LoadScene("SingleMode");
         yield return new WaitForSeconds(3);
 
-        Button replayButton = GameObject.Find("AnswerButton (0)").GetComponent<Button>();
-        replayButton.onClick.Invoke();
+        Button answerButton = GameObject.Find("AnswerButton (0)").GetComponent<Button>();
+        answerButton.onClick.Invoke();
 
         yield return new WaitForSeconds(3);
 
