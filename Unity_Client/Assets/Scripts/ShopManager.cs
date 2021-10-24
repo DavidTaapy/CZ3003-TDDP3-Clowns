@@ -77,7 +77,7 @@ public class ShopManager : MonoBehaviour
 
     private List<Item> getShopAccessory(string url){
         var linktoItems = GameObject.Find("ItemsDao").GetComponent<ItemDao>();
-        List<Item> shopAccessory = linktoItems.getItems(url_items, "Skin", "Shop"); //returns list of accessory in shop
+        List<Item> shopAccessory = linktoItems.getItems(url_items, "Accessory", "Shop"); //returns list of accessory in shop
         Debug.Log("\n num of shop skins: " + shopAccessory.Count);
         foreach (Item i in shopAccessory)
         {
@@ -232,14 +232,18 @@ public class ShopManager : MonoBehaviour
                     existingItem = true; // purchased item EXISTS in user's inventory
                     currentCount = userInventory[i].getItemCount();
                     currentCount++;
-                    userInventory[i].setItemCount(currentCount); // updates count of purchased item in user's inventory
+                    userInventory[i].setItemCount(currentCount); // updates count in user's inventory
                     break;
                 }
             }
 
             if (!existingItem) // if purchased item DOES NOT EXIST in user's inventory
             {
+                int purchasedItemCount;
                 userInventory.Add(purchasedItem); // adds purchased item into user's inventory
+                purchasedItemCount = userInventory[userInventory.Count - 1].getItemCount();
+                purchasedItemCount++; // set item count to 1
+                userInventory[userInventory.Count - 1].setItemCount(purchasedItemCount); // updates count in user's inventory 
                 user.setInventory(userInventory); // updates user's inventory
             }
 
