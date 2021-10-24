@@ -15,7 +15,10 @@ namespace Handlers
         private bool readyingUp;
         private string gameId;
 
-        private void Start() => JoinQueue();
+        private void Start() {
+            MainManager.Instance.currentLocalPlayerId = "David";
+            JoinQueue();
+        }
 
         private void JoinQueue() =>
             MainManager.Instance.matchmakingManager.JoinQueue(MainManager.Instance.currentLocalPlayerId, gameId =>
