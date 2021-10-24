@@ -31,7 +31,6 @@ public class InventoryUIManager : MonoBehaviour
         var userDaoObject = GameObject.Find("UserDao").GetComponent<UserDao>();
         User user = userDaoObject.getUser(url_user, userId);
         inventory = user.getInventory();
-        Debug.Log(inventory[0].ToJSON());
 
         //testing code
         //sprite = Resources.Load<Sprite> ("Sprites/Single Mode Scene Sprites");

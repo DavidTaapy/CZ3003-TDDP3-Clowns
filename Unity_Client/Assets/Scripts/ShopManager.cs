@@ -68,10 +68,6 @@ public class ShopManager : MonoBehaviour
         var linktoItems = GameObject.Find("ItemsDao").GetComponent<ItemDao>();
         List<Item> shopPowerUps = linktoItems.getItems(url_items, "Powerup", "Shop"); //returns list of powerups in shop
         Debug.Log("\n num of shop powerup: " + shopPowerUps.Count);
-        foreach (Item i in shopPowerUps)
-        {
-            Debug.Log(i.ToJSON());
-        }
         return shopPowerUps;
     }
 
@@ -79,10 +75,6 @@ public class ShopManager : MonoBehaviour
         var linktoItems = GameObject.Find("ItemsDao").GetComponent<ItemDao>();
         List<Item> shopAccessory = linktoItems.getItems(url_items, "Accessory", "Shop"); //returns list of accessory in shop
         Debug.Log("\n num of shop skins: " + shopAccessory.Count);
-        foreach (Item i in shopAccessory)
-        {
-            Debug.Log(i.ToJSON());
-        }
         return shopAccessory;
     }
 

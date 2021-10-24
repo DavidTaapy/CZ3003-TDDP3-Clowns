@@ -206,7 +206,6 @@ public class Quiz : MonoBehaviour
     }
     void GetRandomDish(){
         int index = Random.Range(0, restaurantList.Count);
-        Debug.Log(index);
         currentRestaurant = restaurantList[index];
     }
 
@@ -325,7 +324,6 @@ public class Quiz : MonoBehaviour
 
     private void UpdateUserQns()
     {
-        Debug.Log(completedQns);
         currentUser.setCompletedQns(completedQns);
         int correctAns = currentUser.getCorrectQns() + scoreKeeper.GetCorrectAnswers();
         currentUser.setCorrectQns(correctAns);

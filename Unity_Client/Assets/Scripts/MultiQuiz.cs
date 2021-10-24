@@ -190,7 +190,6 @@ public class MultiQuiz : MonoBehaviour
 
     void GetRandomDish(){
         int index = Random.Range(0, restaurantList.Count);
-        Debug.Log(index);
         currentRestaurant = restaurantList[index];
     }
 
