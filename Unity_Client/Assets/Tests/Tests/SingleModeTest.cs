@@ -20,7 +20,7 @@ public class SingleModeTest
         skipQuestionButton.onClick.Invoke();
 
         var correctQuestions = GameObject.FindObjectOfType<ScoreKeeper>().GetCorrectAnswers();
-        Assert.AreEqual(1, correctQuestions);
+        Assert.AreEqual(1, correctQuestions, "Failed on the following test: skip_question_on_click_increase_correct_question!");
 
         yield return new WaitForSeconds(3);
     }
@@ -37,7 +37,7 @@ public class SingleModeTest
         replayButton.onClick.Invoke();
 
         var points = GameObject.FindObjectOfType<ScoreKeeper>().CalculatePoints();
-        Assert.AreEqual(0, points);
+        Assert.AreEqual(0, points, "Failed on the following test: replay_on_click_reset_points!");
 
         yield return new WaitForSeconds(3);
     }
@@ -56,7 +56,7 @@ public class SingleModeTest
         yield return new WaitForSeconds(3);
 
         var newQuestionSeen = GameObject.FindObjectOfType<ScoreKeeper>().GetQuestionSeen();
-        Assert.AreEqual(1, newQuestionSeen);
+        Assert.AreEqual(1, newQuestionSeen, "Failed on the following test: answer_on_click_increase_question_seen");
 
         yield return new WaitForSeconds(3);
     }
