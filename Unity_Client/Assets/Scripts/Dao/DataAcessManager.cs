@@ -12,6 +12,7 @@ namespace apiManagers{
         public string url_qn;
         public string url_leaderboard;
         public string url_items;
+        public string url_restaurant;
         
         void Start(){
             // By name
@@ -63,7 +64,7 @@ namespace apiManagers{
             }*/
             
 
-            // Code to get shop items (skins and powerups separately) from from db
+            // Code to get shop items (skins and powerups separately) from db
             /*var linktoItems = GameObject.Find("ItemsDao").GetComponent<ItemDao>();
             List<Item> shopPowerUps = linktoItems.getItems(url_items, "Powerup", "Shop"); //returns list of powerups in shop
             List<Item> shopSkins = linktoItems.getItems(url_items, "Skin", "Shop"); //returns list of powerups in shop
@@ -78,6 +79,17 @@ namespace apiManagers{
             {
                 Debug.Log(i.ToJSON());
             }*/
+
+            // Code to get restaurant  from db
+            var linktoRestaurant = GameObject.Find("RestaurantDao").GetComponent<RestaurantDao>();
+            Restaurant restaurant = linktoRestaurant.getRestaurant(url_restaurant, "Cafe2");
+            Debug.Log(restaurant.ToJSON());
+            Debug.Log(restaurant.getDishes("Burger"));
+            List<string> temp = restaurant.getDishes("Burger");
+            foreach (string i in temp)
+            {
+                Debug.Log(i);
+            }
         }
     }
 }

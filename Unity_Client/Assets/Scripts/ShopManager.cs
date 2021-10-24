@@ -35,6 +35,7 @@ public class ShopManager : MonoBehaviour
     public Text pageText;
     public GameObject toAccessoryPage;
     public GameObject toPowerupPage;
+    Sprite sprite;
 
     // Start is called before the first frame update
     void Start()
@@ -135,8 +136,9 @@ public class ShopManager : MonoBehaviour
         {
             if (tmp > 0)
             {
+                sprite = Resources.Load<Sprite>(shopPowerups[i].getSpriteSource());
                 powerupSlots[i].gameObject.SetActive(true);
-                powerupSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = shopPowerups[i].getItemSprite();
+                powerupSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = sprite;
                 powerupSlots[i].transform.GetChild(1).GetComponent<Text>().text = shopPowerups[i].getPrice().ToString();
                 powerupSlots[i].transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
                 tmp--;
@@ -155,8 +157,9 @@ public class ShopManager : MonoBehaviour
         {
             if (tmp > 0)
             {
+                sprite = Resources.Load<Sprite>(shopPowerups[i].getSpriteSource());
                 accessorySlots[i].gameObject.SetActive(true);
-                accessorySlots[i].transform.GetChild(0).GetComponent<Image>().sprite = shopAccessory[i].getItemSprite();
+                accessorySlots[i].transform.GetChild(0).GetComponent<Image>().sprite = sprite;
                 accessorySlots[i].transform.GetChild(1).GetComponent<Text>().text = shopAccessory[i].getPrice().ToString();
                 accessorySlots[i].transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
                 tmp--;

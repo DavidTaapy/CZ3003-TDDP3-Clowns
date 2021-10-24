@@ -41,7 +41,8 @@ const getRes = async(req, res) => {
         const name = req.query.name;
         const resdb = firestore.collection('restaurant'); 
         const snapshot = await resdb.where('name', '==', name).get();
-        res.send(snapshot.docs.map(currRes => currRes.data()));
+        res.contentType('application/json');
+        res.send(snapshot.docs.map(currRes => currRes.data())[0]);
     } catch (error) {
         res.status(400).send(error.message);
         res.send("error getting questions!");
