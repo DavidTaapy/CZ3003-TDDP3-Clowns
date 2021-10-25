@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Managers;
+using APIs;
+using Firebase;
 
 public class RedirectionManager : MonoBehaviour
 {
@@ -62,6 +65,7 @@ public class RedirectionManager : MonoBehaviour
 
     public void redirectToMultiFoundMatch()
     {
+        DatabaseAPI.InitializeRTDatabase();
         Loader.Load(Loader.Scene.MP_Finding);
     }
 
