@@ -22,6 +22,7 @@ public class ScoreUi : MonoBehaviour
         //    row.name.text = scores[i].name;
         //    row.score.text = scores[i].score.ToString();
         //}
+        // Debug.Log(PlayerPrefs.GetString("uid"));
         loadLeaderboard();
     }
 
@@ -38,14 +39,18 @@ public class ScoreUi : MonoBehaviour
     {
         List<User> userRanking = getLeaderboard("http://localhost:3000/leaderboard");
         // Debug.Log(userRanking);
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < Mathf.Min(5, userRanking.Count); i++)
         {
             // Debug.Log(userRanking[i].userName);
-            var row = Instantiate(rowUi, transform).GetComponent<RowUi>();
-            row.gameObject.name = "Row" + (i + 1).ToString();
-            row.rank.text = (i + 1).ToString();
-            row.name.text = userRanking[i].userName;
-            row.score.text = userRanking[i].elorating.ToString();
+            if (userRanking[i] != null)
+            {
+                var row = Instantiate(rowUi, transform).GetComponent<RowUi>();
+                row.gameObject.name = "Row" + (i + 1).ToString();
+                row.rank.text = (i + 1).ToString();
+                row.name.text = userRanking[i].userName;
+                row.score.text = userRanking[i].elorating.ToString();
+            }
+            
         }
 
     }

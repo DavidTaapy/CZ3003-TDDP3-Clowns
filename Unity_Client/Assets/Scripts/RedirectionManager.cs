@@ -35,6 +35,8 @@ public class RedirectionManager : MonoBehaviour
 
     public void redirectToLogin()
     {
+        PlayerPrefs.SetString("uid", "");
+        Debug.Log("Uid set to " + PlayerPrefs.GetString("uid"));
         Loader.Load(Loader.Scene.LoginFirebase);
     }
 
