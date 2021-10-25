@@ -38,7 +38,7 @@ public class ScoreUi : MonoBehaviour
     public void loadLeaderboard()
     {
         List<User> userRanking = getLeaderboard("http://localhost:3000/leaderboard");
-        // Debug.Log(userRanking);
+        Debug.Log(userRanking[0]);
         for (int i = 0; i < Mathf.Min(5, userRanking.Count); i++)
         {
             // Debug.Log(userRanking[i].userName);
