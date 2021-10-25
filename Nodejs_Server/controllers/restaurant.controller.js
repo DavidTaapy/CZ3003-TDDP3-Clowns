@@ -1,6 +1,6 @@
 import {firestore} from "../model/db.js";
 
-//add restaurant
+//add restaurant+dish
 const addRes = async(req, res) => {
     try {
         const game = req.body;
@@ -15,6 +15,7 @@ const addRes = async(req, res) => {
     }
 };
 
+/*
 //add dish
 const addDish = async(req, res) => {
     try {
@@ -34,6 +35,7 @@ const addDish = async(req, res) => {
         res.send("error adding");
     }
 };
+*/
 
 // Get restaurant by selection
 const getRes = async(req, res) => {
@@ -41,6 +43,7 @@ const getRes = async(req, res) => {
         const name = req.query.name;
         const resdb = firestore.collection('restaurant'); 
         const snapshot = await resdb.where('name', '==', name).get();
+        res.contentType('application/json');
         res.send(snapshot.docs.map(currRes => currRes.data()));
     } catch (error) {
         res.status(400).send(error.message);
@@ -51,4 +54,4 @@ const getRes = async(req, res) => {
 
 
 
-export {getRes, addRes, addDish};
+export {getRes, addRes};

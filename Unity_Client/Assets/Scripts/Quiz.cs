@@ -42,16 +42,23 @@ public class Quiz : MonoBehaviour
     [SerializeField] GameObject skipQuestionButton;
     int skipQuestionCount;
 
+    public GameObject dishGroup;
+    public GameObject ingredientGroup;
+
     public bool isComplete;
     public bool useShowHint;
-
+    static public int NUMBER_OF_QNS = 5;
     List<Question> qnList;
     User currentUser;
     List<Item> userInventory;
     string url_qn = "http://localhost:3000/questions";
     string url_user = "http://localhost:3000/user";
+    string url_dish= "http://localhost:3000/restaurant";
     UserDao linktoUserGet;
     List<Question> completedQns;
+    List<Restaurant> restaurantList;
+    Restaurant currentRestaurant;
+    Sprite sprite;
 
     void Awake()
     {
@@ -73,11 +80,20 @@ public class Quiz : MonoBehaviour
         qnList = linktoQuestionGet.getQuestions(url_qn, primaryLevel);
         GetRandomQuestion();
                 
-        progressBar.maxValue = qnList.Count;
+        progressBar.maxValue = NUMBER_OF_QNS; // Only have 5 qns
         progressBar.value = 0;
         extendTimeCount = GetExtendTimeCount(userInventory);
         showHintCount = GetShowHintCount(userInventory);
         skipQuestionCount = GetSkipQuestionCount(userInventory);
+
+        // Getting dish & ingredient images
+        string restaurantSelected = "Diner";
+        var linktoRestaurant = GameObject.Find("RestaurantDao").GetComponent<RestaurantDao>();
+        restaurantList = linktoRestaurant.getRestaurant(url_dish, restaurantSelected);
+        GetRandomDish();
+
+        sprite = Resources.Load<Sprite>(currentRestaurant.getDishes()[NUMBER_OF_QNS]);
+        dishGroup.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
     }
 
     void Update()
@@ -89,12 +105,9 @@ public class Quiz : MonoBehaviour
             if (progressBar.value == progressBar.maxValue)
             {
                 isComplete = true;
-                // Update user elo rating here
                 UpdateUserPoints();
                 UpdateUserQns();
-                // Debug.Log(currentUser.ToJSON());
-                // string result = linktoUserGet.updateUser(url_user, currentUser);
-                // Debug.Log(result);
+                string result = linktoUserGet.updateUser(url_user, currentUser);
                 return;
             }
             hasAnsweredEarly = false;
@@ -156,10 +169,16 @@ public class Quiz : MonoBehaviour
             SetButtonState(true);
             SetDefaultButtonSprites();
             GetRandomQuestion();
+            DisplayNewIngredient();
             DisplayQuestion();
             progressBar.value++;
             scoreKeeper.IncrementQuestionsSeen();
         }
+    }
+
+    void DisplayNewIngredient(){
+        sprite = Resources.Load<Sprite>(currentRestaurant.getDishes()[(int) progressBar.value]);
+        ingredientGroup.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
     }
 
     void GetRandomQuestion()
@@ -184,6 +203,10 @@ public class Quiz : MonoBehaviour
             }
             completedQns.Add(currentQn);
         }
+    }
+    void GetRandomDish(){
+        int index = Random.Range(0, restaurantList.Count);
+        currentRestaurant = restaurantList[index];
     }
 
     void DisplayQuestion()

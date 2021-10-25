@@ -35,6 +35,7 @@ public class ShopManager : MonoBehaviour
     public Text pageText;
     public GameObject toAccessoryPage;
     public GameObject toPowerupPage;
+    Sprite sprite;
 
     // Start is called before the first frame update
     void Start()
@@ -67,21 +68,13 @@ public class ShopManager : MonoBehaviour
         var linktoItems = GameObject.Find("ItemsDao").GetComponent<ItemDao>();
         List<Item> shopPowerUps = linktoItems.getItems(url_items, "Powerup", "Shop"); //returns list of powerups in shop
         Debug.Log("\n num of shop powerup: " + shopPowerUps.Count);
-        foreach (Item i in shopPowerUps)
-        {
-            Debug.Log(i.ToJSON());
-        }
         return shopPowerUps;
     }
 
     private List<Item> getShopAccessory(string url){
         var linktoItems = GameObject.Find("ItemsDao").GetComponent<ItemDao>();
-        List<Item> shopAccessory = linktoItems.getItems(url_items, "Skin", "Shop"); //returns list of accessory in shop
+        List<Item> shopAccessory = linktoItems.getItems(url_items, "Accessory", "Shop"); //returns list of accessory in shop
         Debug.Log("\n num of shop skins: " + shopAccessory.Count);
-        foreach (Item i in shopAccessory)
-        {
-            Debug.Log(i.ToJSON());
-        }
         return shopAccessory;
     }
 
@@ -135,8 +128,9 @@ public class ShopManager : MonoBehaviour
         {
             if (tmp > 0)
             {
+                sprite = Resources.Load<Sprite>(shopPowerups[i].getSpriteSource());
                 powerupSlots[i].gameObject.SetActive(true);
-                powerupSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = shopPowerups[i].getItemSprite();
+                powerupSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = sprite;
                 powerupSlots[i].transform.GetChild(1).GetComponent<Text>().text = shopPowerups[i].getPrice().ToString();
                 powerupSlots[i].transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
                 tmp--;
@@ -155,8 +149,9 @@ public class ShopManager : MonoBehaviour
         {
             if (tmp > 0)
             {
+                sprite = Resources.Load<Sprite>(shopAccessory[i].getSpriteSource());
                 accessorySlots[i].gameObject.SetActive(true);
-                accessorySlots[i].transform.GetChild(0).GetComponent<Image>().sprite = shopAccessory[i].getItemSprite();
+                accessorySlots[i].transform.GetChild(0).GetComponent<Image>().sprite = sprite;
                 accessorySlots[i].transform.GetChild(1).GetComponent<Text>().text = shopAccessory[i].getPrice().ToString();
                 accessorySlots[i].transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
                 tmp--;
@@ -175,7 +170,8 @@ public class ShopManager : MonoBehaviour
 
         if (currentPanel == powerupPanel)
         {
-            itemPanel.transform.GetChild(0).GetComponent<Image>().sprite = shopPowerups[currentItemIndex].getItemSprite();
+            sprite = Resources.Load<Sprite>(shopPowerups[currentItemIndex].getSpriteSource());
+            itemPanel.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
             itemPanel.transform.GetChild(1).GetComponent<Text>().text = "Name: " + shopPowerups[currentItemIndex].getItemName();
             itemPanel.transform.GetChild(2).GetComponent<Text>().text = "Price: " + shopPowerups[currentItemIndex].getPrice().ToString();
             itemPanel.transform.GetChild(3).GetComponent<Text>().text = shopPowerups[currentItemIndex].getItemDescription().ToString();
@@ -183,7 +179,8 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
-            itemPanel.transform.GetChild(0).GetComponent<Image>().sprite = shopAccessory[currentItemIndex].getItemSprite();
+            sprite = Resources.Load<Sprite>(shopAccessory[currentItemIndex].getSpriteSource());
+            itemPanel.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
             itemPanel.transform.GetChild(1).GetComponent<Text>().text = "Name: " + shopAccessory[currentItemIndex].getItemName();
             itemPanel.transform.GetChild(2).GetComponent<Text>().text = "Price: " + shopAccessory[currentItemIndex].getPrice().ToString();
             itemPanel.transform.GetChild(3).GetComponent<Text>().text = shopAccessory[currentItemIndex].getItemDescription().ToString();
@@ -229,14 +226,18 @@ public class ShopManager : MonoBehaviour
                     existingItem = true; // purchased item EXISTS in user's inventory
                     currentCount = userInventory[i].getItemCount();
                     currentCount++;
-                    userInventory[i].setItemCount(currentCount); // updates count of purchased item in user's inventory
+                    userInventory[i].setItemCount(currentCount); // updates count in user's inventory
                     break;
                 }
             }
 
             if (!existingItem) // if purchased item DOES NOT EXIST in user's inventory
             {
+                int purchasedItemCount;
                 userInventory.Add(purchasedItem); // adds purchased item into user's inventory
+                purchasedItemCount = userInventory[userInventory.Count - 1].getItemCount();
+                purchasedItemCount++; // set item count to 1
+                userInventory[userInventory.Count - 1].setItemCount(purchasedItemCount); // updates count in user's inventory 
                 user.setInventory(userInventory); // updates user's inventory
             }
 

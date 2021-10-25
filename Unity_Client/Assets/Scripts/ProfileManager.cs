@@ -29,7 +29,7 @@ public class ProfileManager : MonoBehaviour
     {
         int total_qns = user.getCorrectQns() + user.getWrongQns();
         int correct_percent = (user.getCorrectQns() * 100 )/ total_qns;
-   
+        GameObject.Find("Welcome").GetComponent<UnityEngine.UI.Text>().text = "Welcome " + user.getUserName() + "!";
         GameObject.Find("Image").GetComponentInChildren<Text>().text = user.getEloRating().ToString();
         GameObject.Find("Image (1)").GetComponentInChildren<Text>().text = total_qns.ToString();
         GameObject.Find("Image (2)").GetComponentInChildren<Text>().text = correct_percent.ToString() + "%";
