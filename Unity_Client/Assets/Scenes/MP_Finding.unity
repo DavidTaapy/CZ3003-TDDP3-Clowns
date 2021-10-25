@@ -1346,7 +1346,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1877072092}
         m_TargetAssemblyTypeName: RedirectionManager, GameAssembly
         m_MethodName: redirectToMulti
         m_Mode: 1

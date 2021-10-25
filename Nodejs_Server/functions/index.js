@@ -37,7 +37,6 @@ exports.matchmaker = functions.database.ref('matchmaking/{playerId}')
                         gameId: gameId,
                         playersIds: [context.params.playerId, secondPlayer.key]
                     },
-                    turn: context.params.playerId
                 }
 
                 database.ref("games/" + gameId).set(game).then(snapshot => {
@@ -60,6 +59,8 @@ exports.matchmaker = functions.database.ref('matchmaking/{playerId}')
         });
     });
 
+
+// Randomly generate a game ID
 function generateGameId() {
     var possibleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     var gameId = "";
