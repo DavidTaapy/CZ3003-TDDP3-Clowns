@@ -22,6 +22,7 @@ public class ScoreUi : MonoBehaviour
         //    row.name.text = scores[i].name;
         //    row.score.text = scores[i].score.ToString();
         //}
+        // Debug.Log(PlayerPrefs.GetString("uid"));
         loadLeaderboard();
     }
 
