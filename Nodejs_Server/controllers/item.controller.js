@@ -19,7 +19,6 @@ const getItems = async(req, res) => {
     try {
         if (req.query.itemSource == null || req.query.itemSource == ""){
             res.status(400).send("Missing itemSource param in request!");
-            //return res.send();
         }
         if (req.query.itemType == null || req.query.itemType == ""){
             res.status(400).send("Missing itemType param in request!");
@@ -49,7 +48,7 @@ const deleteItem = async(req, res) => {
                 });
                 return res.send("item is deleted!");
             } else {
-                return res.send("No such item!");
+                return res.status(400).send("No such item!");
             }
         });
     } catch (error) {
