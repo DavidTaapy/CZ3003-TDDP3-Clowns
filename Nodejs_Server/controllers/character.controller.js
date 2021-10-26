@@ -6,7 +6,7 @@ const addCharacter = async(req, res) => {
         if (req.body.characterName == null || req.body.characterName == ""){
             res.status(400).send("Missing character name!");
         }
-        if (req.body.characterSprite == null || req.body.characterSprite == ""){
+        if (req.body.spriteSource == null || req.body.spriteSource == ""){
             res.status(400).send("Missing character sprite!");
         }
         if (req.body.characterDescription == null || req.body.characterDescription == ""){
@@ -22,6 +22,18 @@ const addCharacter = async(req, res) => {
         res.status(400).send("error adding");
     }
 };
+
+// Get all characters
+const getAllCharacters = async(req, res) => {
+    try {
+        const characterdb = firestore.collection('characters'); 
+        const snapshot = await characterdb.get();
+        res.send(snapshot.docs.map( ch => ch.data()));
+    } catch (error) {
+        res.status(400).send("error getting items!");
+    }
+};
+
 // Get a character
 const getCharacter = async(req, res) => {
     try {
@@ -38,16 +50,8 @@ const getCharacter = async(req, res) => {
         res.status(400).send("error getting items!");
     }
 };
-// Get all characters
-const getAllCharacters = async(req, res) => {
-    try {
-        const characterdb = firestore.collection('characters'); 
-        const snapshot = await characterdb.get();
-        res.send(snapshot.docs.map( ch => ch.data()));
-    } catch (error) {
-        res.status(400).send("error getting items!");
-    }
-};
+
+
 //delete a character
 const deleteCharacter = async(req, res) => {
     try {

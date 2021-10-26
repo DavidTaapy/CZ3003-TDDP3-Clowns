@@ -12,7 +12,11 @@ public class Character
     
     public string spriteSource;
 
-    Character(string charID){
-        this.characterID = charID;
+    Character(){
+    }
+
+    public string ToJSON()
+    {
+        return JsonUtility.ToJson(this);
     }
 }
