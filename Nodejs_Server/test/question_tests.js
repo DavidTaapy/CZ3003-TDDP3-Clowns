@@ -8,7 +8,7 @@ chai.should();
 
 chai.use(chaiHttp);
 
-describe('Item API', () => {
+describe('Testing Question API (question.controller.js)', () => {
 
     var validLvl = "1";
     var invalidBiggerLvl = "7";
@@ -134,6 +134,4 @@ describe('Item API', () => {
             })
         })
     })
-
-
 })

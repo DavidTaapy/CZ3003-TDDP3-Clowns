@@ -10,8 +10,7 @@ const addItems = async(req, res) => {
         });
         res.send("item added!");
     } catch (error) {
-        res.status(400).send(error.message);
-        res.send("error adding");
+        res.status(400).send("error in adding item");
     }
 };
 // Get all items in shop
@@ -32,8 +31,7 @@ const getItems = async(req, res) => {
         res.send(snapshot.docs.map( item=> item.data()));
 
     } catch (error) {
-        res.status(400).send(error.message);
-        res.send("error getting items!");
+        res.status(400).send("error getting items!");
     }
 };
 

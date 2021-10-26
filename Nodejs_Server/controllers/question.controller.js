@@ -31,6 +31,7 @@ const getQuestions = async(req, res) => {
     }
 };
 
+// detele qn
 const deleteQuestion = async(req, res) => {
     try {
         const qn = req.query.qn;
