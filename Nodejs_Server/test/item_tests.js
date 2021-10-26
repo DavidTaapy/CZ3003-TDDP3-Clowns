@@ -8,7 +8,7 @@ chai.should();
 
 chai.use(chaiHttp);
 
-describe('Item API', () => {
+describe('Testing Item API (item.controller.js)', () => {
 
     var new_item ={
         "itemName" : "Knife",
@@ -18,7 +18,7 @@ describe('Item API', () => {
     }
     
     //Test GET Shop powerup
-    describe('GET /item', () => {
+    describe('GET Shop powerup with 2 valid params', () => {
         it("This should get all powerups in shop", (done) => {
             chai.request(server)
             .get("/items")
@@ -37,7 +37,7 @@ describe('Item API', () => {
     })
 
     //Test GET leaderboard accessories
-    describe('GET /item', () => {
+    describe('GET leaderboard accessories with 2 valid params', () => {
         it("This should get all accessories on the leaderboard", (done) => {
             chai.request(server)
             .get("/items")
@@ -56,7 +56,7 @@ describe('Item API', () => {
     })
 
     //Test GET shop powerup with missing itemType param
-    describe('GET /item', () => {
+    describe('GET shop powerup with missing itemType param', () => {
         it("This should get an error message for missing itemType param", (done) => {
             chai.request(server)
             .get("/items")
@@ -70,7 +70,7 @@ describe('Item API', () => {
     })
 
     //Test GET shop powerup with missing itemSource param
-    describe('GET /item', () => {
+    describe('GET shop powerup with missing itemSource param', () => {
         it("This should get an error message for missing itemSource param", (done) => {
             chai.request(server)
             .get("/items")
@@ -84,8 +84,8 @@ describe('Item API', () => {
     })
 
     //Test POST new item into the shop
-    describe('POST /item', () => {
-        it("This should add a user", (done) => {
+    describe('POST new item into the shop', () => {
+        it("This should add a item into the shop", (done) => {
             chai.request(server)
             .post("/items")
             .type("JSON")
@@ -98,9 +98,23 @@ describe('Item API', () => {
         })
     })
 
+    // Test DELETE item that does not exist
+    describe('DELETE item that does not exist', () => {
+        it("This should not delete any items and return an error message", (done) => {
+            chai.request(server)
+            .delete("/items")
+            .query({name : "Knife1"})
+            .end((err, res) => {
+                expect(res).to.have.status(400);
+                res.text.should.be.eq("No such item!");
+            done();
+            })
+        })
+    })
+
     // Test DELETE existing item
-    describe('DELETE /item', () => {
-        it("This should an existing item", (done) => {
+    describe('DELETE existing item in the items database', () => {
+        it("This should delete an existing item", (done) => {
             chai.request(server)
             .delete("/items")
             .query({name : "Knife"})
@@ -112,17 +126,4 @@ describe('Item API', () => {
         })
     })
 
-    // Test DELETE item that does not exist
-    describe('DELETE /item', () => {
-        it("This should an existing item", (done) => {
-            chai.request(server)
-            .delete("/items")
-            .query({name : "Knife"})
-            .end((err, res) => {
-                expect(res).to.have.status(200);
-                res.text.should.be.eq("No such item!");
-            done();
-            })
-        })
-    })
 })

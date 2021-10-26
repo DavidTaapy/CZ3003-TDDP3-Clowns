@@ -5,6 +5,7 @@ import { leaderboardRouter } from './routes/leaderboard.routes.js';
 import { questionRouter } from './routes/question.routes.js';
 import { itemRouter } from './routes/item.routes.js';
 import { resRouter } from './routes/restaurant.routes.js';
+import { characterRouter } from './routes/character.routes.js';
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use('/', leaderboardRouter);
 app.use('/', questionRouter);
 app.use('/', itemRouter);
 app.use('/', resRouter);
+app.use('/', characterRouter);
 
 // set port, listen for requests
 app.listen(3000, () => {
