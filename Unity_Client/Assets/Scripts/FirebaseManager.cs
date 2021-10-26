@@ -118,11 +118,13 @@ public class FirebaseManager : MonoBehaviour
             Debug.LogFormat("User signed in successfully: {0} ({1})", User.DisplayName, User.Email);
             warningLoginText.text = "";
             confirmLoginText.text = "Logged In";
-
+            PlayerPrefs.SetString("uid", User.UserId);
+            Debug.Log("Uid set to " + PlayerPrefs.GetString("uid"));
             yield return new WaitForSeconds(3);
 
             confirmLoginText.text = "";
             ClearLoginFields();
+            //input redirect here
         }
     }
 }
