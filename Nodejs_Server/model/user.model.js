@@ -13,7 +13,7 @@ class User {
             characterName: "Chef Jar",
             characterDescription: "I am a jar!",
             characterID: "Wx7ePiSen9NjEL0LtxoK", 
-            characterSprite: ""
+            spriteSource: ""
         };
     }
 }
