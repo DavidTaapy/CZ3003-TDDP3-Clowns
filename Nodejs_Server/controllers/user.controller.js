@@ -43,7 +43,7 @@ const deleteUser = async(req, res) => {
         const id = req.query.id;
         const userdb = firestore.collection('users');
         const currUser = await userdb.doc(String(id)).get();
-        if (!currUser.exists) {res.send("no such user!");}
+        if (!currUser.exists) {res.status(400).send("no such user!");}
         else {
             await userdb.doc(String(id)).delete();
             res.send("user is deleted!");
@@ -62,7 +62,7 @@ const updateUser = async(req, res) => {
         const id = data.id;
         const userdb = firestore.collection('users');
         const currUser = await userdb.doc(String(id)).get();
-        if (!currUser.exists) {res.send("no such user!");}
+        if (!currUser.exists) {res.status(400).send("no such user!");}
         else { const updatedUser = await userdb.doc(String(data.id)).set(data)
             res.send("user is updated!");}
     } catch (error) {

@@ -10,8 +10,7 @@ const addItems = async(req, res) => {
         });
         res.send("item added!");
     } catch (error) {
-        res.status(400).send(error.message);
-        res.send("error adding");
+        res.status(400).send("error in adding item");
     }
 };
 // Get all items in shop
@@ -19,7 +18,6 @@ const getItems = async(req, res) => {
     try {
         if (req.query.itemSource == null || req.query.itemSource == ""){
             res.status(400).send("Missing itemSource param in request!");
-            //return res.send();
         }
         if (req.query.itemType == null || req.query.itemType == ""){
             res.status(400).send("Missing itemType param in request!");
@@ -33,8 +31,7 @@ const getItems = async(req, res) => {
         res.send(snapshot.docs.map( item=> item.data()));
 
     } catch (error) {
-        res.status(400).send(error.message);
-        res.send("error getting items!");
+        res.status(400).send("error getting items!");
     }
 };
 
@@ -49,7 +46,7 @@ const deleteItem = async(req, res) => {
                 });
                 return res.send("item is deleted!");
             } else {
-                return res.send("No such item!");
+                return res.status(400).send("No such item!");
             }
         });
     } catch (error) {
