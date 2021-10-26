@@ -13,6 +13,8 @@ namespace apiManagers{
         public string url_leaderboard;
         public string url_items;
         public string url_restaurant;
+        public string urlCharacter;
+        public string urlAllCharacters;
         
         void Start(){
             // By name
@@ -22,8 +24,6 @@ namespace apiManagers{
             
             var linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
             Debug.Log("============Starting Data Access Manager========");
-
-            var linktoItems = GameObject.Find("ItemsDao").GetComponent<ItemDao>();
             User user = linktoUserGet.getUser(url_user, userId);
             
             // Code to create user
@@ -81,12 +81,24 @@ namespace apiManagers{
             }*/
 
             // Code to get restaurant  from db
-            var linktoRestaurant = GameObject.Find("RestaurantDao").GetComponent<RestaurantDao>();
+            /*var linktoRestaurant = GameObject.Find("RestaurantDao").GetComponent<RestaurantDao>();
             List<Restaurant> restaurant = linktoRestaurant.getRestaurant(url_restaurant, "Diner");
             foreach (Restaurant res in restaurant)
             {
                 Debug.Log(res.ToJSON());
-            }
+            }*/
+
+            // Code to get ALL characters list from db
+            var linktoCharacter = GameObject.Find("CharacterDao").GetComponent<CharacterDao>();
+            /*List<Character> charList = linktoCharacter.getAllCharacters(urlAllCharacters);
+            foreach (Character character in charList)
+            {
+                Debug.Log(character.ToJSON());
+            }*/
+
+            // Code to get specific character from db using ID (different url take note)
+            var characterID = "QoWyLGABtHy9Gh0SzKLf";
+            Character charList = linktoCharacter.getCharacter(urlCharacter, characterID);
         }
     }
 }
