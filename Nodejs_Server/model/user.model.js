@@ -9,7 +9,12 @@ class User {
         this.completedQns = [];
         this.correctQns = 0;
         this.wrongQns = 0;
-        this.character = "";
+        this.character = {
+            characterName: "Chef Jar",
+            characterDescription: "I am a jar!",
+            characterID: "Wx7ePiSen9NjEL0LtxoK", 
+            characterSprite: ""
+        };
     }
 }
 
