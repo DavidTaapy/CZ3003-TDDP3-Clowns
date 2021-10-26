@@ -55,7 +55,7 @@ const deleteCharacter = async(req, res) => {
                 });
                 return res.send("character is deleted!");
             } else {
-                return res.send("No such character!");
+                return res.status(400).send("No such character!");
             }
         });
     } catch (error) {
