@@ -18,7 +18,6 @@ public class RestaurantDao : MonoBehaviour
 
         HttpResponseMessage response = client.GetAsync(urlWithParams).GetAwaiter().GetResult();
         string responseStr = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-        Debug.Log(responseStr);
         List<Restaurant> restaurant = JsonConvert.DeserializeObject<List<Restaurant>>(responseStr);
         return restaurant;
     }

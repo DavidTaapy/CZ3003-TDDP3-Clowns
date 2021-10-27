@@ -45,6 +45,8 @@ public class Quiz : MonoBehaviour
     public GameObject dishGroup;
     public GameObject ingredientGroup;
 
+    public GameObject background;
+
     public bool isComplete;
     public bool useShowHint;
     static public int NUMBER_OF_QNS = 5;
@@ -94,6 +96,9 @@ public class Quiz : MonoBehaviour
 
         sprite = Resources.Load<Sprite>(currentRestaurant.getDishes()[NUMBER_OF_QNS]);
         dishGroup.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
+
+        sprite = Resources.Load<Sprite>(currentRestaurant.getSpriteSource());
+        background.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
     }
 
     void Update()
