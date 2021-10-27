@@ -8,19 +8,27 @@ using Newtonsoft.Json;
 
 public class PastLdrboardManager : MonoBehaviour
 {
-    public GameObject firstPlaceChar;
-    public GameObject secondPlaceChar;
-    public GameObject thirdPlaceChar;
+    public GameObject firstPlaceUser;
+    public GameObject secondPlaceUser;
+    public GameObject thirdPlaceUser;
 
-    public string url_items = "http://localhost:3000/items";
-    ItemDao linkToItems;
-    List<Item> rewardsList;
+    public Text seasonText;
+
+    public string url_pastLdrboard = "http://localhost:3000/pastleaderboard";
+    LeaderboardDao linkToleaderboard;
+    PastLeaderboard pastLeaderboard;
+
+    Sprite sprite;
+
+    int seasonId = 2;
 
     void Awake()
     {
-        linkToItems = GameObject.Find("ItemDao").GetComponent<ItemDao>();
-        rewardsList = linkToItems.getItems(url_items,"Accessory", "Leaderboard");
-        displayRewards();
+        linkToleaderboard = GameObject.Find("LeaderboardDao").GetComponent<LeaderboardDao>();
+        pastLeaderboard = linkToleaderboard.getPastLeaderboard(url_pastLdrboard, seasonId);
+        displayRankings();
+
+        seasonText.text = string.Format("Season {0} Winners", seasonId);
     }
     // Start is called before the first frame update
     void Start()
@@ -28,18 +36,19 @@ public class PastLdrboardManager : MonoBehaviour
         
     }
 
-    private void displayRewards(){
-        foreach (Item item in rewardsList) {
-            string description = item.getItemDescription();
-            var sprite = Resources.Load<Sprite>(item.getSpriteSource());
-            if (description.Contains("first")){
-                firstPlaceChar.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
-            } else if (description.Contains("second")){
-                secondPlaceChar.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
-            } else {
-                thirdPlaceChar.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
-            }
+    void displayRankings(){
+        var users = pastLeaderboard.getUsers();
 
-        }
+        sprite = Resources.Load<Sprite>(users[0].getCharacter().getSpriteSource());
+        firstPlaceUser.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
+        firstPlaceUser.transform.GetChild(1).GetComponent<Text>().text = users[0].getUserName();
+
+        sprite = Resources.Load<Sprite>(users[1].getCharacter().getSpriteSource());
+        secondPlaceUser.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
+        secondPlaceUser.transform.GetChild(1).GetComponent<Text>().text = users[1].getUserName();
+
+        sprite = Resources.Load<Sprite>(users[2].getCharacter().getSpriteSource());
+        thirdPlaceUser.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
+        thirdPlaceUser.transform.GetChild(1).GetComponent<Text>().text = users[2].getUserName();
     }
 }

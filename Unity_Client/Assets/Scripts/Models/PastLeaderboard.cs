@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class PastLeaderboard
 {
 
-    int seasonId;
+    [SerializeField]
+    int seasonID;
 
+    [SerializeField]
     List<User> users;
 
     public PastLeaderboard(){
@@ -19,14 +22,14 @@ public class PastLeaderboard
         return JsonUtility.ToJson(this);
     }
 
-    public int getSeasonId()
+    public int getSeasonID()
     {
-        return this.seasonId;
+        return this.seasonID;
     }
 
-    public void setSeasonId(int seasonId)
+    public void setSeasonID(int seasonID)
     {
-        this.seasonId = seasonId;
+        this.seasonID = seasonID;
     }
 
     public List<User> getUsers()

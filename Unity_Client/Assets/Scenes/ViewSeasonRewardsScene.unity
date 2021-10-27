@@ -907,7 +907,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: This Season Rewards
+  m_Text: Season 3 Rewards
 --- !u!222 &1354200781
 CanvasRenderer:
   m_ObjectHideFlags: 0

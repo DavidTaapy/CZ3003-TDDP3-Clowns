@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 public class LeaderboardDao : MonoBehaviour
 {
     // http://localhost:3000/leaderboard
+    // http://localhost:3000/pastleaderboard
     
     HttpClient client = new HttpClient();
 
