@@ -9,7 +9,6 @@ public class PastLdrboardManager : MonoBehaviour
     public GameObject firstPlaceUser;
     public GameObject secondPlaceUser;
     public GameObject thirdPlaceUser;
-
     public Text seasonText;
 
     public string url_pastLdrboard = "http://localhost:3000/pastleaderboard";
@@ -17,7 +16,6 @@ public class PastLdrboardManager : MonoBehaviour
     PastLeaderboard pastLeaderboard;
 
     Sprite sprite;
-
     int seasonId = 2;
 
     void Awake()

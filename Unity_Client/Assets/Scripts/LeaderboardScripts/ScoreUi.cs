@@ -9,9 +9,7 @@ public class ScoreUi : MonoBehaviour
     // public ScoreManager scoreManager;
 
     LeaderboardDao linkToLeaderboard;
-
     List<User> userRanking;
-
     string url_leaderboard = "http://localhost:3000/leaderboard";
 
     void Start()
