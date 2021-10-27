@@ -67,6 +67,7 @@ public class Quiz : MonoBehaviour
         timer = FindObjectOfType<Timer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         scoreKeeper.resetFields();
+        scoreText.text = "Score: " + scoreKeeper.CalculateScore() + "%";
 
         // Need to make change userId accordingly
         string userId = "7HHcjbfJq1kD8VFMHHDq";

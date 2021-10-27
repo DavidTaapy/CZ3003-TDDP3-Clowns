@@ -14,7 +14,6 @@ public class PastLeaderboard
     List<User> users;
 
     public PastLeaderboard(){
-
     }
 
     public string ToJSON()
@@ -41,9 +40,4 @@ public class PastLeaderboard
     {
         this.users = users;
     }
-
-
-    
-
-
 }

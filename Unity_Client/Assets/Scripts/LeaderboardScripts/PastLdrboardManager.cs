@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Net.Http;
-using Newtonsoft.Json;
 
 public class PastLdrboardManager : MonoBehaviour
 {
@@ -27,7 +25,6 @@ public class PastLdrboardManager : MonoBehaviour
         linkToleaderboard = GameObject.Find("LeaderboardDao").GetComponent<LeaderboardDao>();
         pastLeaderboard = linkToleaderboard.getPastLeaderboard(url_pastLdrboard, seasonId);
         displayRankings();
-
         seasonText.text = string.Format("Season {0} Winners", seasonId);
     }
     // Start is called before the first frame update
