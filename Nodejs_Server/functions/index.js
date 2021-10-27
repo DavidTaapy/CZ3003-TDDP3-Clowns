@@ -35,7 +35,9 @@ exports.matchmaker = functions.database.ref('matchmaking/{playerId}')
                 var game = {
                     gameInfo: {
                         gameId: gameId,
-                        playersIds: [context.params.playerId, secondPlayer.key]
+                        playersIds: [context.params.playerId, secondPlayer.key],
+                        playerOneScore: 0,
+                        playerTwoScore: 0
                     },
                 }
 
