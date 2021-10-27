@@ -45,6 +45,8 @@ public class Quiz : MonoBehaviour
     public GameObject dishGroup;
     public GameObject ingredientGroup;
 
+    public GameObject background;
+
     public bool isComplete;
     public bool useShowHint;
     static public int NUMBER_OF_QNS = 5;
@@ -65,6 +67,7 @@ public class Quiz : MonoBehaviour
         timer = FindObjectOfType<Timer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         scoreKeeper.resetFields();
+        scoreText.text = "Score: " + scoreKeeper.CalculateScore() + "%";
 
         // Need to make change userId accordingly
         string userId = "7HHcjbfJq1kD8VFMHHDq";
@@ -94,6 +97,9 @@ public class Quiz : MonoBehaviour
 
         sprite = Resources.Load<Sprite>(currentRestaurant.getDishes()[NUMBER_OF_QNS]);
         dishGroup.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
+
+        sprite = Resources.Load<Sprite>(currentRestaurant.getSpriteSource());
+        background.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
     }
 
     void Update()
