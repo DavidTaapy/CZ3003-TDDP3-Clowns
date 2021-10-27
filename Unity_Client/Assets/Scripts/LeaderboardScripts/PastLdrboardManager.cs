@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using System.Net.Http;
 using Newtonsoft.Json;
 
-public class RewardsManager : MonoBehaviour
+public class PastLdrboardManager : MonoBehaviour
 {
     public GameObject firstPlaceChar;
     public GameObject secondPlaceChar;

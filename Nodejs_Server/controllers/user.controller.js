@@ -16,8 +16,7 @@ const createUser = async(req, res) => {
             });
         }
     } catch (error) {
-        res.status(400).send(error.message);
-        res.send("error adding user!");
+        res.status(400).send("error adding user!");
     }
 };
 
@@ -51,7 +50,6 @@ const deleteUser = async(req, res) => {
         
     } catch (error) {
         return res.status(400).send("invalid");
-        //res.send("invalid user");
     }
 };
 
@@ -66,8 +64,7 @@ const updateUser = async(req, res) => {
         else { const updatedUser = await userdb.doc(String(data.id)).set(data)
             res.send("user is updated!");}
     } catch (error) {
-        res.status(400).send(error.message);
-        res.send("invalid update");
+        res.status(400).send("Error in updating user");
     } 
 
 };
