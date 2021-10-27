@@ -12,7 +12,7 @@ describe('Testing Character API (character.controller.js)', () => {
 
     var new_char ={
         "characterDescription": "I am a chicken!",
-        "characterSprite": "Sprites/",
+        "spriteSource": "Sprites/",
         "characterName": "Chicken"
     }
     var trial_id = "Wx7ePiSen9NjEL0LtxoK"; 
@@ -28,7 +28,7 @@ describe('Testing Character API (character.controller.js)', () => {
                 expect(res).to.be.json;
                 expect(res.body).to.have.property('characterName');
                 expect(res.body).to.have.property('characterDescription');
-                expect(res.body).to.have.property('characterSprite');
+                expect(res.body).to.have.property('spriteSource');
                 expect(res.body).to.have.property('characterID').eq(trial_id);
             done();
             })
