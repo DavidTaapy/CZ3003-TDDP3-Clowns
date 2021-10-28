@@ -2,42 +2,64 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class CharacterManager : MonoBehaviour
 {
-    public CharacterDatabase characterDB;
-    public Text nameText;
-    public Text descriptionText;
-    public SpriteRenderer artworkSprite;
+    private string userId = "7HHcjbfJq1kD8VFMHHDq";
+    private string url_user = "http://localhost:3000/user";
+    private string url_characters = "http://localhost:3000/allcharacter";
+
+    [Header("Character Details")]
+    private User user;
+    private List<Character> characters;
+    private Character currentCharacter;
+    private string ID;
+    public Text name;
+    public Text description;
+    public Image image;
+    private Sprite sprite;
     private int selectedOption = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
-        if (!PlayerPrefs.HasKey("selectedOption"))
-        {
-            selectedOption = 0;
-        }
-        else
-        {
-            Load();
-        }
+        user = getUserDetails(url_user, userId);
+        characters = getAllCharacterDetails(url_characters);
+        currentCharacter = characters[selectedOption];
+        UpdateCharacter(currentCharacter);
+    }
 
-        UpdateCharacter(selectedOption);
+    private User getUserDetails(string url_user, string userId){
+        var linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
+        User user = linktoUserGet.getUser(url_user, userId);
+        return user;
+    }
+
+    private List<Character> getAllCharacterDetails(string url){
+        var linktoAllCharactersGet = GameObject.Find("CharacterDao").GetComponent<CharacterDao>();
+        List<Character> allCharacters = linktoAllCharactersGet.getAllCharacters(url);
+        return allCharacters;
+    }
+
+    private void UpdateCharacter(Character character)
+    {
+        ID = character.getCharacterID();
+        name.text = character.getCharacterName();
+        description.text = character.getCharacterDescription();
+        sprite = Resources.Load<Sprite>(character.getSpriteSource());
+        image.transform.GetComponent<Image>().sprite = sprite;
     }
 
     public void NextOption()
     {
         selectedOption++;
 
-        if (selectedOption >= characterDB.CharacterCount)
+        if (selectedOption >= characters.Count)
         {
             selectedOption = 0;
         }
 
-        UpdateCharacter(selectedOption);
-        Save();
+        currentCharacter = characters[selectedOption];
+        UpdateCharacter(currentCharacter);
     }
 
     public void BackOption()
@@ -46,37 +68,16 @@ public class CharacterManager : MonoBehaviour
 
         if (selectedOption < 0)
         {
-            selectedOption = characterDB.CharacterCount - 1;
+            selectedOption = characters.Count - 1;
         }
 
-        UpdateCharacter(selectedOption);
-        Save();
+        currentCharacter = characters[selectedOption];
+        UpdateCharacter(currentCharacter);
     }
 
-    // UpdateCharacter is called to update displayed sprite and name
-    private void UpdateCharacter(int selectedOption)
+    public void SelectCharacter()
     {
-        Character character = characterDB.GetCharacter(selectedOption);
-        artworkSprite.sprite = character.characterSprite;
-        nameText.text = character.characterName;
-        descriptionText.text = character.characterDescription;
-    }
-
-    // Loads previously selected character
-    private void Load()
-    {
-        selectedOption = PlayerPrefs.GetInt("selectedOption");
-    }
-
-    // Saves current selected character
-    private void Save()
-    {
-        PlayerPrefs.SetInt("selectedOption", selectedOption);
-    }
-
-    // ChangeScene is called when user clicks 'Select'
-    public void ChangeScene(int sceneID)
-    {
-        SceneManager.LoadScene(sceneID);
+        user.setCharacter(currentCharacter);
+        print("Character selected successfully!");
     }
 }
