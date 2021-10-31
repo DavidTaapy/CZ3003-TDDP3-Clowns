@@ -11,7 +11,6 @@ public class InventoryUIManager : MonoBehaviour
 
     [Header("Inventory Details")]
     public GameObject inventoryPanel;
-    // public InventoryManager inventoryManager;
     public GameObject[] inventorySlots;
     public List<Item> inventory;
 
