@@ -143,6 +143,23 @@ public class RegisterManager : MonoBehaviour
                 //User has now been created
                 //Now get the result
                 User = RegisterTask.Result;
+                if (User != null)
+                {
+                    User.SendEmailVerificationAsync().ContinueWith(task => {
+                        if (task.IsCanceled)
+                        {
+                            Debug.LogError("SendEmailVerificationAsync was canceled.");
+                            return;
+                        }
+                        if (task.IsFaulted)
+                        {
+                            Debug.LogError("SendEmailVerificationAsync encountered an error: " + task.Exception);
+                            return;
+                        }
+
+                        Debug.Log("Email sent successfully.");
+                    });
+                }
 
                 if (User != null)
                 {
