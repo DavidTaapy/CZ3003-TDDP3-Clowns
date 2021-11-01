@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Serializables;
+using APIs;
 
 public class MultiQuiz : MonoBehaviour
 {
@@ -152,6 +154,26 @@ public class MultiQuiz : MonoBehaviour
         Image buttonImage;
         if (index == currentQn.GetCorrectAnswerIndex())
         {
+            // Update the realtime database
+            string gameId = "FbOQybntbtdZlZ4GFLg0"; // To get dynamically
+            string myPlayerId = "David"; // To get dynamically
+            DatabaseAPI.GetObject<GameInfo>($"games/{gameId}/gameInfo",
+            gameInfo => {
+                string localPlayerId = gameInfo.localPlayerId;
+                string[] playersIds = gameInfo.playersIds;
+                if (myPlayerId == localPlayerId) {
+                    gameInfo.firstPlayerScore += 1;
+                } else {
+                    gameInfo.secondPlayerScore += 1;
+                }
+                DatabaseAPI.PostObject($"games/{gameId}/gameInfo", gameInfo, () => {
+                    Debug.Log("Success");
+                }, (error) => {
+                    Debug.Log(error);
+                });
+            },
+            Debug.Log);
+            // Set the UI
             questionText.text = "Correct!";
             buttonImage = answerButtons[index].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
