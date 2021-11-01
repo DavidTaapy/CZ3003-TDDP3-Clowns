@@ -69,7 +69,7 @@ describe('Testing Question API (question.controller.js)', () => {
     })
 
     describe('GET questionList with missing param', () => {
-        it("This should get all questions for the specified primaryLevel", (done) => {
+        it("This should return an error message", (done) => {
             chai.request(server)
             .get("/questions")
             .end((err, res) => {
