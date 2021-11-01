@@ -5,6 +5,12 @@ using TMPro;
 using UnityEngine.UI;
 using Serializables;
 using APIs;
+using Managers;
+using UnityEngine.SceneManagement;
+using Firebase.Database;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class MultiQuiz : MonoBehaviour
 {
@@ -68,6 +74,10 @@ public class MultiQuiz : MonoBehaviour
     Restaurant currentRestaurant;
     Sprite sprite;
 
+    string gameId = "RcykupGl4bUcZwNV6KxC"; // To get dynamically
+    string myPlayerId = "David"; // To get dynamically
+    private KeyValuePair<DatabaseReference, EventHandler<ValueChangedEventArgs>> currentGameInfoListener;
+
     void Awake()
     {
         timer = FindObjectOfType<Timer>();
@@ -103,6 +113,34 @@ public class MultiQuiz : MonoBehaviour
 
         sprite = Resources.Load<Sprite>(currentRestaurant.getDishes()[NUMBER_OF_QNS]);
         dishGroup.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
+
+        // Check for end of game
+        ListenForGameEnd(gameId, Debug.Log);
+    }
+
+    public void ListenForGameEnd(string gameId, Action<AggregateException> fallback)
+    {
+        currentGameInfoListener =
+            DatabaseAPI.ListenForValueChanged($"games/{gameId}/gameInfo", args =>
+            {
+                var gameInfo =
+                        StringSerializationAPI.Deserialize(typeof(GameInfo), args.Snapshot.GetRawJsonValue()) as
+                            GameInfo;
+                string localPlayerId = gameInfo.localPlayerId;
+                if (gameInfo.firstPlayerScore == 5) {
+                    if (myPlayerId == localPlayerId) {
+                        SceneManager.LoadScene("MultiplayerWinScene");
+                    } else {
+                        SceneManager.LoadScene("MultiplayerLoseScene");
+                    }
+                } else if (gameInfo.secondPlayerScore == 5) {
+                    if (myPlayerId != localPlayerId) {
+                        SceneManager.LoadScene("MultiplayerWinScene");
+                    } else {
+                        SceneManager.LoadScene("MultiplayerLoseScene");
+                    }
+                }
+            }, fallback);
     }
 
     void Update()
@@ -155,8 +193,6 @@ public class MultiQuiz : MonoBehaviour
         if (index == currentQn.GetCorrectAnswerIndex())
         {
             // Update the realtime database
-            string gameId = "FbOQybntbtdZlZ4GFLg0"; // To get dynamically
-            string myPlayerId = "David"; // To get dynamically
             DatabaseAPI.GetObject<GameInfo>($"games/{gameId}/gameInfo",
             gameInfo => {
                 string localPlayerId = gameInfo.localPlayerId;
@@ -211,13 +247,13 @@ public class MultiQuiz : MonoBehaviour
     }
 
     void GetRandomDish(){
-        int index = Random.Range(0, restaurantList.Count);
+        int index = UnityEngine.Random.Range(0, restaurantList.Count);
         currentRestaurant = restaurantList[index];
     }
 
     void GetRandomQuestion()
     {
-        int index = Random.Range(0, qnList.Count);
+        int index = UnityEngine.Random.Range(0, qnList.Count);
         currentQn = qnList[index];
 
         if (qnList.Contains(currentQn))
