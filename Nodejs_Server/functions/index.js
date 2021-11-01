@@ -31,13 +31,16 @@ exports.matchmaker = functions.database.ref('matchmaking/{playerId}')
             }).then(result => {
 
                 if (result.snapshot.child(context.params.playerId).val() !== gameId) return;
-
+                var localPlayerId = context.params.playerId;
+                var otherPlayerId = secondPlayer.key;
                 var game = {
                     gameInfo: {
                         gameId: gameId,
                         playersIds: [context.params.playerId, secondPlayer.key]
                     },
                 }
+                game.gameInfo[localPlayerId] = 0;
+                game.gameInfo[otherPlayerId] = 0;
 
                 database.ref("games/" + gameId).set(game).then(snapshot => {
 
