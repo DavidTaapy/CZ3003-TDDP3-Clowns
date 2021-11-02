@@ -22,19 +22,19 @@ public class CharacterManager : MonoBehaviour
 
     void Start()
     {
-        user = getUserDetails(url_user, userId);
-        characters = getAllCharacterDetails(url_characters);
+        user = GetUserDetails(url_user, userId);
+        characters = GetAllCharacterDetails(url_characters);
         currentCharacter = characters[selectedOption];
         UpdateCharacter(currentCharacter);
     }
 
-    private User getUserDetails(string url_user, string userId){
+    private User GetUserDetails(string url_user, string userId){
         var linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
         User user = linktoUserGet.getUser(url_user, userId);
         return user;
     }
 
-    private List<Character> getAllCharacterDetails(string url){
+    private List<Character> GetAllCharacterDetails(string url){
         var linktoAllCharactersGet = GameObject.Find("CharacterDao").GetComponent<CharacterDao>();
         List<Character> allCharacters = linktoAllCharactersGet.getAllCharacters(url);
         return allCharacters;

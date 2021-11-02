@@ -136,7 +136,11 @@ PrefabInstance:
       objectReference: {fileID: 327276719}
     - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: activateItemPanel
+      value: ActivateItemPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopManager, GameAssembly
       objectReference: {fileID: 0}
     - target: {fileID: 4936767355446099738, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_Pivot.x
@@ -251,7 +255,11 @@ PrefabInstance:
       objectReference: {fileID: 327276719}
     - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: activateItemPanel
+      value: ActivateItemPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopManager, GameAssembly
       objectReference: {fileID: 0}
     - target: {fileID: 4936767355446099738, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_Pivot.x
@@ -450,7 +458,11 @@ PrefabInstance:
       objectReference: {fileID: 327276719}
     - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: activateItemPanel
+      value: ActivateItemPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopManager, GameAssembly
       objectReference: {fileID: 0}
     - target: {fileID: 4936767355446099738, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_Pivot.x
@@ -565,7 +577,11 @@ PrefabInstance:
       objectReference: {fileID: 327276719}
     - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: activateItemPanel
+      value: ActivateItemPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopManager, GameAssembly
       objectReference: {fileID: 0}
     - target: {fileID: 4936767355446099738, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_Pivot.x
@@ -703,13 +719,14 @@ MonoBehaviour:
     eloRating: 0
     inventory: []
     character:
-      characterSprite: {fileID: 0}
       characterID: 0
       characterName: 
       characterDescription: 
+      spriteSource: 
     points: 0
     correctQns: 0
     wrongQns: 0
+    completedQns: []
   powerupPanel: {fileID: 454536907}
   powerupSlots:
   - {fileID: 189210618}
@@ -1285,6 +1302,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 327276719}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActivateItemPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopManager, GameAssembly
+      objectReference: {fileID: 0}
     - target: {fileID: 4936767355446099738, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1627,8 +1652,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 327276719}
-        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
-        m_MethodName: purchaseItem
+        m_TargetAssemblyTypeName: ShopManager, GameAssembly
+        m_MethodName: PurchaseItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1942,6 +1967,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 327276719}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActivateItemPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopManager, GameAssembly
+      objectReference: {fileID: 0}
     - target: {fileID: 4936767355446099738, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2433,8 +2466,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 327276719}
-        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
-        m_MethodName: activateAccessoryPanel
+        m_TargetAssemblyTypeName: ShopManager, GameAssembly
+        m_MethodName: ActivateAccessoryPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2495,7 +2528,11 @@ PrefabInstance:
       objectReference: {fileID: 327276719}
     - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: activateItemPanel
+      value: ActivateItemPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopManager, GameAssembly
       objectReference: {fileID: 0}
     - target: {fileID: 4936767355446099738, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_Pivot.x
@@ -2608,6 +2645,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 327276719}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActivateItemPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopManager, GameAssembly
+      objectReference: {fileID: 0}
     - target: {fileID: 4936767355446099738, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2719,6 +2764,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 327276719}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActivateItemPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopManager, GameAssembly
+      objectReference: {fileID: 0}
     - target: {fileID: 4936767355446099738, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2903,8 +2956,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 327276719}
-        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
-        m_MethodName: activatePowerupPanel
+        m_TargetAssemblyTypeName: ShopManager, GameAssembly
+        m_MethodName: ActivatePowerupPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3117,6 +3170,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 327276719}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActivateItemPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopManager, GameAssembly
+      objectReference: {fileID: 0}
     - target: {fileID: 4936767355446099738, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3301,8 +3362,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 327276719}
-        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
-        m_MethodName: activatePowerupPanel
+        m_TargetAssemblyTypeName: ShopManager, GameAssembly
+        m_MethodName: ActivateAccessoryPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3445,6 +3506,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 327276719}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActivateItemPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopManager, GameAssembly
+      objectReference: {fileID: 0}
     - target: {fileID: 4936767355446099738, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3874,6 +3943,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 327276719}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActivateItemPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopManager, GameAssembly
+      objectReference: {fileID: 0}
     - target: {fileID: 4936767355446099738, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4141,7 +4218,11 @@ PrefabInstance:
       objectReference: {fileID: 327276719}
     - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: activateItemPanel
+      value: ActivateItemPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopManager, GameAssembly
       objectReference: {fileID: 0}
     - target: {fileID: 4936767355446099738, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_Pivot.x
@@ -4256,7 +4337,11 @@ PrefabInstance:
       objectReference: {fileID: 327276719}
     - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: activateItemPanel
+      value: ActivateItemPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopManager, GameAssembly
       objectReference: {fileID: 0}
     - target: {fileID: 4936767355446099738, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_Pivot.x
@@ -4414,7 +4499,11 @@ PrefabInstance:
       objectReference: {fileID: 327276719}
     - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: activateItemPanel
+      value: ActivateItemPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopManager, GameAssembly
       objectReference: {fileID: 0}
     - target: {fileID: 4936767355446099738, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_Pivot.x
@@ -4522,6 +4611,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 327276719}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActivateItemPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 274664006735345390, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopManager, GameAssembly
+      objectReference: {fileID: 0}
     - target: {fileID: 4936767355446099738, guid: 68578ebcaad67fd48ab103c725c56835, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

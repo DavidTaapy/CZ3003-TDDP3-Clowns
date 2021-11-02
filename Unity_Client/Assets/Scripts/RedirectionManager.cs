@@ -86,6 +86,11 @@ public class RedirectionManager : MonoBehaviour
         Loader.Load(Loader.Scene.ViewSeasonRewardsScene);
     }
 
+    public void redirectToLastSeasonRewards()
+    {
+        Loader.Load(Loader.Scene.LastSeasonRewardScene);
+    }
+
     public void redirectToUserProfile()
     {
         Loader.Load(Loader.Scene.UserProfileScene);
