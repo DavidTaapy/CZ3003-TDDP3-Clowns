@@ -8,5 +8,7 @@ namespace Serializables
         public string gameId;
         public string[] playersIds;
         public string localPlayerId;
+        public int firstPlayerScore;
+        public int secondPlayerScore;
     }
 }
