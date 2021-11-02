@@ -47,43 +47,43 @@ public class ShopManager : MonoBehaviour
         toPowerupPage.gameObject.SetActive(false);
         
         // Initialise variables with backend
-        user = getUserDetails(url_user, userId);
-        shopPowerups = getShopPowerups(url_items);
-        shopAccessory = getShopAccessory(url_items);
+        user = GetUserDetails(url_user, userId);
+        shopPowerups = GetShopPowerups(url_items);
+        shopAccessory = GetShopAccessory(url_items);
         userPoints = user.getPoints();
         pointsText.text = "Points: " + userPoints.ToString();
         userInventory = user.getInventory();
 
         // Initialise powerups
-        displayPowerups();
+        DisplayPowerups();
     }
 
-    private User getUserDetails(string url_user, string userId){
+    private User GetUserDetails(string url_user, string userId){
         var linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
         User user = linktoUserGet.getUser(url_user, userId);
         return user;
     }
 
-    private List<Item> getShopPowerups(string url){
+    private List<Item> GetShopPowerups(string url){
         var linktoItems = GameObject.Find("ItemsDao").GetComponent<ItemDao>();
         List<Item> shopPowerUps = linktoItems.getItems(url_items, "Powerup", "Shop"); //returns list of powerups in shop
         Debug.Log("\n num of shop powerup: " + shopPowerUps.Count);
         return shopPowerUps;
     }
 
-    private List<Item> getShopAccessory(string url){
+    private List<Item> GetShopAccessory(string url){
         var linktoItems = GameObject.Find("ItemsDao").GetComponent<ItemDao>();
         List<Item> shopAccessory = linktoItems.getItems(url_items, "Accessory", "Shop"); //returns list of accessory in shop
         Debug.Log("\n num of shop skins: " + shopAccessory.Count);
         return shopAccessory;
     }
 
-    private void updateUserInventory(string url, User user) {
+    private void UpdateUserInventory(string url, User user) {
         var linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
         linktoUserGet.updateUser(url, user);
     }
 
-    public void activatePowerupPanel()
+    public void ActivatePowerupPanel()
     {  
         pageText.text = "Powerups";
 
@@ -93,10 +93,10 @@ public class ShopManager : MonoBehaviour
         powerupPanel.gameObject.SetActive(true);
         toAccessoryPage.gameObject.SetActive(true);
         
-        displayPowerups();
+        DisplayPowerups();
     }
 
-    public void activateAccessoryPanel()
+    public void ActivateAccessoryPanel()
     {
         pageText.text = "Accessories";
 
@@ -106,13 +106,13 @@ public class ShopManager : MonoBehaviour
         accessoryPanel.gameObject.SetActive(true);
         toPowerupPage.gameObject.SetActive(true);
 
-        displayAccessory();
+        DisplayAccessory();
     }
 
-    public void activateItemPanel()
+    public void ActivateItemPanel()
     {
         currentItem = EventSystem.current.currentSelectedGameObject.transform.parent.gameObject;
-        updateItemPanel(currentItem);
+        UpdateItemPanel(currentItem);
 
         powerupPanel.gameObject.SetActive(false);
         accessoryPanel.gameObject.SetActive(false);
@@ -121,7 +121,7 @@ public class ShopManager : MonoBehaviour
         itemPanel.gameObject.SetActive(true);
     }
 
-    void displayPowerups()
+    private void DisplayPowerups()
     {
         int tmp = shopPowerups.Count;
         for (int i = 0; i < itemPerPage; i++)
@@ -142,7 +142,7 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    void displayAccessory()
+    private void DisplayAccessory()
     {
         int tmp = shopAccessory.Count;
         for (int i = 0; i < itemPerPage; i++)
@@ -163,7 +163,7 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    void updateItemPanel(GameObject currentItem)
+    private void UpdateItemPanel(GameObject currentItem)
     {
         int currentItemIndex = currentItem.transform.GetSiblingIndex();
         GameObject currentPanel = currentItem.transform.parent.gameObject;
@@ -190,7 +190,7 @@ public class ShopManager : MonoBehaviour
         itemPanel.transform.GetChild(4).gameObject.SetActive(false);
     }
 
-    public void purchaseItem()
+    public void PurchaseItem()
     {
         int price;
         Item purchasedItem;
@@ -247,6 +247,6 @@ public class ShopManager : MonoBehaviour
         {
             print("Not enough points!");
         }
-        updateUserInventory(url_user, user);
+        UpdateUserInventory(url_user, user);
     }
 }
