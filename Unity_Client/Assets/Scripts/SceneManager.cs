@@ -18,7 +18,8 @@ public static class Loader
         MultiplayerWinScene, MultiplayerLoseScene, // // Done Redirection
         MP_Matched, MP_Finding, ChooseRestaurantScene, // // Done Redirection // Check where to use choose restaurant
         ViewSeasonRewardsScene, ReportScene, // Done Redirection // Check how to redirect
-        UserProfileScene, CharacterScene // Done Redirection // Check how to redirect
+        UserProfileScene, CharacterScene, // Done Redirection // Check how to redirect
+        LastSeasonRewardScene
     }
 
     private static Action onLoaderCallback;
