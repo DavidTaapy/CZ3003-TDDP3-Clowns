@@ -12,7 +12,7 @@ public class InventoryUIManager : MonoBehaviour
     [Header("Inventory Details")]
     public GameObject inventoryPanel;
     public GameObject[] inventorySlots;
-    public List<Item> inventory;
+    private List<Item> inventory;
 
     [Header("Page Details")]
     private int itemPerPage = 8;
@@ -23,7 +23,6 @@ public class InventoryUIManager : MonoBehaviour
     public GameObject itemPanel;
     Sprite sprite;
     
-    // Start is called before the first frame update
     void Start()
     {
         // Need to get the correct userId from playfab
@@ -36,6 +35,8 @@ public class InventoryUIManager : MonoBehaviour
         DisplayItems();
         inventoryPanel.gameObject.SetActive(true);
         itemPanel.gameObject.SetActive(false);
+        Debug.Log("Number of inventory items: " + inventory.Count.ToString());
+        Debug.Log("Number of inventory slots: " + inventorySlots.Length.ToString());
     }
 
     void Update()
@@ -43,14 +44,30 @@ public class InventoryUIManager : MonoBehaviour
         UpdatePage();
     }
     
-    void DisplayItems()
+    private void DisplayItems()
     {
-        var tmp = inventory.Count;
-        for (int i = 0; i < itemPerPage; i++)
+        int tmp;
+
+        if (inventory.Count < itemPerPage)
+        {
+            tmp = inventory.Count; 
+        }
+        else
+        {
+            if (pageID == 0)
+            {
+                tmp = itemPerPage;
+            }
+            else
+            {
+                tmp = inventory.Count - (pageID * itemPerPage);
+            }
+        }
+
+        for (int i = 0; i < inventorySlots.Length; i++)
         {
             if (i >= pageID * itemPerPage && i < (pageID + 1) * itemPerPage && tmp > 0)
             {
-                //testing code
                 sprite = Resources.Load<Sprite>(inventory[i].getSpriteSource());
                 inventorySlots[i].gameObject.SetActive(true);
                 inventorySlots[i].transform.GetChild(0).GetComponent<Image>().sprite = sprite;
@@ -63,10 +80,6 @@ public class InventoryUIManager : MonoBehaviour
                 inventorySlots[i].gameObject.SetActive(false);
             }
         }
-        
-        /*for (int j = tmp; j < itemPerPage; j++){
-            inventorySlots[j].gameObject.SetActive(false);
-        }*/
     }
 
     public void NextPage()
@@ -97,9 +110,9 @@ public class InventoryUIManager : MonoBehaviour
         DisplayItems();
     }
 
-    void UpdatePage()
+    private void UpdatePage()
     {
-        pageText.text = (pageID + 1) + "/" + (Mathf.FloorToInt((inventorySlots.Length - 1) / itemPerPage) + 1).ToString();
+        pageText.text = (pageID + 1) + "/" + (Mathf.Ceil((inventorySlots.Length) / itemPerPage)).ToString();
     }
 
     public void ActivateItemPanel()
@@ -116,14 +129,14 @@ public class InventoryUIManager : MonoBehaviour
         itemPanel.gameObject.SetActive(false);
     }
 
-    void UpdateItemPanel(GameObject currentItemButton)
+    private void UpdateItemPanel(GameObject currentItemButton)
     {
         GameObject currentItem = currentItemButton.transform.parent.gameObject;
         int currentItemIndex = currentItem.transform.GetSiblingIndex();
 
         sprite = Resources.Load<Sprite>(inventory[currentItemIndex].getSpriteSource());
         itemPanel.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
-        itemPanel.transform.GetChild(1).GetComponent<Text>().text = "ID: " + inventory[currentItemIndex].getItemID().ToString();
+        // itemPanel.transform.GetChild(1).GetComponent<Text>().text = "ID: " + inventory[currentItemIndex].getItemID().ToString();
         itemPanel.transform.GetChild(2).GetComponent<Text>().text = "Name: " + inventory[currentItemIndex].getItemName();
         itemPanel.transform.GetChild(3).GetComponent<Text>().text = "Price: " + inventory[currentItemIndex].getPrice().ToString();
         itemPanel.transform.GetChild(5).GetComponent<Text>().text = "You have: " + inventory[currentItemIndex].getItemCount().ToString();
