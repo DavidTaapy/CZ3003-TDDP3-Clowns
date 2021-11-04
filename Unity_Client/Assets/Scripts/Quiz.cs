@@ -90,6 +90,9 @@ public class Quiz : MonoBehaviour
         skipQuestionCount = GetSkipQuestionCount(userInventory);
 
         // Getting dish & ingredient images
+        // dynamic value
+        // PlayerPrefs.GetString("RestaurantChoice")
+        // hardcoded value
         string restaurantSelected = "Diner";
         var linktoRestaurant = GameObject.Find("RestaurantDao").GetComponent<RestaurantDao>();
         restaurantList = linktoRestaurant.getRestaurant(url_dish, restaurantSelected);
