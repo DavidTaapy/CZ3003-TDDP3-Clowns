@@ -74,8 +74,9 @@ public class MultiQuiz : MonoBehaviour
     Restaurant currentRestaurant;
     Sprite sprite;
 
-    string gameId = "RcykupGl4bUcZwNV6KxC"; // To get dynamically
+    string gameId = "o1FcDhv3N3J9W0gQjRHP"; // To get dynamically
     string myPlayerId = "David"; // To get dynamically
+    string opponentId = "";
     private KeyValuePair<DatabaseReference, EventHandler<ValueChangedEventArgs>> currentGameInfoListener;
 
     void Awake()
@@ -127,11 +128,24 @@ public class MultiQuiz : MonoBehaviour
                         StringSerializationAPI.Deserialize(typeof(GameInfo), args.Snapshot.GetRawJsonValue()) as
                             GameInfo;
                 string localPlayerId = gameInfo.localPlayerId;
+                // Get opponent's ID
+                string[] playersIds = gameInfo.playersIds;
+                if (opponentId == "") {
+                    if (playersIds[0] != myPlayerId) {
+                        opponentId = playersIds[0];
+                    } else {
+                        opponentId = playersIds[1];
+                    }
+                }
+                Debug.Log(opponentId);
+                // Check end of game
                 if (gameInfo.firstPlayerScore == 5) {
                     if (myPlayerId == localPlayerId) {
                         SceneManager.LoadScene("MultiplayerWinScene");
+                        opponentId = "";
                     } else {
                         SceneManager.LoadScene("MultiplayerLoseScene");
+                        opponentId = "";
                     }
                 } else if (gameInfo.secondPlayerScore == 5) {
                     if (myPlayerId != localPlayerId) {
