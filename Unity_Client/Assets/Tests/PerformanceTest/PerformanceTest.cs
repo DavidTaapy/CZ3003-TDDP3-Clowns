@@ -21,19 +21,21 @@ public class PerformanceTest
         }
         yield return null;
 
-        yield return new WaitForSeconds(.001f);
+        yield return new WaitForSeconds(3);
 
         TMP_InputField Email = GameObject.Find("Email_Input").GetComponent<TMP_InputField>();
-        Email.text = "guow0017@e.ntu.edu.sg";
+        Email.text = "johnleekaijie@gmail.com";
+        Email.textComponent.SetText("johnleekaijie@gmail.com");
 
 
         TMP_InputField Password = GameObject.Find("Password_Input").GetComponent<TMP_InputField>();
-        Password.text = "password";
+        Password.text = "123456";
+        Password.textComponent.SetText("123456");
 
-        yield return new WaitForSeconds(.001f);
-
-        Button LoginButton = GameObject.Find("Login_Btn").GetComponent<Button>();
+        Button LoginButton = GameObject.Find("Login Button").GetComponent<Button>();
         LoginButton.onClick.Invoke();
+
+        yield return new WaitForSeconds(1);
 
         yield return Measure.Frames().Run();
     }
