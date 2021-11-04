@@ -86,7 +86,8 @@ public class MultiQuiz : MonoBehaviour
         scoreKeeper.resetFields();
 
         // Need to make change userId accordingly
-        string userId = "7HHcjbfJq1kD8VFMHHDq";
+        // string userId = "7HHcjbfJq1kD8VFMHHDq";
+        string userId = PlayerPrefs.GetString("uid");
         linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
         currentUser = linktoUserGet.getUser(url_user, userId);
         completedQns = currentUser.getCompletedQns();
@@ -104,7 +105,6 @@ public class MultiQuiz : MonoBehaviour
         extendTimeCount = GetExtendTimeCount(userInventory);
         showHintCount = GetShowHintCount(userInventory);
         skipQuestionCount = GetSkipQuestionCount(userInventory);
-        // opponentScore = GetOpponentCorrectQuestionCount(opponent);
     
         // Getting dish & ingredient images
         string restaurantSelected = "Cafe";
@@ -402,7 +402,8 @@ public class MultiQuiz : MonoBehaviour
     void DisplayOpponentScore()
     {
         Text opponentScoreText = opponentScoreImage.GetComponentInChildren<Text>();
-        // opponentScore = GetOpponentCorrectQuestionCount(opponent);
+        User opponent = linktoUserGet.getUser(url_user, opponentId);
+        opponentScore = opponent.getCorrectQns();
         opponentScoreText.text = "Opponent's Score: " + opponentScore;
     }
 
