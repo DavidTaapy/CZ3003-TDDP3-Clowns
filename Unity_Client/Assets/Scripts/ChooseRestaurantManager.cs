@@ -37,13 +37,16 @@ public class ChooseRestaurantManager : MonoBehaviour
         switch(choice)
         {
             case 0:
-                Debug.Log("Fine Dining Chosen");
+                PlayerPrefs.SetString("RestaurantChoice", "FineDining");
+                Debug.Log(PlayerPrefs.GetString("RestaurantChoice"));
                 break;
             case 1:
-                Debug.Log("Diner Chosen");
+                PlayerPrefs.SetString("RestaurantChoice", "Diner");
+                Debug.Log(PlayerPrefs.GetString("RestaurantChoice"));
                 break;
             case 2:
-                Debug.Log("Cafe Chosen");
+                PlayerPrefs.SetString("RestaurantChoice", "Cafe");
+                Debug.Log(PlayerPrefs.GetString("RestaurantChoice"));
                 break;
             default:
                 Debug.Log("Something Went Wrong");
