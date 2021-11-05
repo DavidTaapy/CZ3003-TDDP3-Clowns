@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Serializables;
+using APIs;
+using Managers;
+using UnityEngine.SceneManagement;
+using Firebase.Database;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class MultiQuiz : MonoBehaviour
 {
@@ -66,6 +74,11 @@ public class MultiQuiz : MonoBehaviour
     Restaurant currentRestaurant;
     Sprite sprite;
 
+    string gameId = "o1FcDhv3N3J9W0gQjRHP"; // To get dynamically
+    string myPlayerId = "David"; // To get dynamically
+    string opponentId = "";
+    private KeyValuePair<DatabaseReference, EventHandler<ValueChangedEventArgs>> currentGameInfoListener;
+
     void Awake()
     {
         timer = FindObjectOfType<Timer>();
@@ -73,7 +86,8 @@ public class MultiQuiz : MonoBehaviour
         scoreKeeper.resetFields();
 
         // Need to make change userId accordingly
-        string userId = "7HHcjbfJq1kD8VFMHHDq";
+        // string userId = "7HHcjbfJq1kD8VFMHHDq";
+        string userId = PlayerPrefs.GetString("uid");
         linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
         currentUser = linktoUserGet.getUser(url_user, userId);
         completedQns = currentUser.getCompletedQns();
@@ -91,7 +105,6 @@ public class MultiQuiz : MonoBehaviour
         extendTimeCount = GetExtendTimeCount(userInventory);
         showHintCount = GetShowHintCount(userInventory);
         skipQuestionCount = GetSkipQuestionCount(userInventory);
-        // opponentScore = GetOpponentCorrectQuestionCount(opponent);
     
         // Getting dish & ingredient images
         string restaurantSelected = "Cafe";
@@ -101,6 +114,47 @@ public class MultiQuiz : MonoBehaviour
 
         sprite = Resources.Load<Sprite>(currentRestaurant.getDishes()[NUMBER_OF_QNS]);
         dishGroup.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
+
+        // Check for end of game
+        ListenForGameEnd(gameId, Debug.Log);
+    }
+
+    public void ListenForGameEnd(string gameId, Action<AggregateException> fallback)
+    {
+        currentGameInfoListener =
+            DatabaseAPI.ListenForValueChanged($"games/{gameId}/gameInfo", args =>
+            {
+                var gameInfo =
+                        StringSerializationAPI.Deserialize(typeof(GameInfo), args.Snapshot.GetRawJsonValue()) as
+                            GameInfo;
+                string localPlayerId = gameInfo.localPlayerId;
+                // Get opponent's ID
+                string[] playersIds = gameInfo.playersIds;
+                if (opponentId == "") {
+                    if (playersIds[0] != myPlayerId) {
+                        opponentId = playersIds[0];
+                    } else {
+                        opponentId = playersIds[1];
+                    }
+                }
+                Debug.Log(opponentId);
+                // Check end of game
+                if (gameInfo.firstPlayerScore == 5) {
+                    if (myPlayerId == localPlayerId) {
+                        SceneManager.LoadScene("MultiplayerWinScene");
+                        opponentId = "";
+                    } else {
+                        SceneManager.LoadScene("MultiplayerLoseScene");
+                        opponentId = "";
+                    }
+                } else if (gameInfo.secondPlayerScore == 5) {
+                    if (myPlayerId != localPlayerId) {
+                        SceneManager.LoadScene("MultiplayerWinScene");
+                    } else {
+                        SceneManager.LoadScene("MultiplayerLoseScene");
+                    }
+                }
+            }, fallback);
     }
 
     void Update()
@@ -152,6 +206,24 @@ public class MultiQuiz : MonoBehaviour
         Image buttonImage;
         if (index == currentQn.GetCorrectAnswerIndex())
         {
+            // Update the realtime database
+            DatabaseAPI.GetObject<GameInfo>($"games/{gameId}/gameInfo",
+            gameInfo => {
+                string localPlayerId = gameInfo.localPlayerId;
+                string[] playersIds = gameInfo.playersIds;
+                if (myPlayerId == localPlayerId) {
+                    gameInfo.firstPlayerScore += 1;
+                } else {
+                    gameInfo.secondPlayerScore += 1;
+                }
+                DatabaseAPI.PostObject($"games/{gameId}/gameInfo", gameInfo, () => {
+                    Debug.Log("Success");
+                }, (error) => {
+                    Debug.Log(error);
+                });
+            },
+            Debug.Log);
+            // Set the UI
             questionText.text = "Correct!";
             buttonImage = answerButtons[index].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
@@ -189,13 +261,13 @@ public class MultiQuiz : MonoBehaviour
     }
 
     void GetRandomDish(){
-        int index = Random.Range(0, restaurantList.Count);
+        int index = UnityEngine.Random.Range(0, restaurantList.Count);
         currentRestaurant = restaurantList[index];
     }
 
     void GetRandomQuestion()
     {
-        int index = Random.Range(0, qnList.Count);
+        int index = UnityEngine.Random.Range(0, qnList.Count);
         currentQn = qnList[index];
 
         if (qnList.Contains(currentQn))
@@ -330,7 +402,8 @@ public class MultiQuiz : MonoBehaviour
     void DisplayOpponentScore()
     {
         Text opponentScoreText = opponentScoreImage.GetComponentInChildren<Text>();
-        // opponentScore = GetOpponentCorrectQuestionCount(opponent);
+        User opponent = linktoUserGet.getUser(url_user, opponentId);
+        opponentScore = opponent.getCorrectQns();
         opponentScoreText.text = "Opponent's Score: " + opponentScore;
     }
 
