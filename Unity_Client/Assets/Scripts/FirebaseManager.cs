@@ -118,7 +118,7 @@ public class FirebaseManager : MonoBehaviour
             User = LoginTask.Result;
             if (User.IsEmailVerified)
             {
-                Debug.LogFormat("User signed in successfully: {0} ({1})", User.DisplayName, User.Email);
+                Debug.LogFormat("User signed in successfully: {0} ({1})", User.DisplayName, User.UserId);
                 Debug.Log(User.IsEmailVerified);
                 warningLoginText.text = "";
                 confirmLoginText.text = "Logged In";
