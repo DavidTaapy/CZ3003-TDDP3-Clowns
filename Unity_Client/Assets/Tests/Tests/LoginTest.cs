@@ -17,13 +17,13 @@ public class LoginTest
         yield return new WaitForSeconds(3);
 
         TMP_InputField Email_Input = GameObject.Find("Email_Input").GetComponent<TMP_InputField>();
-        Email_Input.text = "test@test.com";
-        Email_Input.textComponent.SetText("test@test.com");
+        Email_Input.text = "johnleekaijie@gmail.com";
+        Email_Input.textComponent.SetText("johnleekaijie@gmail.com");
         TMP_InputField Password_Input = GameObject.Find("Password_Input").GetComponent<TMP_InputField>();
         Password_Input.text = "123456";
         Password_Input.textComponent.SetText("123456");
 
-        Button LoginButton = GameObject.Find("Login_Btn").GetComponent<Button>();
+        Button LoginButton = GameObject.Find("Login Button").GetComponent<Button>();
         LoginButton.onClick.Invoke();
         yield return new WaitForSeconds(1);
         //TMP_Text Feedback_Text = GameObject.Find("Warning_Text").GetComponent<TMP_Text>();
@@ -48,7 +48,7 @@ public class LoginTest
         Password_Input.text = "123456";
         Password_Input.textComponent.SetText("123456");
 
-        Button LoginButton = GameObject.Find("Login_Btn").GetComponent<Button>();
+        Button LoginButton = GameObject.Find("Login Button").GetComponent<Button>();
         LoginButton.onClick.Invoke();
         yield return new WaitForSeconds(1);
         //TMP_Text Feedback_Text = GameObject.Find("Warning_Text").GetComponent<TMP_Text>();
@@ -73,7 +73,7 @@ public class LoginTest
         Password_Input.text = "";
         Password_Input.textComponent.SetText("");
 
-        Button LoginButton = GameObject.Find("Login_Btn").GetComponent<Button>();
+        Button LoginButton = GameObject.Find("Login Button").GetComponent<Button>();
         LoginButton.onClick.Invoke();
         yield return new WaitForSeconds(1);
         //TMP_Text Feedback_Text = GameObject.Find("Warning_Text").GetComponent<TMP_Text>();
@@ -98,7 +98,7 @@ public class LoginTest
         Password_Input.text = "sdfasdf";
         Password_Input.textComponent.SetText("sdfasdf");
 
-        Button LoginButton = GameObject.Find("Login_Btn").GetComponent<Button>();
+        Button LoginButton = GameObject.Find("Login Button").GetComponent<Button>();
         LoginButton.onClick.Invoke();
         yield return new WaitForSeconds(1);
         //TMP_Text Feedback_Text = GameObject.Find("Warning_Text").GetComponent<TMP_Text>();
@@ -123,7 +123,7 @@ public class LoginTest
         Password_Input.text = "sdfasdf";
         Password_Input.textComponent.SetText("sdfasdf");
 
-        Button LoginButton = GameObject.Find("Login_Btn").GetComponent<Button>();
+        Button LoginButton = GameObject.Find("Login Button").GetComponent<Button>();
         LoginButton.onClick.Invoke();
         yield return new WaitForSeconds(1);
         //TMP_Text Feedback_Text = GameObject.Find("Warning_Text").GetComponent<TMP_Text>();
@@ -148,7 +148,7 @@ public class LoginTest
         Password_Input.text = "sdfasdf";
         Password_Input.textComponent.SetText("sdfasdf");
 
-        Button LoginButton = GameObject.Find("Login_Btn").GetComponent<Button>();
+        Button LoginButton = GameObject.Find("Login Button").GetComponent<Button>();
         LoginButton.onClick.Invoke();
         yield return new WaitForSeconds(1);
         //TMP_Text Feedback_Text = GameObject.Find("Warning_Text").GetComponent<TMP_Text>();
