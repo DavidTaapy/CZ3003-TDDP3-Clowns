@@ -74,13 +74,15 @@ public class MultiQuiz : MonoBehaviour
     Restaurant currentRestaurant;
     Sprite sprite;
 
-    string gameId = "o1FcDhv3N3J9W0gQjRHP"; // To get dynamically
-    string myPlayerId = "David"; // To get dynamically
+    string gameId = ""; // To get dynamically
+    string myPlayerId = "";
     string opponentId = "";
     private KeyValuePair<DatabaseReference, EventHandler<ValueChangedEventArgs>> currentGameInfoListener;
 
     void Awake()
     {
+        gameId = PlayerPrefs.GetString("gameId");
+        myPlayerId = PlayerPrefs.GetString("uid");
         timer = FindObjectOfType<Timer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         scoreKeeper.resetFields();
