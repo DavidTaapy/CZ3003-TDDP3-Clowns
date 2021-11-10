@@ -16,7 +16,7 @@ namespace Handlers
         private string gameId;
 
         private void Start() {
-            MainManager.Instance.currentLocalPlayerId = "David";
+            MainManager.Instance.currentLocalPlayerId = PlayerPrefs.GetString("uid");
             JoinQueue();
         }
 
