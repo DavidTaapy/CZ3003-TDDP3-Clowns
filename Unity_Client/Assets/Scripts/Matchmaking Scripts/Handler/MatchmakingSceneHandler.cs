@@ -3,6 +3,9 @@ using APIs;
 using Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
+using System.Collections;
 
 namespace Handlers
 {
@@ -10,6 +13,11 @@ namespace Handlers
     {
         public GameObject searchingPanel;
         public GameObject foundPanel;
+        public TMP_Text gameStartText;
+        public TMP_Text gameStartText3;
+        public TMP_Text gameStartText2;
+        public TMP_Text gameStartText1;
+        public Image backgroundColorForGameStart;
 
         private bool gameFound;
         private bool readyingUp;
@@ -35,6 +43,26 @@ namespace Handlers
             GameFound();
         }
 
+        private IEnumerator gameStartCountDown() {
+            searchingPanel.SetActive(false);
+            foundPanel.SetActive(true);
+            backgroundColorForGameStart.gameObject.SetActive(true);
+            gameStartText.gameObject.SetActive(true);
+            gameStartText3.gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            gameStartText3.gameObject.SetActive(false);
+            yield return new WaitForSeconds(0.5f);
+            gameStartText2.gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            gameStartText2.gameObject.SetActive(false);
+            yield return new WaitForSeconds(0.5f);
+            gameStartText1.gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            gameStartText1.gameObject.SetActive(false);
+            yield return new WaitForSeconds(0.5f);
+            Loader.Load(Loader.Scene.MultiMode);
+        }
+
         private void GameFound()
         {
             MainManager.Instance.gameManager.GetCurrentGameInfo(gameId, MainManager.Instance.currentLocalPlayerId,
@@ -50,8 +78,7 @@ namespace Handlers
                         }, Debug.Log);
                 }, Debug.Log);
 
-            searchingPanel.SetActive(false);
-            foundPanel.SetActive(true);
+            StartCoroutine(gameStartCountDown());
         }
 
         public void LeaveQueue()
