@@ -46,7 +46,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/user?id=testgain",
+							"raw": "http://localhost:3000/user?id=Tester123",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -58,7 +58,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "testgain"
+									"value": "Tester123"
 								}
 							]
 						}
