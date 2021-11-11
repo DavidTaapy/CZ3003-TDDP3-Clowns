@@ -1,0 +1,562 @@
+{
+	"info": {
+		"_postman_id": "9eb51ee8-1385-4089-9577-e15474ab9081",
+		"name": "CZ3003",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User API",
+			"item": [
+				{
+					"name": "Get a user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/user?id=Tester123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "Tester123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/user?id=testgain",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "testgain"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"Tester123\",\r\n    \"inventory\": [],\r\n    \"correctQns\": 0,\r\n    \"eloRating\": 1000,\r\n    \"completedQns\": [],\r\n    \"wrongQns\": 0,\r\n    \"id\": \"Tester123\",\r\n    \"primaryLevel\": 6,\r\n    \"character\": {\r\n        \"spriteSource\": \"Sprites/Sprites (Final)/Character/Jelly 10\",\r\n        \"characterName\": \"Chef Jar\",\r\n        \"characterDescription\": \"I am a jar!\",\r\n        \"characterID\": \"Wx7ePiSen9NjEL0LtxoK\"\r\n    },\r\n    \"points\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/user?id=Tester123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "Tester123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\" : \"Tester123\",\r\n    \"primaryLevel\" : 6,\r\n    \"id\" : \"Tester123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Character API",
+			"item": [
+				{
+					"name": "Add character",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"characterDescription\": \"I am Chef Test!\",\r\n    \"spriteSource\": \"Sprites/Sprites (Final)/Character/Jelly 11\",\r\n    \"characterName\": \"Chef TEST\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/character",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"character"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete character",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/character?name=Chef TEST",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"character"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Chef TEST"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get specified character",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/character?id=6sg4CcNExyLUR54yt1CR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"character"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6sg4CcNExyLUR54yt1CR"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all characters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/allcharacter",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"allcharacter"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Item API",
+			"item": [
+				{
+					"name": "Get items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/items?itemType=Accessory&itemSource=Shop",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"items"
+							],
+							"query": [
+								{
+									"key": "itemType",
+									"value": "Accessory"
+								},
+								{
+									"key": "itemSource",
+									"value": "Shop"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post items",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"itemName\" : \"Test Item\",\r\n    \"price\" : 0,\r\n    \"itemType\" : \"Accessory\",\r\n    \"itemSource\" : \"Shop\",\r\n    \"itemDescription\" : \"Test item\",\r\n    \"spriteSource\" : \"Sprites/Sprites (Final)/Accessories/Leaderboard/machete\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete items",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/items?name=Test Item",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"items"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Test Item"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Leaderboard API",
+			"item": [
+				{
+					"name": "Get current season Leaderboard rankings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/leaderboard",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"leaderboard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get past leaderboard",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/pastleaderboard?seasonId=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pastleaderboard"
+							],
+							"query": [
+								{
+									"key": "seasonId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Question API",
+			"item": [
+				{
+					"name": "Get questions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/questions?lvl=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"questions"
+							],
+							"query": [
+								{
+									"key": "lvl",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post question",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"question\": \"1+1\",\r\n    \"answers\": [\"0\", \"1\", \"2\", \"3\"],\r\n    \"correctAnswerIndex\" : 2,\r\n    \"primaryLevel\" : 1,\r\n    \"hint\" : \"Count with your fingers\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/questions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"questions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete qns",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/questions?qn=1%2B1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"questions"
+							],
+							"query": [
+								{
+									"key": "qn",
+									"value": "1%2B1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Restaurant API",
+			"item": [
+				{
+					"name": "Add restarant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"spriteSource\": \"Sprites/Single Mode Scene Sprites/FineDiningBg\",\r\n    \"dishes\": [\r\n        \"Sprites/Food Sprites/3.Ramen noodles/Endamame\",\r\n        \"Sprites/Food Sprites/3.Ramen noodles/Meat\",\r\n        \"Sprites/Food Sprites/3.Ramen noodles/noodles\",\r\n        \"Sprites/Food Sprites/3.Ramen noodles/Pot\",\r\n        \"Sprites/Food Sprites/3.Ramen noodles/Water\",\r\n        \"Sprites/Food Sprites/Completed Dishes Sprites/Ramen\"\r\n        ],\r\n    \"name\": \"Tester\",\r\n    \"id\": \"xII9UUPJJQPTG2qqa28A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/restaurant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"restaurant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get restaurant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/restaurant?name=Diner",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"restaurant"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Diner"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Restaurant",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/restaurant?name=Tester",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"restaurant"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Tester"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Basic server test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

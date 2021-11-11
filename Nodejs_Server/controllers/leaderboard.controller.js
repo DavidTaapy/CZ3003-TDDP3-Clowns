@@ -6,7 +6,7 @@ const getLeaderboard = async(req, res) => {
         let temp = {'userName': 'username', 'eloRating': 0};
         const results = [];
         const userdb = firestore.collection('users');    
-        const snapshot = await userdb.orderBy('eloRating', 'desc').get(); // removed .limit(2)
+        const snapshot = await userdb.orderBy('eloRating', 'desc').get();
         const ranks = snapshot.docs.map(user => user.data());
         res.send(ranks);
 
@@ -32,6 +32,5 @@ const getPastLeaderboard = async(req, res) => {
         res.status(400).send("Error in retrieving past leaderboard");
     }
 };
-
 
 export {getLeaderboard, getPastLeaderboard};

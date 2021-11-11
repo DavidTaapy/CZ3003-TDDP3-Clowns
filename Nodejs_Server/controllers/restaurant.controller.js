@@ -1,6 +1,6 @@
 import {firestore} from "../model/db.js";
 
-//add restaurant+dish
+//add restaurant and dish
 const addRes = async(req, res) => {
     try {
         const game = req.body;
@@ -15,37 +15,11 @@ const addRes = async(req, res) => {
     }
 };
 
-/*
-//add dish
-const addDish = async(req, res) => {
-    try {
-        const newDish = req.body;
-        const id = req.query.id;
-        const resdb = firestore.collection('restaurant'); 
-        var currRes = resdb.doc(id);
-        currRes.set({
-            "Dishes": newDish
-        }, {merge: true}).then(function() {
-            res.send("Document successfully updated!");
-        }).catch(function(error) {
-           res.send("no such restaurant");
-        });
-    } catch (error) {
-        res.status(400).send(error.message);
-        res.send("error adding");
-    }
-};
-*/
-
 // Get restaurant by selection
 const getRes = async(req, res) => {
     try {
         const name = req.query.name;
-        const resdb = firestore.collection('restaurant'); 
-        //const snapshot = await resdb.where('name', '==', name).get();
-        //res.contentType('application/json');
-        //res.send(snapshot.docs.map(currRes => currRes.data()));
-
+        const resdb = firestore.collection('restaurant');
         resdb.where('name', '==', name).get().then(function(snapshot){
             if (!snapshot.empty) {
                 res.contentType('application/json');
@@ -77,6 +51,5 @@ const deleteRes = async(req, res) => {
         return res.status(400).send("Missing restaurant name param!");
     }
 };
-
 
 export {getRes, addRes, deleteRes};
