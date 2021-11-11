@@ -1,4 +1,5 @@
 ﻿#if !NO_UNITY
+#if UNITY_EDITOR
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -186,7 +187,7 @@ namespace FullSerializer {
 		}
 
 		private Vector2 _scrollPos;
-		public override void OnInspectorGUI() {
+		public void OnInspectorGUI() {
 			var target = (fsAotConfiguration)this.target;
 
 			if (GUILayout.Button("Compile")) {
@@ -247,4 +248,5 @@ namespace FullSerializer {
 
 	}
 }
+#endif
 #endif
