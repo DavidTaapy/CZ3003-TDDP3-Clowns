@@ -727,9 +727,6 @@
  <Reference Include="Unity.2D.Path.Editor">
  <HintPath>C:/Users/grace/Documents/GitHub/CZ3003-TDDP3-Clowns/Unity_Client/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
  </Reference>
- <Reference Include="Unity.InternalAPIEditorBridge.001">
- <HintPath>C:/Users/grace/Documents/GitHub/CZ3003-TDDP3-Clowns/Unity_Client/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
- </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Users/grace/Documents/GitHub/CZ3003-TDDP3-Clowns/Unity_Client/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
@@ -739,14 +736,17 @@
  <Reference Include="Unity.Rider.Editor">
  <HintPath>C:/Users/grace/Documents/GitHub/CZ3003-TDDP3-Clowns/Unity_Client/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.InternalAPIEditorBridge.001">
+ <HintPath>C:/Users/grace/Documents/GitHub/CZ3003-TDDP3-Clowns/Unity_Client/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Users/grace/Documents/GitHub/CZ3003-TDDP3-Clowns/Unity_Client/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
- <Reference Include="Unity.2D.IK.Runtime">
- <HintPath>C:/Users/grace/Documents/GitHub/CZ3003-TDDP3-Clowns/Unity_Client/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
- </Reference>
  <Reference Include="Unity.Mathematics">
  <HintPath>C:/Users/grace/Documents/GitHub/CZ3003-TDDP3-Clowns/Unity_Client/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.IK.Runtime">
+ <HintPath>C:/Users/grace/Documents/GitHub/CZ3003-TDDP3-Clowns/Unity_Client/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Animation.Triangle.Runtime">
  <HintPath>C:/Users/grace/Documents/GitHub/CZ3003-TDDP3-Clowns/Unity_Client/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>

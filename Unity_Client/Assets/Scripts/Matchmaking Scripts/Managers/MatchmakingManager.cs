@@ -19,6 +19,7 @@ namespace Managers
                             StringSerializationAPI.Deserialize(typeof(string), args.Snapshot.GetRawJsonValue()) as
                                 string;
                         if (gameId == "placeholder") return;
+                        PlayerPrefs.SetString("gameId", gameId);
                         LeaveQueue(playerId, () => onGameFound(
                             gameId), fallback);
                     }, fallback), fallback);

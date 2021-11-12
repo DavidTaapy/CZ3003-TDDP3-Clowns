@@ -6,6 +6,7 @@ using Firebase.Auth;
 using Firebase.Database;
 using TMPro;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -118,17 +119,18 @@ public class FirebaseManager : MonoBehaviour
             User = LoginTask.Result;
             if (User.IsEmailVerified)
             {
-                Debug.LogFormat("User signed in successfully: {0} ({1})", User.DisplayName, User.Email);
+                Debug.LogFormat("User signed in successfully: {0} ({1})", User.DisplayName, User.UserId);
                 Debug.Log(User.IsEmailVerified);
                 warningLoginText.text = "";
                 confirmLoginText.text = "Logged In";
                 PlayerPrefs.SetString("uid", User.UserId);
                 Debug.Log("Uid set to " + PlayerPrefs.GetString("uid"));
-                yield return new WaitForSeconds(3);
+                yield return new WaitForSeconds(1);
 
                 confirmLoginText.text = "";
                 ClearLoginFields();
                 //input redirect here
+                Loader.Load(Loader.Scene.MainMenu);
             } else
             {
                 warningLoginText.text = "Email is not verified";

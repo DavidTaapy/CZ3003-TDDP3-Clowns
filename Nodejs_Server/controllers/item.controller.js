@@ -54,7 +54,4 @@ const deleteItem = async(req, res) => {
     }
 };
 
-
-
-
 export {getItems, addItems, deleteItem};

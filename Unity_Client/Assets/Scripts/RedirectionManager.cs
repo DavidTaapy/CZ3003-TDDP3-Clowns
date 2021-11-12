@@ -73,7 +73,7 @@ public class RedirectionManager : MonoBehaviour
 
     public void redirectToChooseRestaurant()
     {
-        Loader.Load(Loader.Scene.ChooseRestaurantScene);
+        Loader.Load(Loader.Scene.ChooseRestuarantScene);
     }
 
     public void redirectToReport()

@@ -51,6 +51,4 @@ const deleteQuestion = async(req, res) => {
     }
 };
 
-
-
 export {getQuestions, addQuestions, deleteQuestion};
