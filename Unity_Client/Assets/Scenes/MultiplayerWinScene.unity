@@ -383,11 +383,11 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Congratulations!
 
-    [WinnerPlayerName], you won the match with [LoserPlayerName].
+    friedriceverynice, you won the match with Jamus.
 
 
     Your
-    elo score is up by [eloScoreIncrease] !
+    elo score is up by 100!
 
 '
 --- !u!222 &426865328
