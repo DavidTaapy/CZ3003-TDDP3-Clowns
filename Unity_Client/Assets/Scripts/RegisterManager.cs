@@ -174,7 +174,7 @@ public class RegisterManager : MonoBehaviour
                     string result = linktoUserGet.createUser(url_user, user2);
                     Debug.Log(User.UserId + " created");
                     Debug.Log(result);
-                    warningRegisterText.text = "User succesfully created";
+                    warningRegisterText.text = "User created! Please verify your email!";
                     ClearRegisterFeilds();
                 }
             }
