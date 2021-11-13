@@ -8,6 +8,13 @@ The backend portion of the project, written in javascript can be found in under 
 
 The frontend portion of the project, written in unity can be found in under [Unity_Client](./Unity_Client)
 
+## About the Game
+
+Food Wars is a gameshow-oriented game created to help primary school children have fun while playing games!  
+  
+The game will have differing levels of difficulty for children from different primary levels and within each primary level, there would be different restaurants to conquer!    
+  
+That's right! Our game is set is a restaurant scene where players would compete to get ingredients and complete their dishes!  
 
 ## Setting up the backend[^1].
 
@@ -41,13 +48,6 @@ npm start
 You can register for a free account with a valid email and password on "Food_Wars_v1"
 
 Alternatively, here is a quick start account for you to test out the features in Food Wars:
-> Username: 
-> Password:
+> Email: tankb78909@gmail.com
 
-
-
-
-## To Do List
-
-- [ ] Add database population set-up if required
-
+> Password: jamestan

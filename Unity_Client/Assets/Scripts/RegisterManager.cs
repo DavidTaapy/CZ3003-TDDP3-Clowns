@@ -149,11 +149,13 @@ public class RegisterManager : MonoBehaviour
                         if (task.IsCanceled)
                         {
                             Debug.LogError("SendEmailVerificationAsync was canceled.");
+                            warningRegisterText.text = "Error, please try again";
                             return;
                         }
                         if (task.IsFaulted)
                         {
                             Debug.LogError("SendEmailVerificationAsync encountered an error: " + task.Exception);
+                            warningRegisterText.text = "Error, please try again";
                             return;
                         }
 
@@ -172,6 +174,7 @@ public class RegisterManager : MonoBehaviour
                     string result = linktoUserGet.createUser(url_user, user2);
                     Debug.Log(User.UserId + " created");
                     Debug.Log(result);
+                    warningRegisterText.text = "User created! Please verify your email!";
                     ClearRegisterFeilds();
                 }
             }

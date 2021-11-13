@@ -383,11 +383,11 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Try better next time !
 
-    [LoserPlayerName], you lost the match with
-    [WinnerPlayerName].
+    Jamus, you lost the match with friedriceverynice.
 
 
-    Your elo score is down by [eloScoreDecrease] !
+    Your
+    elo score is down by 50!
 
 '
 --- !u!222 &426865328

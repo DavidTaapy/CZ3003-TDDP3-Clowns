@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
-    private string userId = "7HHcjbfJq1kD8VFMHHDq";
     private string url_user = "http://localhost:3000/user";
     private string url_items = "http://localhost:3000/items";
+    string userId = "";
 
     [Header("User Details")]
     public User user;
@@ -37,10 +38,14 @@ public class ShopManager : MonoBehaviour
     public GameObject toPowerupPage;
     Sprite sprite;
 
+    public TMP_Text warningRegisterText;
+
     // Start is called before the first frame update
     void Start()
     {
         // Initialise panels and text
+        warningRegisterText.gameObject.SetActive(false);
+        userId = PlayerPrefs.GetString("uid");
         pageText.text = "Powerups";
         itemPanel.gameObject.SetActive(false);
         accessoryPanel.gameObject.SetActive(false);
@@ -167,6 +172,7 @@ public class ShopManager : MonoBehaviour
     {
         int currentItemIndex = currentItem.transform.GetSiblingIndex();
         GameObject currentPanel = currentItem.transform.parent.gameObject;
+        warningRegisterText.gameObject.SetActive(false);
 
         if (currentPanel == powerupPanel)
         {
@@ -242,6 +248,7 @@ public class ShopManager : MonoBehaviour
             }
 
             print("Purchase successful!");
+            warningRegisterText.gameObject.SetActive(true);
         }
         else
         {

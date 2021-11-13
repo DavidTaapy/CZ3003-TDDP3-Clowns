@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class CharacterManager : MonoBehaviour
 {
-    private string userId = "7HHcjbfJq1kD8VFMHHDq";
     private string url_user = "http://localhost:3000/user";
     private string url_characters = "http://localhost:3000/allcharacter";
+    private string userId = "";
 
     [Header("Character Details")]
     private User user;
@@ -22,6 +22,7 @@ public class CharacterManager : MonoBehaviour
 
     void Start()
     {
+        userId = PlayerPrefs.GetString("uid");
         user = GetUserDetails(url_user, userId);
         characters = GetAllCharacterDetails(url_characters);
         currentCharacter = characters[selectedOption];

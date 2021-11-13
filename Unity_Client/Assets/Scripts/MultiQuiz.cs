@@ -135,8 +135,16 @@ public class MultiQuiz : MonoBehaviour
                 if (opponentId == "") {
                     if (playersIds[0] != myPlayerId) {
                         opponentId = playersIds[0];
+                        opponentScore = gameInfo.firstPlayerScore;
                     } else {
                         opponentId = playersIds[1];
+                        opponentScore = gameInfo.secondPlayerScore;
+                    }
+                } else {
+                    if (playersIds[0] != myPlayerId) {
+                        opponentScore = gameInfo.firstPlayerScore;
+                    } else {
+                        opponentScore = gameInfo.secondPlayerScore;
                     }
                 }
                 Debug.Log(opponentId);
@@ -411,8 +419,8 @@ public class MultiQuiz : MonoBehaviour
     void DisplayOpponentScore()
     {
         Text opponentScoreText = opponentScoreImage.GetComponentInChildren<Text>();
-        User opponent = linktoUserGet.getUser(url_user, opponentId);
-        opponentScore = opponent.getCorrectQns();
+        // User opponent = linktoUserGet.getUser(url_user, opponentId);
+        opponentScore = opponentScore;
         opponentScoreText.text = "Opponent's Score: " + opponentScore;
     }
 
