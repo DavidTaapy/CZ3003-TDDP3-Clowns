@@ -14,7 +14,7 @@ public class WinMultiScreen : MonoBehaviour
     {
         linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
         string playerName = PlayerPrefs.GetString("playerName");
-        string opponentName = linktoUserGet.getUser(url_user, PlayerPrefs.GetString("loser"));
+        string opponentName = linktoUserGet.getUser(url_user, PlayerPrefs.GetString("loser")).getUserName();
         GameObject.Find("TextDetails").GetComponent<Text>().text = "Congratulations!\n" + playerName + ", you won the match with " + opponentName + "\n\n Your elo score is up by 100!";
         currentUser = linktoUserGet.getUser(url_user, PlayerPrefs.GetString("uid"));
         UpdateScore();
