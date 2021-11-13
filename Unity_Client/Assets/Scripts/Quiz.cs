@@ -93,7 +93,7 @@ public class Quiz : MonoBehaviour
         // dynamic value
         // PlayerPrefs.GetString("RestaurantChoice")
         // hardcoded value
-        string restaurantSelected = "Diner";
+        string restaurantSelected = PlayerPrefs.GetString("RestaurantChoice");
         var linktoRestaurant = GameObject.Find("RestaurantDao").GetComponent<RestaurantDao>();
         restaurantList = linktoRestaurant.getRestaurant(url_dish, restaurantSelected);
         GetRandomDish();
