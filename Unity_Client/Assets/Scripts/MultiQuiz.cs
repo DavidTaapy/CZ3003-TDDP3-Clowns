@@ -140,6 +140,12 @@ public class MultiQuiz : MonoBehaviour
                         opponentId = playersIds[1];
                         opponentScore = gameInfo.secondPlayerScore;
                     }
+                } else {
+                    if (playersIds[0] != myPlayerId) {
+                        opponentScore = gameInfo.firstPlayerScore;
+                    } else {
+                        opponentScore = gameInfo.secondPlayerScore;
+                    }
                 }
                 Debug.Log(opponentId);
                 // Check end of game
