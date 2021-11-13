@@ -11,7 +11,10 @@ The frontend portion of the project, written in unity can be found in under [Uni
 ## About the Game
 
 Food Wars is a gameshow-oriented game created to help primary school children have fun while playing games!  
-The game will have differing levels of difficulty for children from different primary levels and within each primary level, there would be different restaurants to conquer!      That's right! Our game is set is a restaurant scene where players would compete to get ingredients and complete their dishes!  
+  
+The game will have differing levels of difficulty for children from different primary levels and within each primary level, there would be different restaurants to conquer!    
+  
+That's right! Our game is set is a restaurant scene where players would compete to get ingredients and complete their dishes!  
 
 ## Setting up the backend[^1].
 
