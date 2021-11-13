@@ -11,7 +11,7 @@ public class ProfileManager : MonoBehaviour
 
     void Start()
     {
-        var userId = "testttt";
+        string userId = PlayerPrefs.GetString("uid");
         var linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
         User user = linktoUserGet.getUser(url_user, userId);
 
