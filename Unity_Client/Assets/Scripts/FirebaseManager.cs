@@ -63,18 +63,13 @@ public class FirebaseManager : MonoBehaviour
         //Call the login coroutine passing the email and password
         StartCoroutine(Login(emailLoginField.text, passwordLoginField.text));
     }
-    //Function for the register button
-    public void RegisterButton()
-    {
-        //Call the register coroutine passing the email, password, and username
-    }
 
     //Function for the sign out button
-    public void SignOutButton()
+    public void ExitButton()
     {
-        auth.SignOut();
-        UIManager.instance.LoginScreen();
-        ClearLoginFields();
+        // auth.SignOut();
+        Application.Quit();
+        Debug.Log("Game is exiting");
     }
 
     private IEnumerator Login(string _email, string _password)
