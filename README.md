@@ -41,13 +41,6 @@ npm start
 You can register for a free account with a valid email and password on "Food_Wars_v1"
 
 Alternatively, here is a quick start account for you to test out the features in Food Wars:
-> Username: 
-> Password:
+> Email: tankb78909@gmail.com
 
-
-
-
-## To Do List
-
-- [ ] Add database population set-up if required
-
+> Password: jamestan
