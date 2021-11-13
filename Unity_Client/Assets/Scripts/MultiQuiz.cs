@@ -88,10 +88,10 @@ public class MultiQuiz : MonoBehaviour
         scoreKeeper.resetFields();
 
         // Need to make change userId accordingly
-        // string userId = "7HHcjbfJq1kD8VFMHHDq";
         string userId = PlayerPrefs.GetString("uid");
         linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
         currentUser = linktoUserGet.getUser(url_user, userId);
+        PlayerPrefs.SetString("playerName", currentUser.getUserName());
         completedQns = currentUser.getCompletedQns();
 
         // Get user's inventory
@@ -143,16 +143,24 @@ public class MultiQuiz : MonoBehaviour
                 // Check end of game
                 if (gameInfo.firstPlayerScore == 5) {
                     if (myPlayerId == localPlayerId) {
+                        PlayerPrefs.SetString("winner", myPlayerId);
+                        PlayerPrefs.SetString("loser", opponentId);
                         SceneManager.LoadScene("MultiplayerWinScene");
                         opponentId = "";
                     } else {
                         SceneManager.LoadScene("MultiplayerLoseScene");
+                        PlayerPrefs.SetString("loser", myPlayerId);
+                        PlayerPrefs.SetString("winner", opponentId);
                         opponentId = "";
                     }
                 } else if (gameInfo.secondPlayerScore == 5) {
                     if (myPlayerId != localPlayerId) {
+                        PlayerPrefs.SetString("winner", myPlayerId);
+                        PlayerPrefs.SetString("loser", opponentId);
                         SceneManager.LoadScene("MultiplayerWinScene");
                     } else {
+                        PlayerPrefs.SetString("loser", myPlayerId);
+                        PlayerPrefs.SetString("winner", opponentId);
                         SceneManager.LoadScene("MultiplayerLoseScene");
                     }
                 }
@@ -168,7 +176,6 @@ public class MultiQuiz : MonoBehaviour
             {
                 isComplete = true;
                 // Update user elo rating here
-                UpdateUserPoints();
                 UpdateUserQns();
                 return;
             }
@@ -407,13 +414,6 @@ public class MultiQuiz : MonoBehaviour
         User opponent = linktoUserGet.getUser(url_user, opponentId);
         opponentScore = opponent.getCorrectQns();
         opponentScoreText.text = "Opponent's Score: " + opponentScore;
-    }
-
-    private void UpdateUserPoints()
-    {
-        int score = currentUser.getPoints();
-        score += scoreKeeper.CalculatePoints();
-        currentUser.setPoints(score);
     }
 
     private void UpdateUserQns()
