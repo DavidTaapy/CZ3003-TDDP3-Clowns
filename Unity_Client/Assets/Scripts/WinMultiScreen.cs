@@ -12,9 +12,10 @@ public class WinMultiScreen : MonoBehaviour
     User currentUser;
     void Awake()
     {
-        string playerName = PlayerPrefs.GetString("playerName");
-        GameObject.Find("TextDetails").GetComponent<Text>().text = "Congratulations!\n" + playerName + ", you won the match with " + PlayerPrefs.GetString("winner") + "\n\n Your elo score is up by 100!";
         linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
+        string playerName = PlayerPrefs.GetString("playerName");
+        string opponentName = linktoUserGet.getUser(url_user, PlayerPrefs.GetString("loser"));
+        GameObject.Find("TextDetails").GetComponent<Text>().text = "Congratulations!\n" + playerName + ", you won the match with " + opponentName + "\n\n Your elo score is up by 100!";
         currentUser = linktoUserGet.getUser(url_user, PlayerPrefs.GetString("uid"));
         UpdateScore();
     }

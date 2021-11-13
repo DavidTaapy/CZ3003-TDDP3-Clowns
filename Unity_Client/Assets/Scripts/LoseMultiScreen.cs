@@ -13,7 +13,8 @@ public class LoseMultiScreen : MonoBehaviour
     void Awake()
     {
         string playerName = PlayerPrefs.GetString("playerName");
-        GameObject.Find("TextDetails").GetComponent<Text>().text = "Try better next time!\n" + playerName + ", you lost the match to." + PlayerPrefs.GetString("winner") + "\n\n Your elo score is down by 50!";
+        string opponentName = linktoUserGet.getUser(url_user, PlayerPrefs.GetString("winner"));
+        GameObject.Find("TextDetails").GetComponent<Text>().text = "Try better next time!\n" + playerName + ", you lost the match to." + opponentName + "\n\n Your elo score is down by 50!";
         linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
         currentUser = linktoUserGet.getUser(url_user, PlayerPrefs.GetString("uid"));
         UpdateScore();
