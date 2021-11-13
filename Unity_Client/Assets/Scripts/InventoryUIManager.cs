@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 
 public class InventoryUIManager : MonoBehaviour
 {
-    private string userId = "7HHcjbfJq1kD8VFMHHDq";
     private string url_user = "http://localhost:3000/user";
+    private string userId = "";
 
     [Header("Inventory Details")]
     public GameObject inventoryPanel;
@@ -26,6 +26,7 @@ public class InventoryUIManager : MonoBehaviour
     void Start()
     {
         // Need to get the correct userId from playfab
+        userId = PlayerPrefs.GetString("uid");
         var userDaoObject = GameObject.Find("UserDao").GetComponent<UserDao>();
         User user = userDaoObject.getUser(url_user, userId);
         inventory = user.getInventory();

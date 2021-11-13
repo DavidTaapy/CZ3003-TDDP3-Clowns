@@ -6,9 +6,9 @@ using UnityEngine.EventSystems;
 
 public class ShopManager : MonoBehaviour
 {
-    private string userId = "7HHcjbfJq1kD8VFMHHDq";
     private string url_user = "http://localhost:3000/user";
     private string url_items = "http://localhost:3000/items";
+    string userId = "";
 
     [Header("User Details")]
     public User user;
@@ -41,6 +41,7 @@ public class ShopManager : MonoBehaviour
     void Start()
     {
         // Initialise panels and text
+        userId = PlayerPrefs.GetString("uid");
         pageText.text = "Powerups";
         itemPanel.gameObject.SetActive(false);
         accessoryPanel.gameObject.SetActive(false);

@@ -18,7 +18,7 @@ public class HistoryManager : MonoBehaviour
     void Start()
     {
         var linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
-        var userId = "7HHcjbfJq1kD8VFMHHDq";
+        var userId = PlayerPrefs.GetString("uid");
         user = linktoUserGet.getUser(url_user, userId);
         userQuestions = user.getCompletedQns();
         DisplayQuestions();
