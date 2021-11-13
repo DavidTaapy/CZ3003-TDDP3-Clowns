@@ -412,7 +412,7 @@ public class MultiQuiz : MonoBehaviour
     void DisplayOpponentScore()
     {
         Text opponentScoreText = opponentScoreImage.GetComponentInChildren<Text>();
-        User opponent = linktoUserGet.getUser(url_user, opponentId);
+        // User opponent = linktoUserGet.getUser(url_user, opponentId);
         opponentScore = opponentScore;
         opponentScoreText.text = "Opponent's Score: " + opponentScore;
     }
