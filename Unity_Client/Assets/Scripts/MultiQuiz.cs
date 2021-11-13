@@ -135,8 +135,10 @@ public class MultiQuiz : MonoBehaviour
                 if (opponentId == "") {
                     if (playersIds[0] != myPlayerId) {
                         opponentId = playersIds[0];
+                        opponentScore = gameInfo.firstPlayerScore;
                     } else {
                         opponentId = playersIds[1];
+                        opponentScore = gameInfo.secondPlayerScore;
                     }
                 }
                 Debug.Log(opponentId);
@@ -405,7 +407,7 @@ public class MultiQuiz : MonoBehaviour
     {
         Text opponentScoreText = opponentScoreImage.GetComponentInChildren<Text>();
         User opponent = linktoUserGet.getUser(url_user, opponentId);
-        opponentScore = opponent.getCorrectQns();
+        opponentScore = opponentScore;
         opponentScoreText.text = "Opponent's Score: " + opponentScore;
     }
 
