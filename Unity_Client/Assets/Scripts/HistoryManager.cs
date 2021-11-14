@@ -6,14 +6,12 @@ using UnityEngine.EventSystems;
 
 public class HistoryManager : MonoBehaviour
 {
-    //public UserQuestions userQuestions;
     public GameObject Content;
     public GameObject[] qnSlots;
     public User user;
     public List<Question> userQuestions;
     public string url_user;
     public int displayNum = 17;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -34,11 +32,8 @@ public class HistoryManager : MonoBehaviour
     {
         for (int i = 0; i < userQuestions.Count; i++)
         {
-            Debug.Log(userQuestions[i].ToJSON());
             qnSlots[i].gameObject.SetActive(true);
             int correctAns = userQuestions[i].GetCorrectAnswerIndex();
-
-
             qnSlots[i].transform.GetChild(0).GetComponent<Text>().text = userQuestions[i].GetQuestion();
             qnSlots[i].transform.GetChild(1).GetComponent<Text>().text = "Answer: " + userQuestions[i].GetAnswer(correctAns);
         }

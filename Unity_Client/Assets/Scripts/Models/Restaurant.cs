@@ -45,7 +45,6 @@ public class Restaurant
         this.dishes = dishes;
     }
 
-
     public string getId()
     {
         return this.id;
@@ -69,6 +68,4 @@ public class Restaurant
     public string ToJSON(){
         return JsonUtility.ToJson(this);
     }
-
-
 }

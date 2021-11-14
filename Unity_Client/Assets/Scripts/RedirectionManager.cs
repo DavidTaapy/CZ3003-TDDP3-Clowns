@@ -100,5 +100,4 @@ public class RedirectionManager : MonoBehaviour
     {
         Loader.Load(Loader.Scene.CharacterScene);
     }
-
 }

@@ -14,11 +14,9 @@ public class QuestionDao : MonoBehaviour
 
     public List<Question> getQuestions(string url, int primaryLevel){
         string urlWithParams = string.Format("{0}?lvl={1}", url, primaryLevel);
-
         HttpResponseMessage response = client.GetAsync(urlWithParams).GetAwaiter().GetResult();
         string responseStr = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
         List<Question> qnList = JsonConvert.DeserializeObject<List<Question>>(responseStr);
-        
         return qnList;
     }
 }

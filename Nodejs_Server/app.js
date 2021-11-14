@@ -17,7 +17,6 @@ app.use(urlencoded({ extended: true }));
 
 //let users = "{'userId' : nanoid(),  'username' : 'ryan','primaryLevel' : 2, 'points' : 1000}"
 
-
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Food wars." });
 });

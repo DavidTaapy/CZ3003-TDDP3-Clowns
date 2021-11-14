@@ -55,7 +55,6 @@ public class Item
         this.spriteSource = spriteSource;
     }
 
-
     public Sprite getItemSprite() {
 		return this.itemSprite;
 	}

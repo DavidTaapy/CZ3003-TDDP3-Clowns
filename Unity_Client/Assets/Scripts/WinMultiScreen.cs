@@ -20,7 +20,6 @@ public class WinMultiScreen : MonoBehaviour
         UpdateScore();
     }
 
-
     private void UpdateScore(){
         int eloRating = currentUser.getEloRating();
         eloRating += 100;
