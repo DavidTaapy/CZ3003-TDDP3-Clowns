@@ -9,16 +9,16 @@ public static class Loader
 
     public enum Scene
     {
-        LoadingScene, // No redirection required
-        MainMenu, // Done redirection
-        LeaderboardScene, // Done redirection
-        InventoryScene, ShopScene, // // Done Redirection
-        RegisterFirebase, LoginFirebase, // // Done redirection
-        SingleMode, MultiMode, // // Done redirection
-        MultiplayerWinScene, MultiplayerLoseScene, // // Done Redirection
-        MP_Matched, MP_Finding, ChooseRestuarantScene, // // Done Redirection // Check where to use choose restaurant
-        ViewSeasonRewardsScene, ReportScene, // Done Redirection // Check how to redirect
-        UserProfileScene, CharacterScene, // Done Redirection // Check how to redirect
+        LoadingScene, 
+        MainMenu, 
+        LeaderboardScene, 
+        InventoryScene, ShopScene,
+        RegisterFirebase, LoginFirebase, 
+        SingleMode, MultiMode, 
+        MultiplayerWinScene, MultiplayerLoseScene, 
+        MP_Matched, MP_Finding, ChooseRestuarantScene,
+        ViewSeasonRewardsScene, ReportScene,
+        UserProfileScene, CharacterScene,
         LastSeasonRewardScene
     }
 
@@ -51,5 +51,4 @@ public static class Loader
             onLoaderCallback = null;
         }
     }
-
 }

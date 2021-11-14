@@ -147,7 +147,6 @@ public class MultiQuiz : MonoBehaviour
                         opponentScore = gameInfo.secondPlayerScore;
                     }
                 }
-                Debug.Log(opponentId);
                 // Check end of game
                 if (gameInfo.firstPlayerScore == 5) {
                     if (myPlayerId == localPlayerId) {
@@ -419,7 +418,6 @@ public class MultiQuiz : MonoBehaviour
     void DisplayOpponentScore()
     {
         Text opponentScoreText = opponentScoreImage.GetComponentInChildren<Text>();
-        // User opponent = linktoUserGet.getUser(url_user, opponentId);
         opponentScore = opponentScore;
         opponentScoreText.text = "Opponent's Score: " + opponentScore;
     }
@@ -471,9 +469,4 @@ public class MultiQuiz : MonoBehaviour
         }
         return count;
     }
-
-    //private int GetOpponentCorrectQuestionCount(User Opponent)
-    //{
-    //    return 0;
-    //}
 }

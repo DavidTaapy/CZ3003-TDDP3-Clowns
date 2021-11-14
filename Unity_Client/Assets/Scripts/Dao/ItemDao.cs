@@ -19,7 +19,6 @@ public class ItemDao : MonoBehaviour
         HttpResponseMessage response = client.GetAsync(urlWithParams).GetAwaiter().GetResult();
         string responseStr = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
         List<Item> itemList = JsonConvert.DeserializeObject<List<Item>>(responseStr);
-        //Debug.Log(itemList[0].ToJSON());
         return itemList;
     }
 }

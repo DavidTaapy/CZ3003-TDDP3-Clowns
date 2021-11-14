@@ -69,7 +69,7 @@ public class Quiz : MonoBehaviour
         scoreKeeper.resetFields();
         scoreText.text = "Score: " + scoreKeeper.CalculateScore() + "%";
 
-        // Need to make change userId accordingly
+        // Get Userid
         string userId = PlayerPrefs.GetString("uid");
         linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
         currentUser = linktoUserGet.getUser(url_user, userId);
@@ -90,9 +90,6 @@ public class Quiz : MonoBehaviour
         skipQuestionCount = GetSkipQuestionCount(userInventory);
 
         // Getting dish & ingredient images
-        // dynamic value
-        // PlayerPrefs.GetString("RestaurantChoice")
-        // hardcoded value
         string restaurantSelected = PlayerPrefs.GetString("RestaurantChoice");
         var linktoRestaurant = GameObject.Find("RestaurantDao").GetComponent<RestaurantDao>();
         restaurantList = linktoRestaurant.getRestaurant(url_dish, restaurantSelected);

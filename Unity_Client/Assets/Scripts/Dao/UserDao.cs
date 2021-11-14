@@ -15,12 +15,9 @@ public class UserDao : MonoBehaviour
 
     public User getUser(string url, string userId){
         string urlWithParams = string.Format("{0}?id={1}", url, userId);
-
         HttpResponseMessage response = client.GetAsync(urlWithParams).GetAwaiter().GetResult();
         string responseStr = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
         User user = JsonUtility.FromJson<User>(responseStr);
-        //User user = JsonConvert.DeserializeObject<User>(responseStr);
-        Debug.Log(user.ToJSON());
         return user;
     }
 
@@ -40,10 +37,8 @@ public class UserDao : MonoBehaviour
 
     public string deleteUser(string url, string userId){
         string urlWithParams = string.Format("{0}?id={1}", url, userId);
-
         HttpResponseMessage response = client.DeleteAsync(urlWithParams).GetAwaiter().GetResult();
         string responseStr = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-        
         return responseStr;
     }
 }

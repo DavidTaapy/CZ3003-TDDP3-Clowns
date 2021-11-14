@@ -19,7 +19,6 @@ const getLeaderboard = async(req, res) => {
 const getPastLeaderboard = async(req, res) => {
     try {
         if (req.query.seasonId == null || req.query.seasonId == ""){
-            console.log(req.query.seasonId);
             res.status(400).send("Missing seasonId param in request!");
         }
         const id = req.query.seasonId;

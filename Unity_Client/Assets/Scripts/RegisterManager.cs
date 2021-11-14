@@ -49,7 +49,6 @@ public class RegisterManager : MonoBehaviour
 
     private void InitializeFirebase()
     {
-        Debug.Log("Setting up Firebase Auth");
         //Set the authentication instance object
         auth = FirebaseAuth.DefaultInstance;
     }
@@ -80,14 +79,12 @@ public class RegisterManager : MonoBehaviour
                 break;
             case 2:
                 grade = 3;
-                Debug.Log(grade);
                 break;
             case 3:
                 grade = 4;
                 break;
             case 4:
                 grade = 5;
-                Debug.Log(grade);
                 break;
             case 5:
                 grade = 6;
@@ -140,8 +137,6 @@ public class RegisterManager : MonoBehaviour
             else
             {   
                 //Code here updates firebase realtime database
-                //User has now been created
-                //Now get the result
                 User = RegisterTask.Result;
                 if (User != null)
                 {
@@ -164,57 +159,16 @@ public class RegisterManager : MonoBehaviour
                 }
 
                 if (User != null)
-                {
-                    Debug.Log("username: " + _username + " User ID : " + User.UserId + " Primary Lvl: " + _grade);
-                    
+                {                    
                     var linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
                     // Code to create user
                     User user2 = new User(_username, 0, _grade);
                     user2.setId(User.UserId);
                     string result = linktoUserGet.createUser(url_user, user2);
-                    Debug.Log(User.UserId + " created");
-                    Debug.Log(result);
                     warningRegisterText.text = "User created! Please verify your email!";
                     ClearRegisterFeilds();
                 }
             }
         }
     }
-
-    //private IEnumerator UpdateUsernameAuth(string _username)
-    //{
-    //    //Create a user profile and set the username
-    //    UserProfile profile = new UserProfile { DisplayName = _username };
-
-    //    //Call the Firebase auth update user profile function passing the profile with the username
-    //    var ProfileTask = User.UpdateUserProfileAsync(profile);
-    //    //Wait until the task completes
-    //    yield return new WaitUntil(predicate: () => ProfileTask.IsCompleted);
-
-    //    if (ProfileTask.Exception != null)
-    //    {
-    //        Debug.LogWarning(message: $"Failed to register task with {ProfileTask.Exception}");
-    //    }
-    //    else
-    //    {
-    //        //Auth username is now updated
-    //    }
-    //}
-
-    //private IEnumerator UpdateUsernameDatabase(string _username)
-    //{
-    //    //Set the currently logged in user username in the database
-    //    var DBTask = DBreference.Child("users").Child(User.UserId).Child("username").SetValueAsync(_username);
-
-    //    yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
-
-    //    if (DBTask.Exception != null)
-    //    {
-    //        Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
-    //    }
-    //    else
-    //    {
-    //        //Database username is now updated
-    //    }
-    //}
 }

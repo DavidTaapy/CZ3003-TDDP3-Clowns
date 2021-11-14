@@ -19,6 +19,7 @@ public class CharacterManager : MonoBehaviour
     public Image image;
     private Sprite sprite;
     private int selectedOption = 0;
+    private UserDao linktoUserGet;
 
     void Start()
     {
@@ -30,7 +31,7 @@ public class CharacterManager : MonoBehaviour
     }
 
     private User GetUserDetails(string url_user, string userId){
-        var linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
+        linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
         User user = linktoUserGet.getUser(url_user, userId);
         return user;
     }
@@ -79,6 +80,6 @@ public class CharacterManager : MonoBehaviour
     public void SelectCharacter()
     {
         user.setCharacter(currentCharacter);
-        print("Character selected successfully!");
+        linktoUserGet.updateUser(url_user, user);
     }
 }

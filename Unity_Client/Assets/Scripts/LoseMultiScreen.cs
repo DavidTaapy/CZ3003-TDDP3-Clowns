@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 public class LoseMultiScreen : MonoBehaviour
 {
-
     string url_user = "http://localhost:3000/user";
     UserDao linktoUserGet;
     User currentUser;

@@ -3,7 +3,6 @@ import { getCharacter,addCharacter, deleteCharacter , getAllCharacters} from "..
 
 const router = express.Router();
 
-
 router.get("/allcharacter", getAllCharacters);
 router.get("/character", getCharacter);
 router.post("/character", addCharacter);

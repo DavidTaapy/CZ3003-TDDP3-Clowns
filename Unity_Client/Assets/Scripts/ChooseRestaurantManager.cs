@@ -13,9 +13,7 @@ public class ChooseRestaurantManager : MonoBehaviour
     void Start()
     {
         var linktoUserGet = GameObject.Find("UserDao").GetComponent<UserDao>();
-        Debug.Log("============Starting Data Access Manager========");
         User user = linktoUserGet.getUser("http://localhost:3000/user", PlayerPrefs.GetString("uid"));
-        Debug.Log(user.getCharacter().getSpriteSource());
         sprite = Resources.Load<Sprite>(user.getCharacter().getSpriteSource());
         CharacterImage.GetComponent<Image>().sprite = sprite;
     }
@@ -47,20 +45,15 @@ public class ChooseRestaurantManager : MonoBehaviour
         {
             case 0:
                 PlayerPrefs.SetString("RestaurantChoice", "FineDining");
-                Debug.Log(PlayerPrefs.GetString("RestaurantChoice"));
                 break;
             case 1:
                 PlayerPrefs.SetString("RestaurantChoice", "Diner");
-                Debug.Log(PlayerPrefs.GetString("RestaurantChoice"));
                 break;
             case 2:
                 PlayerPrefs.SetString("RestaurantChoice", "Cafe");
-                Debug.Log(PlayerPrefs.GetString("RestaurantChoice"));
                 break;
             default:
-                Debug.Log("Something Went Wrong");
                 break;
         }
     }
-
 }

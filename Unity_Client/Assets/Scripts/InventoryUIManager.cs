@@ -31,13 +31,9 @@ public class InventoryUIManager : MonoBehaviour
         User user = userDaoObject.getUser(url_user, userId);
         inventory = user.getInventory();
 
-        //testing code
-        //sprite = Resources.Load<Sprite> ("Sprites/Single Mode Scene Sprites");
         DisplayItems();
         inventoryPanel.gameObject.SetActive(true);
         itemPanel.gameObject.SetActive(false);
-        Debug.Log("Number of inventory items: " + inventory.Count.ToString());
-        Debug.Log("Number of inventory slots: " + inventorySlots.Length.ToString());
     }
 
     void Update()
@@ -137,7 +133,6 @@ public class InventoryUIManager : MonoBehaviour
 
         sprite = Resources.Load<Sprite>(inventory[currentItemIndex].getSpriteSource());
         itemPanel.transform.GetChild(0).GetComponent<Image>().sprite = sprite;
-        // itemPanel.transform.GetChild(1).GetComponent<Text>().text = "ID: " + inventory[currentItemIndex].getItemID().ToString();
         itemPanel.transform.GetChild(2).GetComponent<Text>().text = "Name: " + inventory[currentItemIndex].getItemName();
         itemPanel.transform.GetChild(3).GetComponent<Text>().text = "Price: " + inventory[currentItemIndex].getPrice().ToString();
         itemPanel.transform.GetChild(5).GetComponent<Text>().text = "You have: " + inventory[currentItemIndex].getItemCount().ToString();

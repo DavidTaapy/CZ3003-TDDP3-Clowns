@@ -20,10 +20,6 @@ public class AccountManager : MonoBehaviour
             PlayFabSettings.TitleId = "FAEA2";
         };
 
-        // For testing using custom ID
-        // var request = new LoginWithCustomIDRequest { CustomId = "GettingStartedGuide", CreateAccount = true };
-        // PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
-
         // Delete all saved data
         PlayerPrefs.DeleteAll();
 
@@ -44,7 +40,6 @@ public class AccountManager : MonoBehaviour
 
     private void OnLoginSuccess(LoginResult result)
     {
-        Debug.Log("Congratulations, you made your first successful API call!");
         PlayerPrefs.SetString("EMAIL", userEmail);
         PlayerPrefs.SetString("PASSWORD", userPassword);
         loginPanel.SetActive(false);
@@ -52,7 +47,6 @@ public class AccountManager : MonoBehaviour
 
     private void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
-        Debug.Log("Congratulations, you made your second successful API call!");
         PlayerPrefs.SetString("EMAIL", userEmail);
         PlayerPrefs.SetString("PASSWORD", userPassword);
         loginPanel.SetActive(false);
@@ -107,9 +101,6 @@ public class AccountManager : MonoBehaviour
             Password = userPassword,
             Username = username
         };
-        Debug.Log(userEmail);
-        Debug.Log(userPassword);
-        Debug.Log(username);
         PlayFabClientAPI.RegisterPlayFabUser(registerRequest, OnRegisterSuccess, OnRegisterFailure);
     }
 }

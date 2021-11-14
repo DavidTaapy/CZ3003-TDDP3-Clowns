@@ -46,7 +46,6 @@ public class FirebaseManager : MonoBehaviour
 
     private void InitializeFirebase()
     {
-        Debug.Log("Setting up Firebase Auth");
         //Set the authentication instance object
         auth = FirebaseAuth.DefaultInstance;
     }
@@ -67,9 +66,7 @@ public class FirebaseManager : MonoBehaviour
     //Function for the sign out button
     public void ExitButton()
     {
-        // auth.SignOut();
         Application.Quit();
-        Debug.Log("Game is exiting");
     }
 
     private IEnumerator Login(string _email, string _password)
@@ -110,21 +107,16 @@ public class FirebaseManager : MonoBehaviour
         else
         {
             //User is now logged in
-            //Now get the result
             User = LoginTask.Result;
             if (User.IsEmailVerified)
             {
-                Debug.LogFormat("User signed in successfully: {0} ({1})", User.DisplayName, User.UserId);
-                Debug.Log(User.IsEmailVerified);
                 warningLoginText.text = "";
                 confirmLoginText.text = "Logged In";
                 PlayerPrefs.SetString("uid", User.UserId);
-                Debug.Log("Uid set to " + PlayerPrefs.GetString("uid"));
                 yield return new WaitForSeconds(1);
 
                 confirmLoginText.text = "";
                 ClearLoginFields();
-                //input redirect here
                 Loader.Load(Loader.Scene.MainMenu);
             } else
             {

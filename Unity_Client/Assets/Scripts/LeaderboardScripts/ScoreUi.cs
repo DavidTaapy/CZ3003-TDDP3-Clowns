@@ -6,8 +6,6 @@ using UnityEngine;
 public class ScoreUi : MonoBehaviour
 {
     public RowUi rowUi;
-    // public ScoreManager scoreManager;
-
     LeaderboardDao linkToLeaderboard;
     List<User> userRanking;
     string url_leaderboard = "http://localhost:3000/leaderboard";
