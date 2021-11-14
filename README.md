@@ -39,7 +39,7 @@ npm start
 
 ## Running the Unity game
 
-1. The precompiled Unity executable file can be found in [Unity_Client/Game](./Unity_Client/Game) titled "Food_Wars_v1.exe"
+1. The precompiled Unity executable file can be found in [Unity_Client/Game](./Unity_Client/Game) titled "Food_Wars.exe"
 
 2. Run the executable file normally to boot up the game
 
